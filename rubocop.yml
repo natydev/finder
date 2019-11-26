@@ -1,0 +1,56 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.6.5
+
+  Exclude:
+    - db/**/*
+    - node_modules/**/*
+    - 'lib/tasks/auto_annotate_models.rake'
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+
+Layout/AccessModifierIndentation:
+  Exclude:
+    - 'bin/bundle'
+
+Metrics/ClassLength:
+  Description: 'Avoid classes longer than x lines of code.'
+  Enabled: true
+  CountComments: false  # count full line comments?
+  Max: 100
+  Exclude:
+    - ''
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Style/NumericPredicate:
+  EnforcedStyle: comparison
+
+Style/WordArray:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - db/**/*
+  ExcludedMethods:
+    - describe
+    - context
+    - task
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - ''
