@@ -64,6 +64,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
+    bootstrap4-kaminari-views (1.0.1)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.3)
     byebug (11.0.1)
     coderay (1.1.2)
@@ -321,6 +324,7 @@ PLATFORMS
 DEPENDENCIES
   annotate (~> 3.0.3)
   bootsnap (>= 1.4.2)
+  bootstrap4-kaminari-views (= 1.0.1)
   byebug
   configatron (~> 4.5.1)
   database_cleaner (= 1.7.0)

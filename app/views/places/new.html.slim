@@ -1,5 +1,7 @@
-h1 New place
+- breadcrumb :new_place
+- entity = Place.model_name.human(count: 1)
+- entities = Place.model_name.human(count: :many)
 
+= intro_actions(summary: t('common.actions.new', entity: entity)) do
+  = link_to_list(places_path, entities: entities)
 == render 'form'
-
-= link_to 'Back', places_path

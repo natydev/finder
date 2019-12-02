@@ -14,7 +14,7 @@ module CRUDHelper
   # for a 2nd level resource:
   #  link_to_item(@parent_object, @object_to_link)
   def link_to_item(*entities)
-    link_to polymorphic_path([:admin, entities].flatten), class: "btn btn-light float-right",
+    link_to polymorphic_path([entities].flatten), class: "btn btn-light float-right",
       title: t("common.actions.show", entity: entities.last) do
         content_tag(:i, "", class: "fas fa-arrow-up")
       end
@@ -26,7 +26,7 @@ module CRUDHelper
   # for a 2nd level resource:
   #  link_to_new(@parent_object, Doorkeeper::Application)
   def link_to_new(*entities)
-    link_to new_polymorphic_path([:admin, entities].flatten), class: "btn btn-outline-success float-right",
+    link_to new_polymorphic_path([entities].flatten), class: "btn btn-outline-success float-right",
       title: t("common.actions.new", entity: entities.last.model_name.human(count: 1)) do
         content_tag(:i, "", class: "fas fa-plus")
       end
@@ -38,7 +38,7 @@ module CRUDHelper
   # for a 2nd level resource:
   #  link_to_edit(@parent_object, @object_to_edit)
   def link_to_edit(*entities)
-    link_to edit_polymorphic_path([:admin, entities].flatten), class: "btn btn-outline-warning float-right",
+    link_to edit_polymorphic_path([entities].flatten), class: "btn btn-outline-warning float-right",
       title: t("common.actions.edit", entity: entities.last) do
         content_tag(:i, "", class: "fas fa-edit")
       end
@@ -50,7 +50,7 @@ module CRUDHelper
   # for a 2nd level resource:
   #  link_to_show(@parent_object, @object_to_show)
   def link_to_show(*entities)
-    link_to polymorphic_path([:admin, entities].flatten), class: "btn btn-outline-primary float-right",
+    link_to polymorphic_path([entities].flatten), class: "btn btn-outline-primary float-right",
       title: t("common.actions.show", entity: entities.last) do
         content_tag(:i, "", class: "fas fa-eye")
       end
@@ -62,7 +62,7 @@ module CRUDHelper
   # for a 2nd level resource:
   #  link_to_destroy(@parent_object, @object_to_destroy)
   def link_to_destroy(*entities)
-    link_to polymorphic_path([:admin, entities].flatten), class: "btn btn-outline-danger float-right",
+    link_to polymorphic_path([entities].flatten), class: "btn btn-outline-danger float-right",
       data: { confirm: t("common.actions.confirm_destroy") }, method: :delete,
       title: t("common.actions.delete", entity: entities.last) do
         content_tag(:i, "", class: "fas fa-trash")
@@ -162,6 +162,15 @@ module CRUDHelper
         end
       end
     end
+  end
+
+  def flash_level_to_alert_class(level)
+    {
+      "notice" => "alert-info",
+      "success" => "alert-success",
+      "error" => "alert-error",
+      "alert" => "alert-warning"
+    }[level]
   end
 
   def bool_to_icon(val, icon: "fa fa-check")

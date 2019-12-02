@@ -1,9 +1,13 @@
-p#notice = notice
+- breadcrumb :place, @place
+- entity = Place.model_name.human(count: :one)
+- entities = Place.model_name.human(count: :many)
 
-p
-  strong Name:
-  = @place.name
+= intro_actions(summary: Place.model_name.human(count: 1) + ": #{@place}") do
+  = link_to_edit(@place)
+  = link_to_list(places_path, entities: entities)
 
-=> link_to 'Edit', edit_place_path(@place)
-'|
-=< link_to 'Back', places_path
+= detail_row @place, :name
+= detail_row @place, :created_at do
+  = l(@place.created_at, format: :long)
+= detail_row @place, :updated_at do
+  = l(@place.updated_at, format: :long)

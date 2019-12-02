@@ -36,6 +36,7 @@ gem 'enumerate_it', '3.0.0'
 # Views
 gem 'gretel', '3.0.9'
 gem 'kaminari', '~> 1.1.1'
+gem "bootstrap4-kaminari-views", "1.0.1"
 gem 'simple_form', '5.0.1'
 gem 'slim-rails', '~> 3.2.0'
 

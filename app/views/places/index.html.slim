@@ -1,21 +1,19 @@
-h1 Listing places
+- breadcrumb :places
+- table_fields = [:name, :created_at, :updated_at]
 
-table
-  thead
-    tr
-      th Name
-      th
-      th
-      th
+= intro_actions(summary: Place.model_name.human(count: :many)) do
+  = link_to_new(Place)
 
+= tabular_list(@places) do |collection|
+  = tabular_head(Place, tag: :thead, labels: table_fields)
   tbody
-    - @places.each do |place|
+    - collection.each do |place|
       tr
-        td = place.name
-        td = link_to 'Show', place
-        td = link_to 'Edit', edit_place_path(place)
-        td = link_to 'Destroy', place, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Place', new_place_path
+        td= place.name
+        td= I18n.l(place.created_at, format: :list)
+        td= I18n.l(place.updated_at, format: :list)
+        td.action-link= link_to_show(place)
+        td.action-link= link_to_edit(place)
+        td.action-link= link_to_destroy(place)
+  = tabular_head(Place, tag: :tfoot, labels: table_fields)
+= paginator(@places)
