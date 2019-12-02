@@ -17,3 +17,16 @@ crumb :new_place do
   link I18n.t("common.actions.new", entity: Place.model_name.human(count: 1)), ""
   parent :places
 end
+
+crumb :spot do |place, spot|
+  link(
+    spot.to_s,
+    polymorphic_path([place, spot])
+  )
+  parent place
+end
+
+crumb :new_spot do |place|
+  link I18n.t("common.actions.new", entity: Spot.model_name.human(count: 1)), ""
+  parent place
+end

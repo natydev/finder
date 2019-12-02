@@ -11,3 +11,21 @@
   = l(@place.created_at, format: :long)
 = detail_row @place, :updated_at do
   = l(@place.updated_at, format: :long)
+hr
+
+- @context_icon = 'fa fa-door-open'
+- child_table_fields = [:name, :place, :updated_at]
+= intro_actions(summary: Spot.model_name.human(count: :many), style: :included) do
+  = link_to_new(@place, Spot)
+= tabular_list(@place.spots) do |collection|
+  = tabular_head(Spot, tag: :thead, labels: child_table_fields)
+  tbody
+    - collection.each do |spot|
+      tr
+        td= spot.name
+        td= spot.place
+        td= l(spot.updated_at, format: :short)
+        td.action-link= link_to_show(@place, spot)
+        td.action-link= link_to_edit(@place, spot)
+        td.action-link= link_to_destroy(@place, spot)
+  = tabular_head(Spot, tag: :tfoot, labels: child_table_fields)

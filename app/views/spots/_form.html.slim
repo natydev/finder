@@ -1,0 +1,5 @@
+= simple_form_for([@place, @spot], wrapper: :horizontal_form) do |f|
+  = f.input :place_id, collection: Place.for_select
+  = f.input :name
+  = f.input :slug
+  = f.button :submit, class: 'btn-outline-dark'

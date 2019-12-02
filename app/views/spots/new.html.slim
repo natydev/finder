@@ -1,0 +1,7 @@
+- breadcrumb :spot, @place
+- entity = Spot.model_name.human(count: 1)
+- entities = Spot.model_name.human(count: :many)
+
+= intro_actions(summary: t('common.actions.new', entity: entity)) do
+  = link_to_item(@place)
+== render 'form'

@@ -3,6 +3,13 @@ en:
     attributes:
       place:
         name: Name
+      spot:
+        name: Name
+        code: Code
+        place: Place
+        slug: Slug
+        place_name: Place name
+        place_id: Place
     errors:
       models:
         user:
@@ -13,6 +20,9 @@ en:
       place:
         one: Place
         other: Places
+      spot:
+        one: Spot
+        other: Spots
   attributes:
     created_at: Created at
     updated_at: Updated at
@@ -32,6 +42,7 @@ en:
       created: Created with successful
       destroyed: Deleted with successful
       updated: Updated with successful
+    no_item_present: No items present
   time:
     formats:
       list: "%Y-%m-%d %H:%M"
