@@ -1,13 +1,13 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import 'bootstrap/dist/js/bootstrap';
-import { library, dom } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
-require("@rails/ujs").start()
-require("turbolinks").start()
-require("@rails/activestorage").start()
-require("bootstrap/dist/js/bootstrap")
+require("@rails/ujs").start();
+require("turbolinks").start();
+require("@rails/activestorage").start();
+require("bootstrap/dist/js/bootstrap");
 
 
 
@@ -16,9 +16,9 @@ require("bootstrap/dist/js/bootstrap")
 // or the `imagePath` JavaScript helper below.
 //
 // const images = require.context('../images', true)
-// const imagePath = (name) => images(name, true)
-import './src/application.scss'
-import '@fortawesome/fontawesome-free/js/all'
+// const imagePath = (name) => images(name;, true)
+import './src/application.scss';
+import '@fortawesome/fontawesome-free/js/all';
 // import '@fortawesome/fontawesome-free/js/all'
 // 
 // import $ from 'jquery'
