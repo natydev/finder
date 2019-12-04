@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :boxes
   resources :spots
   root to: "places#index"
   resources :places do

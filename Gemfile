@@ -39,6 +39,7 @@ gem 'kaminari', '~> 1.1.1'
 gem "bootstrap4-kaminari-views", "1.0.1"
 gem 'simple_form', '5.0.1'
 gem 'slim-rails', '~> 3.2.0'
+gem 'cocoon', '1.2.14'
 
 # Localization
 gem 'i18n-tasks', '~> 0.9.29'

@@ -10,6 +10,15 @@ en:
         slug: Slug
         place_name: Place name
         place_id: Place
+      box:
+        summary: Summary
+        code: Code
+        spot: Spot
+        place_id: Spot
+        owner: Owner
+        owner_id: Owner
+        issued_on: Issued on
+        items_count: Items counter
     errors:
       models:
         user:
@@ -23,6 +32,9 @@ en:
       spot:
         one: Spot
         other: Spots
+      spot:
+        one: Box
+        other: Boxes
   attributes:
     created_at: Created at
     updated_at: Updated at
@@ -46,3 +58,8 @@ en:
   time:
     formats:
       list: "%Y-%m-%d %H:%M"
+      long: "%Y-%m-%d %H:%M:%S"
+  date:
+    formats:
+      list: "%Y-%m-%d"
+      long: "%Y-%m-%d"

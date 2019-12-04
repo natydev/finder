@@ -69,6 +69,7 @@ GEM
       rails (>= 3.1)
     builder (3.2.3)
     byebug (11.0.1)
+    cocoon (1.2.14)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     configatron (4.5.1)
@@ -326,6 +327,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   bootstrap4-kaminari-views (= 1.0.1)
   byebug
+  cocoon (= 1.2.14)
   configatron (~> 4.5.1)
   database_cleaner (= 1.7.0)
   devise (= 4.7.1)

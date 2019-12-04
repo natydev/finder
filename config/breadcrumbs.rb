@@ -30,3 +30,17 @@ crumb :new_spot do |place|
   link I18n.t("common.actions.new", entity: Spot.model_name.human(count: 1)), ""
   parent place
 end
+
+crumb :boxes do
+  link Box.model_name.human(count: 2), boxes_path
+end
+
+crumb :box do |box|
+  link box.to_s, box_path(box)
+  parent :boxes
+end
+
+crumb :new_box do
+  link I18n.t("common.actions.new", entity: Box.model_name.human(count: 1)), ""
+  parent :boxes
+end
