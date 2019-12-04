@@ -1,0 +1,4 @@
+= simple_form_for([@box, @item], wrapper: :horizontal_form) do |f|
+  = f.input :box_id, collection: Box.for_select
+  = f.input :summary
+  = f.button :submit, class: 'btn-outline-dark'

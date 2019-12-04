@@ -17,3 +17,19 @@
 = detail_row @box, :updated_at do
   = l(@box.updated_at, format: :long)
 hr
+
+- @context_icon = 'fa fa-box-open'
+- child_table_fields = [:summary, :updated_at]
+= intro_actions(summary: Item.model_name.human(count: :many), style: :included) do
+  = link_to_new(@box, Item)
+= tabular_list(@box.items) do |collection|
+  = tabular_head(Item, tag: :thead, labels: child_table_fields)
+  tbody
+    - collection.each do |item|
+      tr
+        td= item.summary
+        td= l(item.updated_at, format: :short)
+        td.action-link= link_to_show(@box, item)
+        td.action-link= link_to_edit(@box, item)
+        td.action-link= link_to_destroy(@box, item)
+  = tabular_head(Item, tag: :tfoot, labels: child_table_fields)

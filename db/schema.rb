@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_170151) do
+ActiveRecord::Schema.define(version: 2019_12_04_072328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 2019_12_03_170151) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_boxes_on_owner_id"
     t.index ["spot_id"], name: "index_boxes_on_spot_id"
+  end
+
+  create_table "items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "box_id", null: false
+    t.string "summary"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["box_id"], name: "index_items_on_box_id"
   end
 
   create_table "places", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -67,5 +75,6 @@ ActiveRecord::Schema.define(version: 2019_12_03_170151) do
 
   add_foreign_key "boxes", "spots"
   add_foreign_key "boxes", "users", column: "owner_id"
+  add_foreign_key "items", "boxes"
   add_foreign_key "spots", "places"
 end

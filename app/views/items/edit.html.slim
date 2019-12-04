@@ -1,0 +1,6 @@
+- breadcrumb :item, @box, @item
+
+= intro_actions(summary: t('common.actions.edit', entity: @item)) do
+  = link_to_item(@box, @item)
+== render 'form'
+

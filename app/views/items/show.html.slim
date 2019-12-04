@@ -1,0 +1,14 @@
+- breadcrumb :item, @box, @item
+- entity = Item.model_name.human(count: :one)
+- entities = Item.model_name.human(count: :many)
+
+= intro_actions(summary: Item.model_name.human(count: 1) + ": #{@item}") do
+  = link_to_edit(@box, @item)
+  = link_to_list(polymorphic_path([@box]), entities: entities)
+
+= detail_row @item, :box_code
+= detail_row @item, :summary
+= detail_row @item, :created_at do
+  = l(@item.created_at, format: :long)
+= detail_row @item, :updated_at do
+  = l(@item.updated_at, format: :long)

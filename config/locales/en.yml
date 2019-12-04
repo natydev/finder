@@ -19,6 +19,11 @@ en:
         owner_id: Owner
         issued_on: Issued on
         items_count: Items counter
+      item:
+        summary: Summary
+        box: Box
+        box_code: Box code
+        box_id: Box
     errors:
       models:
         user:
@@ -32,9 +37,12 @@ en:
       spot:
         one: Spot
         other: Spots
-      spot:
+      box:
         one: Box
         other: Boxes
+      item:
+        one: Item
+        other: Items
   attributes:
     created_at: Created at
     updated_at: Updated at

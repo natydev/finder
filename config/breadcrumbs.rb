@@ -44,3 +44,16 @@ crumb :new_box do
   link I18n.t("common.actions.new", entity: Box.model_name.human(count: 1)), ""
   parent :boxes
 end
+
+crumb :item do |box, item|
+  link(
+    item.to_s,
+    polymorphic_path([box, item])
+  )
+  parent box
+end
+
+crumb :new_item do |box|
+  link I18n.t("common.actions.new", entity: Box.model_name.human(count: 1)), ""
+  parent box
+end

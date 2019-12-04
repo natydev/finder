@@ -1,0 +1,7 @@
+- breadcrumb :item, @box
+- entity = Item.model_name.human(count: 1)
+- entities = Item.model_name.human(count: :many)
+
+= intro_actions(summary: t('common.actions.new', entity: entity)) do
+  = link_to_item(@box)
+== render 'form'
