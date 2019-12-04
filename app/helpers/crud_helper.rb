@@ -158,7 +158,7 @@ module CRUDHelper
         if block_given?
           yield
         else
-          record.public_send(label)
+          record.public_send(label).to_s
         end
       end
     end

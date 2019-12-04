@@ -1,0 +1,7 @@
+- breadcrumb :new_box
+- entity = Box.model_name.human(count: 1)
+- entities = Box.model_name.human(count: :many)
+
+= intro_actions(summary: t('common.actions.new', entity: entity)) do
+  = link_to_list(boxes_path, entities: entities)
+== render 'form'

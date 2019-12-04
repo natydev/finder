@@ -1,0 +1,19 @@
+- breadcrumb :box, @box
+- entity = Box.model_name.human(count: :one)
+- entities = Box.model_name.human(count: :many)
+
+= intro_actions(summary: Box.model_name.human(count: 1) + ": #{@box}") do
+  = link_to_edit(@box)
+  = link_to_list(boxes_path, entities: entities)
+
+= detail_row @box, :summary
+= detail_row @box, :code
+= detail_row @box, :spot_name
+= detail_row @box, :items_count
+= detail_row @box, :issued_on do
+  = l(@box.issued_on, format: :long)
+= detail_row @box, :created_at do
+  = l(@box.created_at, format: :long)
+= detail_row @box, :updated_at do
+  = l(@box.updated_at, format: :long)
+hr
