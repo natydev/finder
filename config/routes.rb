@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root to: "items#search"
+
+  resources :items do
+    collection do
+      get 'search'
+    end
+  end
   resources :boxes do
     resources :items
   end
-  root to: "places#index"
   resources :places do
     resources :spots
   end

@@ -63,6 +63,9 @@ en:
       destroyed: Deleted with successful
       updated: Updated with successful
     no_item_present: No items present
+  search:
+    in_summary: 'Search in summary'
+    filer_spot: 'Filter by Spot'
   time:
     formats:
       list: "%Y-%m-%d %H:%M"

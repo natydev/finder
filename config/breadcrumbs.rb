@@ -57,3 +57,7 @@ crumb :new_item do |box|
   link I18n.t("common.actions.new", entity: Box.model_name.human(count: 1)), ""
   parent box
 end
+
+crumb :search do
+  link 'search', search_items_path
+end

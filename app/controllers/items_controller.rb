@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
-  before_action :set_box
+  before_action :set_box, except: [:search]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+
+  def search
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true).includes(box: :spot).joins(box: :spot).page(params[:page])
+  end
 
   # GET /items/1
   # GET /items/1.json
