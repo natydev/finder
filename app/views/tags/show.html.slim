@@ -1,0 +1,13 @@
+- breadcrumb :tag, @tag
+- entity = Tag.model_name.human(count: :one)
+- entities = Tag.model_name.human(count: :many)
+
+= intro_actions(summary: Tag.model_name.human(count: 1) + ": #{@tag}") do
+  = link_to_edit(@tag)
+  = link_to_list(tags_path, entities: entities)
+
+= detail_row @tag, :name
+= detail_row @tag, :created_at do
+  = l(@tag.created_at, format: :long)
+= detail_row @tag, :updated_at do
+  = l(@tag.updated_at, format: :long)

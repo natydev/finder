@@ -1,0 +1,7 @@
+- breadcrumb :new_tag
+- entity = Tag.model_name.human(count: 1)
+- entities = Tag.model_name.human(count: :many)
+
+= intro_actions(summary: t('common.actions.new', entity: entity)) do
+  = link_to_list(tags_path, entities: entities)
+== render 'form'

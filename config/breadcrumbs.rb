@@ -61,3 +61,17 @@ end
 crumb :search do
   link 'search', search_items_path
 end
+
+crumb :tags do
+  link Tag.model_name.human(count: 2), tags_path
+end
+
+crumb :tag do |tag|
+  link tag.to_s, tag_path(tag)
+  parent :tags
+end
+
+crumb :new_tag do
+  link I18n.t("common.actions.new", entity: Tag.model_name.human(count: 1)), ""
+  parent :tags
+end

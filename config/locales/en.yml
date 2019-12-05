@@ -24,6 +24,8 @@ en:
         box: Box
         box_code: Box code
         box_id: Box
+      tag:
+        name: Name
     errors:
       models:
         user:
@@ -43,6 +45,9 @@ en:
       item:
         one: Item
         other: Items
+      tag:
+        one: Tag
+        other: Tags   
   attributes:
     created_at: Created at
     updated_at: Updated at
