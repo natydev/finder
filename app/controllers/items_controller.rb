@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
 
   def search
     @q = Item.ransack(params[:q])
-    @items = @q.result(distinct: true).includes(box: :spot).joins(box: :spot).page(params[:page])
+    @items = @q.result.includes([box: :spot], :tags)
+    .joins([box: :spot]).page(params[:page])
   end
 
   # GET /items/1
@@ -68,11 +69,15 @@ class ItemsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @item = Item.find(params[:id])
+      @item = Item.find(params[:id]).decorate
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:box_id, :summary)
+      params.require(:item).permit(:box_id, :summary, tag_ids: [])
+    end
+
+    def context_icon
+      @context_icon = "fa fa-shapes"
     end
 end

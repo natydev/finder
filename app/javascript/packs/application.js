@@ -1,6 +1,8 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import 'bootstrap/dist/js/bootstrap';
+import 'chosen-js';
+import 'bootstrap4c-chosen/dist/css/component-chosen';
 import 'cocoon-js';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +10,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 require("@rails/ujs").start();
 require("turbolinks").start();
 require("@rails/activestorage").start();
+require("jquery");
 require("bootstrap/dist/js/bootstrap");
 
 
@@ -24,6 +27,7 @@ import '@fortawesome/fontawesome-free/js/all';
 // 
 // import $ from 'jquery'
 // 
-// $(document).ready(function () {
+$(document).ready(function () {
 //   // insert here some init
-// })
+    //$('.chosen-select').chosen();
+})

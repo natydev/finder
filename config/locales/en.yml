@@ -24,6 +24,8 @@ en:
         box: Box
         box_code: Box code
         box_id: Box
+        tags: Tags
+        tag_ids: Tags
       tag:
         name: Name
     errors:
@@ -71,6 +73,7 @@ en:
   search:
     in_summary: 'Search in summary'
     filer_spot: 'Filter by Spot'
+    filer_tag: 'Filter by tag'
   time:
     formats:
       list: "%Y-%m-%d %H:%M"

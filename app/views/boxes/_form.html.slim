@@ -1,6 +1,9 @@
 = simple_form_for([@box], wrapper: :horizontal_form) do |f|
-  = f.association :spot, collection: Spot.for_select
+  = f.association :spot, collection: Spot.for_select,
+   input_html: { class: 'form-control form-control-chosen' }
   = f.input :summary
   = f.input :code
   = f.input :issued_on
   = f.button :submit, class: 'btn-outline-dark'
+javascript:
+  $('.form-control-chosen').chosen();

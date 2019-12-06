@@ -8,7 +8,7 @@ ruby '2.6.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.1'
 # Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
+gem 'pg', '1.1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -41,6 +41,7 @@ gem 'simple_form', '5.0.1'
 gem 'slim-rails', '~> 3.2.0'
 gem 'cocoon', '1.2.14'
 gem 'ransack', '2.3.0'
+gem 'draper', '3.1.0'
 
 # Localization
 gem 'i18n-tasks', '~> 0.9.29'

@@ -6,9 +6,12 @@
   = link_to_edit(@box, @item)
   = link_to_list(polymorphic_path([@box]), entities: entities)
 
-= detail_row @item, :box_code
+= detail_row @item, :box_code do
+  = @item.badge_box_code
 = detail_row @item, :summary
+= detail_row @item, :tags do
+  = raw @item.badge_tags
 = detail_row @item, :created_at do
-  = l(@item.created_at, format: :long)
+  = @item.created_at_long
 = detail_row @item, :updated_at do
-  = l(@item.updated_at, format: :long)
+  = @item.updated_at_long

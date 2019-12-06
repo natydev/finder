@@ -8,17 +8,18 @@
 
 = detail_row @box, :summary
 = detail_row @box, :code
-= detail_row @box, :spot_name
+= detail_row @box, :spot_name do
+  = @box.badge_spot_name
 = detail_row @box, :items_count
 = detail_row @box, :issued_on do
   = l(@box.issued_on, format: :long)
 = detail_row @box, :created_at do
-  = l(@box.created_at, format: :long)
+  = @box.created_at_long
 = detail_row @box, :updated_at do
-  = l(@box.updated_at, format: :long)
+  = @box.updated_at_long
 hr
 
-- @context_icon = 'fa fa-box-open'
+- @context_icon = 'fa fa-shapes'
 - child_table_fields = [:summary, :updated_at]
 = intro_actions(summary: Item.model_name.human(count: :many), style: :included) do
   = link_to_new(@box, Item)

@@ -1,15 +1,26 @@
 - breadcrumb :search
 - table_fields = [:summay, :box_code, :spot, :updated_at]
 
-= search_form_for @q, url: search_items_path, wrapper: :search_horizontal_form, class: 'search' do |f|
+= search_form_for @q, url: search_items_path, wrapper: :search_horizontal_form,
+ class: 'search' do |f|
   .row
     .col-md
+      i.fa.fa-search.mr-1.text-muted
       = f.input :summary_or_box_summary_cont, placeholder: t('search.in_summary')
     .col-md
-      = f.input :box_spot_id_eq, as: :select, collection: Spot.for_select, prompt: t('search.filer_spot')
+      i.fa.fa-door-open.mr-1.text-muted
+      = f.input :box_spot_id_eq, as: :select, collection: Spot.for_select,
+       prompt: t('search.filer_spot'),
+        input_html: { class: 'form-control form-control-chosen' }
+    .col-md
+      i.fa.fa-tag.mr-1.text-muted
+      = f.input :tags_id_in, as: :select, collection: Tag.for_select,
+       prompt: t('search.filer_tag'),
+        input_html: { multiple: true, class: 'form-control form-control-chosen' }
     .col-md.text-right
       - if params[:q].present?
-        = link_to t('common.reset'), search_items_path, class: 'btn btn-secondary btn-sm mr-2'
+        = link_to t('common.reset'), search_items_path,
+         class: 'btn btn-secondary btn-sm mr-2'
       = f.button :submit, class: 'btn btn-primary btn-sm'
 
 
@@ -19,9 +30,11 @@
     - collection.each do |item|
       tr
         td= item.summary
-        td= item.box_code
+        td= link_to item.box_code, box_path(item.box)
         td= item.spot
-        td= I18n.l(item.updated_at, format: :list)
+        td.text-secondary= I18n.l(item.updated_at, format: :list)
         td.action-link= link_to_show(item.box, item)
   = tabular_head(Item, tag: :tfoot, labels: table_fields)
 = paginator(@items)
+javascript:
+  $('.form-control-chosen').chosen();

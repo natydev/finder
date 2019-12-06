@@ -155,7 +155,7 @@ SimpleForm.setup do |config|
   end
 
   # search horizontal default_wrapper
-  config.wrappers :search_horizontal_form, tag: "div", class: "form-group", error_class: "form-group-invalid", valid_class: "form-group-valid" do |b|
+  config.wrappers :search_horizontal_form, tag: "span", class: "form-group", error_class: "form-group-invalid", valid_class: "form-group-valid" do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
