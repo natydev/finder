@@ -42,6 +42,8 @@ class BoxesController < ApplicationController
   def update
     respond_to do |format|
       if @box.update(box_params)
+        @box.picture_derivatives!
+        @box.save
         format.html { redirect_to @box, notice: t("common.flash.updated") }
         format.json { render :show, status: :ok, location: @box }
       else
@@ -69,7 +71,8 @@ class BoxesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def box_params
-      params.require(:box).permit(:spot_id, :owner_id, :summary, :code, :issued_on)
+      params.require(:box).permit(:spot_id, :owner_id, :summary,
+       :code, :issued_on, :picture)
     end
 
     def context_icon

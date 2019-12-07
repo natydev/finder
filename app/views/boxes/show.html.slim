@@ -17,6 +17,8 @@
   = @box.created_at_long
 = detail_row @box, :updated_at do
   = @box.updated_at_long
+= detail_row @box, :picture do
+  = @box.image_tag_medium
 hr
 
 - @context_icon = 'fa fa-shapes'

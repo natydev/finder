@@ -4,6 +4,8 @@
   = f.input :summary
   = f.input :code
   = f.input :issued_on
+  = f.input :picture, as: :hidden, input_html: { value: @box.cached_picture_data }
+  = f.input :picture, as: :file
   = f.button :submit, class: 'btn-outline-dark'
 javascript:
   $('.form-control-chosen').chosen();

@@ -1,5 +1,6 @@
 class Box < ApplicationRecord
   include SelectModelConcern
+  include PictureUploader::Attachment(:picture)
 
   belongs_to :spot
   belongs_to :owner, class_name: 'User', optional: true
