@@ -2,6 +2,8 @@
   = f.input :box_id, collection: Box.for_select, input_html: { class: 'form-control form-control-chosen' }
   = f.input :summary
   = f.input :tag_ids, as: :select, collection: Tag.for_select, input_html: { multiple: true, class: 'form-control form-control-chosen' }
+  = f.input :picture, as: :hidden, input_html: { value: @item.cached_picture_data }
+  = f.input :picture, as: :file
   = f.button :submit, class: 'btn-outline-dark'
 javascript:
   $('.form-control-chosen').chosen();

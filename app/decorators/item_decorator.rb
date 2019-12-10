@@ -1,5 +1,6 @@
 class ItemDecorator < Draper::Decorator
   include TimestampsDeco
+  include PictureDeco
 
   delegate_all
 

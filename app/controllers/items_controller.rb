@@ -2,12 +2,6 @@ class ItemsController < ApplicationController
   before_action :set_box, except: [:search]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-  def search
-    @q = Item.ransack(params[:q])
-    @items = @q.result.includes([box: :spot], :tags)
-    .joins([box: :spot]).page(params[:page])
-  end
-
   # GET /items/1
   # GET /items/1.json
   def show
@@ -28,7 +22,7 @@ class ItemsController < ApplicationController
     @item = @box.items.new(item_params)
 
     respond_to do |format|
-      if @item.save
+      if @item.valid? && picture_and_save
         format.html { redirect_to [@box, @item], notice: t("common.flash.created") }
         format.json { render :show, status: :created, location: @item }
       else
@@ -42,7 +36,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
-      if @item.update(item_params)
+      if @item.update(item_params) && picture_and_save
         format.html { redirect_to [@box, @item], notice: t("common.flash.updated") }
         format.json { render :show, status: :ok, location: @item }
       else
@@ -74,7 +68,12 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:box_id, :summary, tag_ids: [])
+      params.require(:item).permit(:box_id, :summary, :picture, tag_ids: [])
+    end
+
+    def picture_and_save
+      @item.picture_derivatives! if @item.picture.present?
+      @item.save
     end
 
     def context_icon

@@ -11,6 +11,8 @@
 = detail_row @item, :summary
 = detail_row @item, :tags do
   = raw @item.badge_tags
+= detail_row @item, :picture do
+  = @item.image_tag_medium
 = detail_row @item, :created_at do
   = @item.created_at_long
 = detail_row @item, :updated_at do
