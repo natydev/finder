@@ -1,4 +1,8 @@
 en:
+  enumerations:
+    box_typology:
+      standalone: 'Standalone'
+      cluster: 'Cluster'
   activerecord:
     attributes:
       place:
@@ -64,6 +68,7 @@ en:
       show: Details %{entity}
       title: Actions
       update: Update %{entity}
+      search: Search
     flash:
       cannot_destroy: Error during delete operation
       created: Created with successful
