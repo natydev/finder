@@ -4,6 +4,10 @@ crumb :root do
   link 'Home', root_path
 end
 
+crumb :searches do
+  link 'searches', searches_path
+end
+
 crumb :places do
   link Place.model_name.human(count: 2), places_path
 end
@@ -56,10 +60,6 @@ end
 crumb :new_item do |box|
   link I18n.t("common.actions.new", entity: Box.model_name.human(count: 1)), ""
   parent box
-end
-
-crumb :search do
-  link 'search', search_items_path
 end
 
 crumb :tags do

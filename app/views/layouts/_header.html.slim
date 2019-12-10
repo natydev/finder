@@ -3,8 +3,8 @@ nav.navbar.navbar-expand.navbar-dark.bg-dark
     - # logo here
   ul.navbar-nav.mr-auto
     li.nav-item.ml-3
-      = link_to search_items_path, class: 'nav-link' do
-        = Item.model_name.human(count: 2)
+      = link_to searches_path, class: 'nav-link' do
+        = t('common.action.search')
     li.nav-item.ml-3
       = link_to boxes_path, class: 'nav-link' do
         = Box.model_name.human(count: 2)
