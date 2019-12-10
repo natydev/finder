@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    box { nil }
-    summary { "MyString" }
+    association :box, factory: :box_cluster
+    summary { Faker::Lorem.unique.sentence }
   end
 end
