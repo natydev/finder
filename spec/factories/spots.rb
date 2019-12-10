@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :spot do
-    place { nil }
-    name { "MyString" }
+    place
+    name { Faker::House.unique.room }
     slug { "MyString" }
   end
 end
