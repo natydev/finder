@@ -1,0 +1,43 @@
+- breadcrumb :searches
+- table_fields = [:type, :summay, :box_code, :spot, :updated_at]
+
+= search_form_for @q, url: searches_path, wrapper: :search_horizontal_form,
+ class: 'search' do |f|
+  .row
+    .col-md
+      i.fa.fa-search.mr-1.text-muted
+      = f.input :summary_or_items_summary_cont, placeholder: t('search.in_summary')
+    .col-md
+      i.fa.fa-door-open.mr-1.text-muted
+      = f.input :spot_id_eq, as: :select, collection: Spot.for_select,
+       prompt: t('search.filer_spot'),
+        input_html: { class: 'form-control form-control-chosen' }
+    .col-md
+      i.fa.fa-tag.mr-1.text-muted
+      = f.input :items_tags_id_in, as: :select, collection: Tag.for_select,
+       prompt: t('search.filer_tag'),
+        input_html: { multiple: true, class: 'form-control form-control-chosen' }
+    .col-md.text-right
+      - if params[:q].present?
+        = link_to t('common.reset'), searches_path,
+         class: 'btn btn-secondary btn-sm mr-2'
+      = f.button :submit, class: 'btn btn-primary btn-sm'
+
+
+= tabular_list(@boxes) do |collection|
+  = tabular_head(Item, tag: :thead, labels: table_fields)
+  tbody
+    - collection.each do |box|
+      - is_item = box['box_id'].present?
+      tr
+        td
+          i*{class: box.typology_object.icon}
+        td= is_item ? box['item_summary'] : box.summary
+        td= box.code
+        td= box.spot
+        td.text-secondary= I18n.l(box.updated_at, format: :list)
+        td.action-link= link_to_show(box)
+  = tabular_head(Item, tag: :tfoot, labels: table_fields)
+= paginator(@boxes)
+javascript:
+  $('.form-control-chosen').chosen();

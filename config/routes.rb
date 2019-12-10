@@ -4,17 +4,15 @@ Rails.application.routes.draw do
   resources :tags
   root to: "items#search"
 
-  resources :items do
-    collection do
-      get 'search'
-    end
-  end
+  resources :items
   resources :boxes do
     resources :items
   end
   resources :places do
     resources :spots
   end
+
+  resources :searches, only: [:index]
 
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
