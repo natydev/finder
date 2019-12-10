@@ -4,7 +4,8 @@ class BoxesController < ApplicationController
   # GET /boxes
   # GET /boxes.json
   def index
-    @boxes = Box.page(params[:page])
+    @boxes = BoxDecorator.decorate_collection(
+             Box.order_historical.page(params[:page]))
   end
 
   # GET /boxes/1
@@ -27,7 +28,7 @@ class BoxesController < ApplicationController
     @box = Box.new(box_params)
 
     respond_to do |format|
-      if @box.save
+      if @box.valid? && picture_and_save
         format.html { redirect_to @box, notice: t("common.flash.created") }
         format.json { render :show, status: :created, location: @box }
       else
@@ -41,9 +42,7 @@ class BoxesController < ApplicationController
   # PATCH/PUT /boxes/1.json
   def update
     respond_to do |format|
-      if @box.update(box_params)
-        @box.picture_derivatives!
-        @box.save
+      if @box.update(box_params) && picture_and_save
         format.html { redirect_to @box, notice: t("common.flash.updated") }
         format.json { render :show, status: :ok, location: @box }
       else
@@ -72,10 +71,15 @@ class BoxesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def box_params
       params.require(:box).permit(:spot_id, :owner_id, :summary,
-       :code, :issued_on, :picture)
+       :code, :issued_on, :typology, :picture)
     end
 
     def context_icon
       @context_icon = "fa fa-box"
+    end
+
+    def picture_and_save
+      @box.picture_derivatives! if @box.picture.present?
+      @box.save
     end
 end
