@@ -14,14 +14,13 @@ gem 'puma', '4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '3.1.7'
 gem 'webpacker', '4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '2.7'
+gem 'jbuilder', '2.9.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '1.2'
@@ -59,7 +58,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '5.1.1'
   gem 'faker', '2.7.0'
-  gem 'rspec-rails', '3.9.0'
+  gem 'rspec-rails', '4.0.0.beta3'
   gem 'rubocop-rails_config', '0.3.1'
 
 end
