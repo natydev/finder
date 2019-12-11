@@ -3,6 +3,8 @@ class Place < ApplicationRecord
 
   has_many :spots
 
+  validates :name, presence: true
+
   def self.for_select
     as_select_options(order(:name))
   end

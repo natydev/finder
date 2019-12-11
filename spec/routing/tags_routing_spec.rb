@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe TagsController, type: :routing do
   describe "routing" do
+    let!(:id){ rand_id }
     it "routes to #index" do
       expect(:get => "/tags").to route_to("tags#index")
     end
@@ -11,11 +12,11 @@ RSpec.describe TagsController, type: :routing do
     end
 
     it "routes to #show" do
-      expect(:get => "/tags/1").to route_to("tags#show", :id => "1")
+      expect(:get => "/tags/#{id}").to route_to("tags#show", :id => id)
     end
 
     it "routes to #edit" do
-      expect(:get => "/tags/1/edit").to route_to("tags#edit", :id => "1")
+      expect(:get => "/tags/#{id}/edit").to route_to("tags#edit", :id => id)
     end
 
 
@@ -24,15 +25,15 @@ RSpec.describe TagsController, type: :routing do
     end
 
     it "routes to #update via PUT" do
-      expect(:put => "/tags/1").to route_to("tags#update", :id => "1")
+      expect(:put => "/tags/#{id}").to route_to("tags#update", :id => id)
     end
 
     it "routes to #update via PATCH" do
-      expect(:patch => "/tags/1").to route_to("tags#update", :id => "1")
+      expect(:patch => "/tags/#{id}").to route_to("tags#update", :id => id)
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/tags/1").to route_to("tags#destroy", :id => "1")
+      expect(:delete => "/tags/#{id}").to route_to("tags#destroy", :id => id)
     end
   end
 end

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item_tag do
-    item
-    tag
+    association :item
+    association :tag
   end
 end

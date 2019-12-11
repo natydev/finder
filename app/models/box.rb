@@ -8,6 +8,9 @@ class Box < ApplicationRecord
 
   delegate :name, to: :spot, prefix: true, allow_nil: true
 
+  validates :summary, presence: true
+  validates :code, presence: true
+
   has_enumeration_for :typology,
     with: BoxTypology, create_helpers: { polymorphic: true }
 

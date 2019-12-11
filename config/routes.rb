@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :tags
   root to: "items#search"
 
-  resources :items
+  resources :items, only: [:index, :show]
   resources :boxes do
     resources :items
   end

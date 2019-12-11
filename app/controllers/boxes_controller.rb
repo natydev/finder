@@ -26,7 +26,6 @@ class BoxesController < ApplicationController
   # POST /boxes.json
   def create
     @box = Box.new(box_params)
-
     respond_to do |format|
       if @box.valid? && picture_and_save
         format.html { redirect_to @box, notice: t("common.flash.created") }

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Box, type: :model do
   let(:subject){ create(:box) }
-  let(:subject_standalone){ create(:box_standalone) }
-  let(:subject_cluster){ create(:box_cluster) }
+  let(:subject_standalone){ create(:box, :standalone) }
+  let(:subject_cluster){ create(:box, :cluster) }
   let(:item){ create(:item, box: subject_cluster) }
   it "belongs to spot" do
     expect(subject.spot).to be_kind_of(Spot)
@@ -13,7 +13,7 @@ RSpec.describe Box, type: :model do
   end
   it "has many items" do
     item
-    expect(box_cluster.items).to eq([item])
+    expect(subject_cluster.items).to eq([item])
   end
   context 'delegates' do
     it "#spot_name to spot" do

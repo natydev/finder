@@ -18,15 +18,7 @@ require 'simplecov'
 
 if ENV['SIMPLECOV'].present?
   SimpleCov.start :rails do
-    add_group 'Services', 'app/services'
-
-    add_group 'Controllers' do |src|
-      src.filename =~ %r{app/controllers(?!/admin)}
-    end
-
-    add_group 'Workers', 'lib/workers'
-
-    add_filter { |src| src.filename =~ %r{^#{SimpleCov.root}/lib/(generators|mailers/previews)} }
+    # customize here
   end
 end
 
@@ -55,6 +47,8 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+
+  config.include RandomId, type: :routing
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

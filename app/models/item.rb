@@ -10,6 +10,8 @@ class Item < ApplicationRecord
   delegate :spot, to: :box, prefix: false, allow_nil: true
   delegate :spot_id, to: :box, prefix: false, allow_nil: true
 
+  validates :summary, presence: true
+
   scope :order_historical, -> { order(updated_at: :desc) }
 
   def to_s

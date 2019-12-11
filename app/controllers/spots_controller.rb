@@ -57,7 +57,7 @@ class SpotsController < ApplicationController
   def destroy
     @spot.destroy
     respond_to do |format|
-      format.html { redirect_to [@place], notice: t("common.flash.destroyed") }
+      format.html { redirect_to place_spots_path(place: @place), notice: t("common.flash.destroyed") }
       format.json { head :no_content }
     end
   end
