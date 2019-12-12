@@ -12,6 +12,8 @@ class Item < ApplicationRecord
 
   validates :summary, presence: true
 
+  has_paper_trail :on => [:update, :destroy]
+
   scope :order_historical, -> { order(updated_at: :desc) }
 
   def to_s

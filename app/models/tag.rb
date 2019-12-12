@@ -6,6 +6,8 @@ class Tag < ApplicationRecord
 
   validates :name, presence: true
 
+  has_paper_trail :on => [:update, :destroy]
+
   def self.for_select
     as_select_options(order(:name))
   end

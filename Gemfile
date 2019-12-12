@@ -33,6 +33,7 @@ gem 'configatron', '4.5.1'
 gem 'enumerate_it', '3.0.0'
 gem 'shrine', '3.1.0'
 gem "image_processing", "1.9.3"
+gem 'paper_trail', '10.3.1'
 
 # Views
 gem 'gretel', '3.0.9'

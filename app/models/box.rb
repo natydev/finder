@@ -11,6 +11,8 @@ class Box < ApplicationRecord
   validates :summary, presence: true
   validates :code, presence: true
 
+  has_paper_trail :on => [:update, :destroy]
+
   has_enumeration_for :typology,
     with: BoxTypology, create_helpers: { polymorphic: true }
 
