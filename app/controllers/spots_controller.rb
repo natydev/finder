@@ -1,4 +1,5 @@
 class SpotsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_place
   before_action :set_spot, only: [:show, :edit, :update, :destroy]
 
@@ -57,7 +58,7 @@ class SpotsController < ApplicationController
   def destroy
     @spot.destroy
     respond_to do |format|
-      format.html { redirect_to place_spots_path(place: @place), notice: t("common.flash.destroyed") }
+      format.html { redirect_to @place, notice: t("common.flash.destroyed") }
       format.json { head :no_content }
     end
   end

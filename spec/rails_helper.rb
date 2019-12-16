@@ -37,7 +37,7 @@ end
 # require only the support files necessary.
 #
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
-
+Dir[Rails.root.join('spec', 'shared_examples', '**', '*.rb')].each { |f| require f }
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
@@ -50,6 +50,14 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   config.include RandomId, type: :routing
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include LoginUser, type: :controller
+  config.include SharedExamples::DefaultControllerSuccess, type: :controller
+  config.include SharedExamples::DefaultControllerPublic, type: :controller
+  config.include SharedExamples::NestedControllerSuccess, type: :controller
+  config.include SharedExamples::NestedControllerPublic, type: :controller
+  config.include SharedExamples::TimestampDeco, type: :decorator
+  config.include Devise::Test::ControllerHelpers, type: :view
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -57,7 +65,8 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
+  
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)

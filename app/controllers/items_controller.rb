@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_box, except: [:search]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
@@ -51,7 +52,7 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to [@box], notice: t("common.flash.destroyed") }
+      format.html { redirect_to @box, notice: t("common.flash.destroyed") }
       format.json { head :no_content }
     end
   end

@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @q = Box.ransack(params[:q])
