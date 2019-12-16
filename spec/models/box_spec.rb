@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Box, type: :model do
-  let(:subject){ create(:box) }
+  let(:subject){ create(:box, has_picture: true) }
   let(:subject_standalone){ create(:box, :standalone) }
   let(:subject_cluster){ create(:box, :cluster) }
   let(:item){ create(:item, box: subject_cluster) }
+
   it "belongs to spot" do
     expect(subject.spot).to be_kind_of(Spot)
   end
@@ -32,9 +33,9 @@ RSpec.describe Box, type: :model do
     expect(subject.to_s).to eq(subject.code)
   end
   it ".for_select returns subarray of codes and ids " do
-    subject
+    first_item = subject
     expect(described_class.for_select)
-      .to eq([[subject.code, subject.id]])
+      .to include([first_item.code, first_item.id])
   end
   context 'Paper Trail (versioning)', versioning: true do
     it 'a box is versioned' do
@@ -55,4 +56,5 @@ RSpec.describe Box, type: :model do
       to change{ subject.versions.count }.by(1)
     end
   end
+  include_examples "picture"
 end

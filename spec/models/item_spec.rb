@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   let(:tag){ create(:tag) }
-  let(:subject){ create(:item) }
+  let(:subject){ create(:item, has_picture: true) }
   let(:item_tag){ create(:item_tag, item: subject, tag: tag) }
   it "belongs to box" do
     expect(subject.box).to be_kind_of(Box)
@@ -47,4 +47,5 @@ RSpec.describe Item, type: :model do
       to change{ subject.versions.count }.by(1)
     end
   end
+  include_examples "picture"
 end
