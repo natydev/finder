@@ -35,6 +35,10 @@ gem 'shrine', '3.1.0'
 gem "image_processing", "1.9.3"
 gem 'paper_trail', '10.3.1'
 
+# dry
+gem 'dry-initializer', '3.0.2'
+gem 'dry-monads', '1.3.3'
+
 # Views
 gem 'gretel', '3.0.9'
 gem 'kaminari', '1.1.1'
