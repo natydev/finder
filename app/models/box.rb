@@ -3,7 +3,7 @@ class Box < ApplicationRecord
   include PictureUploader::Attachment(:picture)
 
   belongs_to :spot
-  belongs_to :owner, class_name: 'User', optional: true
+  belongs_to :owner, class_name: 'User'
   has_many :items
 
   delegate :name, to: :spot, prefix: true, allow_nil: true

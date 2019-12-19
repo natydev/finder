@@ -1,6 +1,7 @@
 class Spot < ApplicationRecord
   include SelectModelConcern
 
+  belongs_to :owner, class_name: 'User'
   belongs_to :place
 
   delegate :name, to: :place, prefix: true, allow_nil: true

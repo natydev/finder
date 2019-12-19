@@ -1,6 +1,7 @@
 class Tag < ApplicationRecord
   include SelectModelConcern
 
+  belongs_to :owner, class_name: 'User'
   has_many :item_tags
   has_many :items, through: :item_tags
 

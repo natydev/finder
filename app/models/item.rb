@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   include PictureUploader::Attachment(:picture)
 
+  belongs_to :owner, class_name: 'User'
   belongs_to :box, counter_cache: true
   has_many :item_tags
   has_many :tags, through: :item_tags

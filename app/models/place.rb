@@ -1,6 +1,7 @@
 class Place < ApplicationRecord
   include SelectModelConcern
 
+  belongs_to :owner, class_name: 'User'
   has_many :spots
 
   validates :name, presence: true

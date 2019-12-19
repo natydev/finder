@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_065157) do
+ActiveRecord::Schema.define(version: 2019_12_16_165633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -63,13 +63,17 @@ ActiveRecord::Schema.define(version: 2019_12_12_065157) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "picture_data"
+    t.uuid "owner_id", null: false
     t.index ["box_id"], name: "index_items_on_box_id"
+    t.index ["owner_id"], name: "index_items_on_owner_id"
   end
 
   create_table "places", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "owner_id", null: false
+    t.index ["owner_id"], name: "index_places_on_owner_id"
   end
 
   create_table "spots", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -78,6 +82,8 @@ ActiveRecord::Schema.define(version: 2019_12_12_065157) do
     t.string "slug"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "owner_id", null: false
+    t.index ["owner_id"], name: "index_spots_on_owner_id"
     t.index ["place_id"], name: "index_spots_on_place_id"
   end
 
@@ -85,6 +91,8 @@ ActiveRecord::Schema.define(version: 2019_12_12_065157) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "owner_id", null: false
+    t.index ["owner_id"], name: "index_tags_on_owner_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
