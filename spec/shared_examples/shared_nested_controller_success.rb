@@ -6,7 +6,7 @@ module SharedExamples
       let!(:parent_key) { @parent_record.class.name.foreign_key.to_sym  }
 
       before(:each) do
-        sign_in_user
+        sign_in_user(owner)
       end
 
       describe "GET #index" do

@@ -5,7 +5,8 @@ RSpec.describe SpotsController, type: :controller do
   before(:all) do
     @parent_record = create(:place)
   end
-  let!(:existant_record){ create(:spot, place: @parent_record) }
+  let!(:owner){ create(:user) }
+  let!(:existant_record){ create(:spot, place: @parent_record, owner: owner) }
   let(:valid_attributes) {
     attributes_for(:spot, place_id: @parent_record.id)
   }
