@@ -25,15 +25,16 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
-    @tag = Tag.new(tag_params)
-
+    @tag_op = TagOp::Create.(model_params: tag_params, owner: current_user)
     respond_to do |format|
-      if @tag.save
+      if @tag_op.success?
+        @tag = @tag_op.value!
         format.html { redirect_to @tag, notice: t("common.flash.created") }
         format.json { render :show, status: :created, location: @tag }
       else
+        @tag = @tag_op.failure
         format.html { render :new }
-        format.json { render json: @tag.errors, status: :unprocessable_entity }
+        format.json { render json: @tag, status: :unprocessable_entity }
       end
     end
   end
@@ -41,11 +42,15 @@ class TagsController < ApplicationController
   # PATCH/PUT /tags/1
   # PATCH/PUT /tags/1.json
   def update
+    @tag_op = TagOp::Update.(model_object: @tag, model_params: tag_params,
+                             owner: current_user)
     respond_to do |format|
-      if @tag.update(tag_params)
+      if @tag_op.success?
+        @tag = @tag_op.value!
         format.html { redirect_to @tag, notice: t("common.flash.updated") }
         format.json { render :show, status: :ok, location: @tag }
       else
+        @tag = @tag_op.failure
         format.html { render :edit }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
       end
@@ -55,10 +60,17 @@ class TagsController < ApplicationController
   # DELETE /tags/1
   # DELETE /tags/1.json
   def destroy
-    @tag.destroy
+    @tag_op = TagOp::Destroy.(model_object: @tag, owner: current_user)
     respond_to do |format|
-      format.html { redirect_to tags_url, notice: t("common.flash.destroyed") }
-      format.json { head :no_content }
+      if @tag_op.success?
+        format.html { redirect_to tags_url, notice: t("common.flash.destroyed") }
+        format.json { head :no_content }
+      else
+        @tag = @tag_op.failure
+        format.html { redirect_to @tag, notice: t("common.flash.cannot_destroy"),
+                      status: :unprocessable_entity }
+        format.json { render json: @tag.errors, status: :unprocessable_entity }
+      end
     end
   end
 

@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe TagsController, type: :controller do
 
-  let!(:existant_record){ create(:tag) }
+  let!(:owner){ create(:user) }
+  let!(:existant_record){ create(:tag, owner: owner) }
   let(:valid_attributes) {
     attributes_for(:tag)
   }
