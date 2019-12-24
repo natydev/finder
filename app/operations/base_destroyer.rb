@@ -4,16 +4,20 @@ class BaseDestroyer
   extend Dry::Initializer
   include Dry::Monads[:result]
   include Dry::Monads[:try]
+  include LogError
+  include CheckOwnership
 
   option :model_object
   option :model_klass
+  option :owner
 
   def self.call(**args)
     new(**args).call
   end
 
   def call
-    destroy_record
+    check_ownership
+    .bind{ destroy_record }
   end
 
   def destroy_record

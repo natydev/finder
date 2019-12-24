@@ -4,20 +4,24 @@ class BaseUpdater
   extend Dry::Initializer
   include Dry::Monads[:result]
   include Dry::Monads[:try]
+  include LogError
+  include CheckOwnership
 
   option :model_params
   option :model_object
   option :model_klass
+  option :owner
 
   def self.call(**args)
     new(**args).call
   end
 
   def call
-    persist_record
+    check_ownership
+    .bind{ update_record }
   end
 
-  def persist_record
+  def update_record
     Try do
       model_params.except(:owner_id, :owner)
       model_object.update(model_params)

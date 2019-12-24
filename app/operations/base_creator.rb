@@ -4,6 +4,7 @@ class BaseCreator
   extend Dry::Initializer
   include Dry::Monads[:result]
   include Dry::Monads[:try]
+  include PersistRecord
 
   option :owner
   option :model_params
@@ -26,22 +27,11 @@ class BaseCreator
       record.owner = owner
     end.to_result.bind do |result|
       if result
-        Value(record: record)
-      else
-        Failure(record.errors)
-      end
-    end
-  end
-
-  def persist_record(record:)
-    Try do
-      record.save
-    end.to_result.bind do |result|
-      if result
         Value(record)
       else
         Failure(record.errors)
       end
     end
   end
+
 end
