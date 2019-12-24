@@ -26,12 +26,14 @@ class BoxesController < ApplicationController
   # POST /boxes
   # POST /boxes.json
   def create
-    @box = Box.new(box_params)
+    @box_op = BoxOp::Create.(model_params: box_params, owner: current_user)
     respond_to do |format|
-      if @box.valid? && picture_and_save
+      if @box_op.success?
+        @box = @box_op.value!
         format.html { redirect_to @box, notice: t("common.flash.created") }
         format.json { render :show, status: :created, location: @box }
       else
+        @box = @box_op.failure
         format.html { render :new }
         format.json { render json: @box.errors, status: :unprocessable_entity }
       end
@@ -41,11 +43,15 @@ class BoxesController < ApplicationController
   # PATCH/PUT /boxes/1
   # PATCH/PUT /boxes/1.json
   def update
+    @box_op = BoxOp::Update.(model_object: @box, model_params: box_params,
+                             owner: current_user)
     respond_to do |format|
-      if @box.update(box_params) && picture_and_save
+      if @box_op.success?
+        @box = @box_op.value!
         format.html { redirect_to @box, notice: t("common.flash.updated") }
         format.json { render :show, status: :ok, location: @box }
       else
+        @box = @box_op.failure
         format.html { render :edit }
         format.json { render json: @box.errors, status: :unprocessable_entity }
       end
@@ -55,10 +61,17 @@ class BoxesController < ApplicationController
   # DELETE /boxes/1
   # DELETE /boxes/1.json
   def destroy
-    @box.destroy
+    @box_op = BoxOp::Destroy.(model_object: @box, owner: current_user)
     respond_to do |format|
-      format.html { redirect_to boxes_url, notice: t("common.flash.destroyed") }
-      format.json { head :no_content }
+      if @box_op.success?
+        format.html { redirect_to boxes_url, notice: t("common.flash.destroyed") }
+        format.json { head :no_content }
+      else
+        @box = @box_op.failure
+        format.html { redirect_to @box, notice: t("common.flash.cannot_destroy"),
+                      status: :unprocessable_entity }
+        format.json { render json: @box.errors, status: :unprocessable_entity }
+      end
     end
   end
 
