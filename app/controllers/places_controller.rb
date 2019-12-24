@@ -25,15 +25,16 @@ class PlacesController < ApplicationController
   # POST /places
   # POST /places.json
   def create
-    @place = Place.new(place_params)
-
+    @place_op = PlaceOp::Create.(model_params: place_params, owner: current_user)
     respond_to do |format|
-      if @place.save
+      if @place_op.success?
+        @place = @place_op.value!
         format.html { redirect_to @place, notice: t("common.flash.created") }
         format.json { render :show, status: :created, location: @place }
       else
+        @place = @place_op.failure
         format.html { render :new }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
+        format.json { render json: @place, status: :unprocessable_entity }
       end
     end
   end
@@ -41,11 +42,15 @@ class PlacesController < ApplicationController
   # PATCH/PUT /places/1
   # PATCH/PUT /places/1.json
   def update
+    @place_op = PlaceOp::Update.(model_object: @place, model_params: place_params,
+                                 owner: current_user)
     respond_to do |format|
-      if @place.update(place_params)
+      if @place_op.success?
+        @place = @place_op.value!
         format.html { redirect_to @place, notice: t("common.flash.updated") }
         format.json { render :show, status: :ok, location: @place }
       else
+        @place = @place_op.failure
         format.html { render :edit }
         format.json { render json: @place.errors, status: :unprocessable_entity }
       end
@@ -55,10 +60,17 @@ class PlacesController < ApplicationController
   # DELETE /places/1
   # DELETE /places/1.json
   def destroy
-    @place.destroy
+    @place_op = PlaceOp::Destroy.(model_object: @place, owner: current_user)
     respond_to do |format|
-      format.html { redirect_to places_url, notice: t("common.flash.destroyed") }
-      format.json { head :no_content }
+      if @place_op.success?
+        format.html { redirect_to places_url, notice: t("common.flash.destroyed") }
+        format.json { head :no_content }
+      else
+        @place = @place_op.failure
+        format.html { redirect_to @place, notice: t("common.flash.cannot_destroy"),
+                      status: :unprocessable_entity }
+        format.json { render json: @place.errors, status: :unprocessable_entity }
+      end
     end
   end
 

@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe PlacesController, type: :controller do
 
-  let!(:existant_record){ create(:place) }
+  let!(:owner){ create(:user) }
+  let!(:existant_record){ create(:place, owner: owner) }
   let(:valid_attributes) {
     attributes_for(:place)
   }

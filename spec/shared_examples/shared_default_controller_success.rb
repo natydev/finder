@@ -6,7 +6,7 @@ module SharedExamples
 
   
       before(:each) do
-        sign_in_user
+        sign_in_user(owner)
       end
 
       describe "GET #index" do
