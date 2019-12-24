@@ -20,13 +20,15 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = @box.items.new(item_params)
-
+    params[:item][:box_id] = @box.id
+    @item_op = ItemOp::Create.(model_params: item_params, owner: current_user)
     respond_to do |format|
-      if @item.valid? && picture_and_save
+      if @item_op.success?
+        @item = @item_op.value!
         format.html { redirect_to [@box, @item], notice: t("common.flash.created") }
         format.json { render :show, status: :created, location: @item }
       else
+        @item = @item_op.failure
         format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
@@ -36,11 +38,15 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+    @item_op = ItemOp::Update.(model_object: @item, model_params: item_params,
+                               owner: current_user)
     respond_to do |format|
-      if @item.update(item_params) && picture_and_save
+      if @item_op.success?
+        @item = @item_op.value!
         format.html { redirect_to [@box, @item], notice: t("common.flash.updated") }
         format.json { render :show, status: :ok, location: @item }
       else
+        @item = @item_op.failure
         format.html { render :edit }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
@@ -50,10 +56,17 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    @item.destroy
+    @item_op = SpotOp::Destroy.(model_object: @item, owner: current_user)
     respond_to do |format|
-      format.html { redirect_to @box, notice: t("common.flash.destroyed") }
-      format.json { head :no_content }
+      if @item_op.success?
+        format.html { redirect_to @box, notice: t("common.flash.destroyed") }
+        format.json { head :no_content }
+      else
+        @item = @item_op.failure
+        format.html { redirect_to @box, notice: t("common.flash.cannot_destroy"),
+                      status: :unprocessable_entity }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -70,11 +83,6 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:box_id, :summary, :picture, tag_ids: [])
-    end
-
-    def picture_and_save
-      @item.picture_derivatives! if @item.picture.present?
-      @item.save
     end
 
     def context_icon

@@ -5,7 +5,8 @@ RSpec.describe ItemsController, type: :controller do
   before(:all) do
     @parent_record = create(:box, :cluster)
   end
-  let!(:existant_record){ create(:item, box: @parent_record) }
+  let!(:owner){ create(:user) }
+  let!(:existant_record){ create(:item, box: @parent_record, owner: owner) }
   let(:valid_attributes) {
     attributes_for(:item, box_id: @parent_record.id)
   }
