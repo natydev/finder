@@ -66,7 +66,7 @@ group :development, :test do
   gem 'faker', '2.7.0'
   gem 'rspec-rails', '4.0.0.beta3'
   gem 'rubocop-rails_config', '0.3.1'
-
+  gem 'dotenv-rails', '2.7.5'
 end
 
 group :test do
