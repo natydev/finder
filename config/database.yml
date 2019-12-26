@@ -23,6 +23,10 @@ test:
   <<: *default
   database: finder_test
 
+staging:
+  <<: *default
+  database: finder_staging
+
 production:
   <<: *default
   database: finder_production
