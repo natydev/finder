@@ -62,6 +62,10 @@ GEM
       zeitwerk (~> 2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    airbrake (9.5.5)
+      airbrake-ruby (~> 4.8)
+    airbrake-ruby (4.11.1)
+      rbtree3 (~> 0.5)
     annotate (3.0.3)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
@@ -260,6 +264,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rbtree3 (0.5.0)
     request_store (1.4.1)
       rack (>= 1.4)
     responders (3.0.0)
@@ -310,6 +315,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    scout_apm (2.6.6)
+      parser
     shellany (0.0.1)
     shrine (3.1.0)
       content_disposition (~> 1.0)
@@ -373,6 +380,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake (= 9.5.5)
   annotate (= 3.0.3)
   bootsnap (>= 1.4.2)
   bootstrap4-kaminari-views (= 1.0.1)
@@ -407,6 +415,7 @@ DEPENDENCIES
   rspec-rails (= 4.0.0.beta3)
   rubocop-rails_config (= 0.3.1)
   sass-rails (>= 6)
+  scout_apm (= 2.6.6)
   shrine (= 3.1.0)
   simple_form (= 5.0.1)
   simplecov (= 0.17.1)
