@@ -57,7 +57,13 @@ if Rails.env.production?
   # don't send sensitive information to Airbrake in your body (such as passwords).
   # https://github.com/airbrake/airbrake#requestbodyfilter
   # Airbrake.add_filter(Airbrake::Rack::RequestBodyFilter.new)
-
+  Airbrake.add_filter do |notice|
+    # The library supports nested exceptions, so one notice can carry several
+    # exceptions.
+    if notice[:errors].any? { |error| error[:type] == 'SignalException' }
+      notice.ignore!
+    end
+  end
   # Attaches thread & fiber local variables along with general thread information.
   # Airbrake.add_filter(Airbrake::Filters::ThreadFilter.new)
 
