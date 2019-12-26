@@ -10,6 +10,7 @@ class Box < ApplicationRecord
 
   validates :summary, presence: true
   validates :code, presence: true
+  validates :typology, presence: true
 
   has_paper_trail :on => [:update, :destroy]
 
