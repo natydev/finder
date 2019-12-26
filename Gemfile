@@ -58,6 +58,9 @@ gem 'rails-i18n', '6.0.0'
 gem 'devise', '4.7.1'
 gem 'devise-bootstrap-views', '1.0'
 
+# sdk
+gem 'aws-sdk-s3', '1.60.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'annotate', '3.0.3'
