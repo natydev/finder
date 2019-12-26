@@ -77,6 +77,7 @@ group :test do
   gem 'guard', '2.16.1'
   gem 'guard-rspec', '4.7.3', require: false
   gem 'simplecov', '0.17.1', require: false
+  gem 'terminal-notifier', '2.0.0', require: false
   gem 'terminal-notifier-guard', '1.7.0'
 end
 
