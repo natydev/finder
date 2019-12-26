@@ -25,7 +25,7 @@ RSpec.describe BoxOp::Update do
     context 'when box params are invalid' do
       let!(:box_attributes) { attributes_for(:box, summary: '') }
       it "returns a box object with errors" do
-        expect(subject.failure).to be_kind_of(ActiveModel::Errors)
+        expect(subject.failure.errors).to be_present
       end
     end
     context 'when box has a picture' do
@@ -47,7 +47,7 @@ RSpec.describe BoxOp::Update do
       context 'when box params are invalid' do
         let!(:box_attributes) { attributes_for(:box, summary: '') }
         it "returns a box object with errors" do
-          expect(subject.failure).to be_kind_of(ActiveModel::Errors)
+          expect(subject.failure.errors).to be_present
         end
       end
     end
