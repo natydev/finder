@@ -13,7 +13,7 @@ RSpec.describe TagOp::Create do
     context 'when tag params are invalid' do
       let!(:tag_attributes) { attributes_for(:tag, name: '') }
       it "retruns a tag object with errors" do
-        expect(subject.failure).to be_kind_of(ActiveModel::Errors)
+        expect(subject.failure.errors).to be_present
       end
     end
   end

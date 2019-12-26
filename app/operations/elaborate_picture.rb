@@ -6,7 +6,7 @@ module ElaboratePicture
       if result
         Value(model_object)
       else
-        Failure(model_object.errors)
+        Failure(model_object)
       end
     end
   end

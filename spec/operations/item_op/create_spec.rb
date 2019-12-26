@@ -14,7 +14,7 @@ RSpec.describe ItemOp::Create do
     context 'when item params are invalid' do
       let!(:item_attributes) { attributes_for(:item, summary: '') }
       it "retruns a item object with errors" do
-        expect(subject.failure).to be_kind_of(ActiveModel::Errors)
+        expect(subject.failure.errors).to be_present
       end
     end
   end
@@ -28,7 +28,7 @@ RSpec.describe ItemOp::Create do
     context 'when item params are invalid' do
       let!(:item_attributes) { attributes_for(:item, summary: '') }
       it "retruns a item object with errors" do
-        expect(subject.failure).to be_kind_of(ActiveModel::Errors)
+        expect(subject.failure.errors).to be_present
       end
     end
   end

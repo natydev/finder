@@ -14,7 +14,7 @@ RSpec.describe BoxOp::Create do
     context 'when box params are invalid' do
       let!(:box_attributes) { attributes_for(:box, summary: '') }
       it "retruns a box object with errors" do
-        expect(subject.failure).to be_kind_of(ActiveModel::Errors)
+        expect(subject.failure.errors).to be_present
       end
     end
   end
@@ -28,7 +28,7 @@ RSpec.describe BoxOp::Create do
     context 'when box params are invalid' do
       let!(:box_attributes) { attributes_for(:box, summary: '') }
       it "retruns a box object with errors" do
-        expect(subject.failure).to be_kind_of(ActiveModel::Errors)
+        expect(subject.failure.errors).to be_present
       end
     end
   end

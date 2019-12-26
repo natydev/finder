@@ -6,7 +6,7 @@ module PersistRecord
       if result
         Value(record)
       else
-        Failure(record.errors)
+        Failure(record)
       end
     end
   end

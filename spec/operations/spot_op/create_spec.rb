@@ -14,7 +14,7 @@ RSpec.describe SpotOp::Create do
     context 'when spot params are invalid' do
       let!(:spot_attributes) { attributes_for(:spot, name: '') }
       it "retruns a spot object with errors" do
-        expect(subject.failure).to be_kind_of(ActiveModel::Errors)
+        expect(subject.failure.errors).to be_present
       end
     end
   end
