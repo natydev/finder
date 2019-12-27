@@ -23,6 +23,7 @@ en:
         owner_id: Owner
         issued_on: Issued on
         items_count: Items counter
+        picture: Picture
       item:
         summary: Summary
         box: Box
@@ -30,6 +31,7 @@ en:
         box_id: Box
         tags: Tags
         tag_ids: Tags
+        picture: Picture
       tag:
         name: Name
     errors:

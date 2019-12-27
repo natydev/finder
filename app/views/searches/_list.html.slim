@@ -1,15 +1,17 @@
 = tabular_list(list) do |collection|
   = tabular_head(Item, tag: :thead, labels: table_fields)
   tbody
-    - collection.each do |box|
-      - is_item = box['box_id'].present?
+    - collection.each do |b|
+      - box = SearchDecorator.new(b)
+      - is_item = box.is_item?
       tr
         td
-          i*{class: box.typology_object.icon}
-        td= is_item ? box['item_summary'] : box.summary
+          = box.typology_icon
+          = box.picture_icon
+        td= box.summary
         td= box.code
         td= box.spot
         td.text-secondary= I18n.l(box.updated_at, format: :list)
-        td.action-link= link_to_show(box)
+        td.action-link= link_to_show(box.object)
   = tabular_head(Item, tag: :tfoot, labels: table_fields)
 = paginator(list)

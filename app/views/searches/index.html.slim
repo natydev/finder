@@ -27,4 +27,8 @@
 - else
   = render partial: "searches/dashboard", locals: { }
 javascript:
-  $('.form-control-chosen').chosen();
+  $(document).on("turbolinks:load", function () {
+    $('.form-control-chosen').chosen();
+
+  })
+  
