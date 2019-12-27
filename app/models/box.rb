@@ -12,6 +12,19 @@ class Box < ApplicationRecord
   validates :code, presence: true
   validates :typology, presence: true
 
+  with_options if: :standalone? do |box|
+    box.validates :quantity, presence: true, numericality: { only_integer: true,
+      greater_than_or_equal_to: 1, less_than: 1000 }
+  end
+
+  with_options if: :cluster? do |box|
+    box.validates :quantity, absence: true
+  end
+
+  after_initialize do |record|
+    record.quantity = nil if record.cluster?
+  end
+
   has_paper_trail :on => [:update, :destroy]
 
   has_enumeration_for :typology,

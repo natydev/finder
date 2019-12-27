@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_16_165633) do
+ActiveRecord::Schema.define(version: 2019_12_27_211829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_12_16_165633) do
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "picture_data"
     t.string "typology", limit: 3, comment: "available typologies are: 'st' = Standalone and 'cl' = Cluster"
+    t.integer "quantity", default: 1
     t.index ["owner_id"], name: "index_boxes_on_owner_id"
     t.index ["spot_id"], name: "index_boxes_on_spot_id"
     t.index ["typology"], name: "index_boxes_on_typology"
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_12_16_165633) do
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "picture_data"
     t.uuid "owner_id", null: false
+    t.integer "quantity", default: 1
     t.index ["box_id"], name: "index_items_on_box_id"
     t.index ["owner_id"], name: "index_items_on_owner_id"
   end

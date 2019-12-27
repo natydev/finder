@@ -4,6 +4,7 @@
   = f.input :typology, as: :radio_buttons, collection: BoxTypology.to_a, wrapper: :horizontal_collection_inline  
   = f.input :summary
   = f.input :code
+  = f.input :quantity, as: :integer
   = f.input :issued_on
   = f.input :picture, as: :hidden, input_html: { value: @box.cached_picture_data }
   = f.input :picture, as: :file

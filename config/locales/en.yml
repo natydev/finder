@@ -24,6 +24,7 @@ en:
         issued_on: Issued on
         items_count: Items counter
         picture: Picture
+        quantity: Quantity
       item:
         summary: Summary
         box: Box
@@ -32,6 +33,7 @@ en:
         tags: Tags
         tag_ids: Tags
         picture: Picture
+        quantity: Quantity
       tag:
         name: Name
     errors:

@@ -8,6 +8,7 @@
 
 = detail_row @box, :summary
 = detail_row @box, :code
+= detail_row @box, :quantity
 = detail_row @box, :spot_name do
   = @box.badge_spot_name
 = detail_row @box, :typology do
@@ -25,7 +26,7 @@
 hr
 - if @box.cluster?
   - @context_icon = 'fa fa-shapes'
-  - child_table_fields = [:picture, :summary, :updated_at]
+  - child_table_fields = [:picture, :summary, :quantity, :updated_at]
   = intro_actions(summary: Item.model_name.human(count: :many), style: :included) do
     = link_to_new(@box, Item)
   = tabular_list(@box.items.order_historical.decorate) do |collection|
@@ -35,6 +36,7 @@ hr
         tr
           td= item.image_tag_small
           td= item.summary
+          td= item.quantity
           td= l(item.updated_at, format: :short)
           td.action-link= link_to_show(@box, item)
           td.action-link= link_to_edit(@box, item)
