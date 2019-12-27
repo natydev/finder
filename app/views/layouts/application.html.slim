@@ -12,7 +12,8 @@ html lang="#{I18n.locale}" data-default-locale="#{I18n.default_locale}"
     = csp_meta_tag
 
   body.container-fluid
-    header= render "layouts/header"
+    - if current_user.present?
+      header= render "layouts/header"
     main.container
       = render "layouts/flashes", dismissible: true
       = h breadcrumbs separator: " &rsaquo; ", style: :bootstrap, class: 'breadcrumb mt-3'

@@ -69,6 +69,7 @@ en:
       title: Actions
       update: Update %{entity}
       search: Search
+      sign_out: 'log-out'
     flash:
       cannot_destroy: Error during delete operation
       created: Created with successful
