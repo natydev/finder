@@ -30,6 +30,7 @@ RSpec.describe BoxOp::Update do
     end
     context 'when box has a picture' do
       let!(:box) { create(:box, has_picture: true) }
+      let!(:set_derivatives) { box.picture_derivatives! }
       context 'when params are valid' do
         it "returns a box object with picture present" do
           expect(subject.value!.picture).to be_present

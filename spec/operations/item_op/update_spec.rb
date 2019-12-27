@@ -30,6 +30,7 @@ RSpec.describe ItemOp::Update do
     end
     context 'when item has a picture' do
       let!(:item) { create(:item, has_picture: true) }
+      let!(:set_derivatives) { item.picture_derivatives! }
       context 'when params are valid' do
         it "returns a item object with picture present" do
           expect(subject.value!.picture).to be_present
