@@ -9,7 +9,8 @@ class Box < ApplicationRecord
   delegate :name, to: :spot, prefix: true, allow_nil: true
 
   validates :summary, presence: true
-  validates :code, presence: true
+  validates :code, presence: true, uniqueness: { scope: :owner_id },
+                   length: { maximum: 10 }
   validates :typology, presence: true
 
   with_options if: :standalone? do |box|
@@ -23,6 +24,10 @@ class Box < ApplicationRecord
 
   after_initialize do |record|
     record.quantity = nil if record.cluster?
+  end
+
+  before_save do |record|
+    record.code = record.code.upcase
   end
 
   has_paper_trail :on => [:update, :destroy]
