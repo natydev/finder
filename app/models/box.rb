@@ -1,5 +1,6 @@
 class Box < ApplicationRecord
   include SelectModelConcern
+  include UpcaseCodeCallback
   include PictureUploader::Attachment(:picture)
 
   belongs_to :spot
@@ -24,10 +25,6 @@ class Box < ApplicationRecord
 
   after_initialize do |record|
     record.quantity = nil if record.cluster?
-  end
-
-  before_save do |record|
-    record.code = record.code.upcase
   end
 
   has_paper_trail :on => [:update, :destroy]

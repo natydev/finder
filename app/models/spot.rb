@@ -1,5 +1,6 @@
 class Spot < ApplicationRecord
   include SelectModelConcern
+  include UpcaseCodeCallback
 
   belongs_to :owner, class_name: 'User'
   belongs_to :place
