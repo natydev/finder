@@ -6,8 +6,18 @@
   = f.input :code
   = f.input :quantity, as: :integer
   = f.input :issued_on
-  = f.input :picture, as: :hidden, input_html: { value: @box.cached_picture_data }
+  = f.input :picture, as: :hidden, input_html: { value: @box.cached_picture_data, id: :box_picture_hidden }
   = f.input :picture, as: :file
   = f.button :submit, class: 'btn-outline-dark'
 javascript:
   $('.form-control-chosen').chosen();
+
+  if ($('#box_typology_cl').is(":checked")) {
+    $('#box_quantity').hide();
+  }
+  $('#box_typology_cl').on('click', function() {
+    $('#box_quantity').hide();
+  });
+  $('#box_typology_st').on('click', function() {
+    $('#box_quantity').show();
+  });
