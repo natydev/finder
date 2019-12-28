@@ -11,7 +11,7 @@ en:
         name: Name
         code: Code
         place: Place
-        slug: Slug
+        code: Code
         place_name: Place name
         place_id: Place
       box:

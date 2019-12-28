@@ -3,6 +3,6 @@ FactoryBot.define do
     association :owner, factory: :user
     place
     name { Faker::House.room }
-    slug { "" }
+    code { Faker::Lorem.unique.characters(number: 3).upcase }
   end
 end

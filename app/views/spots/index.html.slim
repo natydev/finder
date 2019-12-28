@@ -5,7 +5,7 @@ table
     tr
       th Place
       th Name
-      th Slug
+      th Code
       th
       th
       th
@@ -15,7 +15,7 @@ table
       tr
         td = spot.place
         td = spot.name
-        td = spot.slug
+        td = spot.code
         td = link_to 'Show', spot
         td = link_to 'Edit', edit_spot_path(spot)
         td = link_to 'Destroy', spot, data: { confirm: 'Are you sure?' }, method: :delete

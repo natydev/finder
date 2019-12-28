@@ -7,6 +7,7 @@ class Spot < ApplicationRecord
   delegate :name, to: :place, prefix: true, allow_nil: true
 
   validates :name, presence: true
+  validates :code, presence: true, uniqueness: { scope: :place_id }
 
   has_paper_trail :on => [:update, :destroy]
 
