@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_100217) do
+ActiveRecord::Schema.define(version: 2019_12_29_105101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_12_28_100217) do
     t.string "typology", limit: 3, comment: "available typologies are: 'st' = Standalone and 'cl' = Cluster"
     t.integer "quantity", default: 1
     t.integer "items_quantity"
+    t.integer "free_ratio"
     t.index ["owner_id"], name: "index_boxes_on_owner_id"
     t.index ["spot_id"], name: "index_boxes_on_spot_id"
     t.index ["typology"], name: "index_boxes_on_typology"

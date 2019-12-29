@@ -25,6 +25,7 @@ en:
         items_quantity: Items quantity
         picture: Picture
         quantity: Quantity
+        free_ratio: Free space
       item:
         summary: Summary
         box: Box

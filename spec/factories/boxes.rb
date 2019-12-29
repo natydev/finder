@@ -11,6 +11,7 @@ FactoryBot.define do
     code { Faker::Lorem.unique.characters(number: 3).upcase }
     typology { BoxTypology.list.sample }
     quantity { (typology == BoxTypology::STANDALONE) ? 1 : nil }
+    free_ratio { (typology == BoxTypology::CLUSTER) ? rand(0..100) : nil }
     picture_data { TestPicture.file_data if has_picture }
 
     trait :standalone do

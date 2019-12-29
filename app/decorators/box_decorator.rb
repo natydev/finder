@@ -12,4 +12,8 @@ class BoxDecorator < Draper::Decorator
     h.raw h.content_tag(:i, '', class: 'fa fa-door-open mr-1') + object.spot_name
   end
 
+  def free_ratio
+    h.number_to_percentage(object.free_ratio, strip_insignificant_zeros: true)
+  end
+
 end

@@ -21,6 +21,8 @@ class Box < ApplicationRecord
 
   with_options if: :cluster? do |box|
     box.validates :quantity, absence: true
+    box.validates :free_ratio, presence: true, numericality: { only_integer: true,
+      greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   end
 
   after_initialize do |record|
