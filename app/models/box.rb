@@ -27,6 +27,10 @@ class Box < ApplicationRecord
     record.quantity = nil if record.cluster?
   end
 
+  before_create do |record|
+    record.items_quantity = 0 if record.cluster?
+  end
+
   has_paper_trail :on => [:update, :destroy]
 
   has_enumeration_for :typology,
