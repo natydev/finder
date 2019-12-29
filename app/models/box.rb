@@ -33,7 +33,7 @@ class Box < ApplicationRecord
   end
 
   before_save do |record|
-    record.items_quantity = nil if record.cluster?
+    record.items_quantity = nil if record.standalone?
     record.free_ratio = nil if record.standalone?
   end
 

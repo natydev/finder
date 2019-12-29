@@ -10,18 +10,18 @@ RSpec.describe BoxDecorator, type: :decorator do
         .to eq("<i class=\"fa fa-door-open mr-1\"></i>#{object.spot_name}")
     end
   end
-  context '#free_ratio' do
+  context '#free_ratio_human' do
     context 'when object is cluster' do
       let(:object){ create(:box, :cluster) }
       it "return free_ratio value with percentage" do
-        expect(subject.free_ratio)
+        expect(subject.free_ratio_human)
           .to eq("#{object.free_ratio}%")
       end
     end
     context 'when object is standalone' do
       let(:object){ create(:box, :standalone) }
       it "return nil" do
-        expect(subject.free_ratio).to be_nil
+        expect(subject.free_ratio_human).to be_nil
       end
     end
   end

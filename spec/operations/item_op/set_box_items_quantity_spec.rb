@@ -21,7 +21,7 @@ RSpec.describe ItemOp::SetBoxItemsQuantity do
         }.by(-1)
       end
     end
-    context 'whn item is updated' do
+    context 'when item is updated' do
       let!(:box) { create(:box, :cluster) }
       let!(:set_box_items_quantity) { box.update_column(:items_quantity, 3) }
       let!(:item) { create(:item, box: box, quantity: 3, owner: box.owner) }
