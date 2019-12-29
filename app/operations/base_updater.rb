@@ -1,9 +1,6 @@
 require 'dry/monads'
 
-class BaseUpdater
-  extend Dry::Initializer
-  include Dry::Monads[:result]
-  include Dry::Monads[:try]
+class BaseUpdater < OperationBase
   include LogError
   include CheckOwnership
 
@@ -11,10 +8,6 @@ class BaseUpdater
   option :model_object
   option :model_klass
   option :owner
-
-  def self.call(**args)
-    new(**args).call
-  end
 
   def call
     check_ownership

@@ -1,9 +1,6 @@
 require 'dry/monads'
 
-class BaseCreator
-  extend Dry::Initializer
-  include Dry::Monads[:result]
-  include Dry::Monads[:try]
+class BaseCreator < OperationBase
   include PersistRecord
 
   option :owner
@@ -11,10 +8,6 @@ class BaseCreator
   option :model_klass
 
   attr_reader :record
-
-  def self.call(**args)
-    new(**args).call
-  end
 
   def call
     prepare_record

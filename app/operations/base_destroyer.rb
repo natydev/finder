@@ -1,19 +1,12 @@
 require 'dry/monads'
 
-class BaseDestroyer
-  extend Dry::Initializer
-  include Dry::Monads[:result]
-  include Dry::Monads[:try]
+class BaseDestroyer < OperationBase
   include LogError
   include CheckOwnership
 
   option :model_object
   option :model_klass
   option :owner
-
-  def self.call(**args)
-    new(**args).call
-  end
 
   def call
     check_ownership
@@ -27,7 +20,7 @@ class BaseDestroyer
       if result
         Value(model_object)
       else
-        Failure(model_object.errors)
+        Failure(model_object)
       end
     end
   end
