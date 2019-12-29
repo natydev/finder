@@ -17,7 +17,7 @@
         td= box.code
         td= box.spot
         td
-          = box.items_count if box.cluster?
+          = box.items_quantity if box.cluster?
         td= I18n.l(box.updated_at, format: :list)
         td.action-link= link_to_show(box)
         td.action-link= link_to_edit(box)

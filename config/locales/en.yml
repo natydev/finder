@@ -22,7 +22,7 @@ en:
         owner: Owner
         owner_id: Owner
         issued_on: Issued on
-        items_count: Items counter
+        items_quantity: Items quantity
         picture: Picture
         quantity: Quantity
       item:

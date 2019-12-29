@@ -14,7 +14,7 @@
 = detail_row @box, :typology do
   i.fa*{ class: @box.typology_object.icon }
 - if @box.cluster?
-  = detail_row @box, :items_count
+  = detail_row @box, :items_quantity
 = detail_row @box, :issued_on do
   = l(@box.issued_on, format: :long)
 = detail_row @box, :created_at do
