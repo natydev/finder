@@ -20,7 +20,6 @@ class Box < ApplicationRecord
   end
 
   with_options if: :cluster? do |box|
-    box.validates :quantity, absence: true
     box.validates :free_ratio, presence: true, numericality: { only_integer: true,
       greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   end
@@ -31,6 +30,11 @@ class Box < ApplicationRecord
 
   before_create do |record|
     record.items_quantity = 0 if record.cluster?
+  end
+
+  before_save do |record|
+    record.items_quantity = nil if record.cluster?
+    record.free_ratio = nil if record.standalone?
   end
 
   has_paper_trail :on => [:update, :destroy]

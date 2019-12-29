@@ -4,22 +4,41 @@
   = f.input :typology, as: :radio_buttons, collection: BoxTypology.to_a, wrapper: :horizontal_collection_inline  
   = f.input :summary
   = f.input :code
-  = f.input :quantity, as: :integer
-  = f.input :free_ratio, as: :range, input_html: { min: 0, max: 100, step: 10 },
-            wrapper: :horizontal_range
+  div#field_quantity
+    = f.input :quantity, as: :integer
+  div#field_free_ratio
+    = f.input :free_ratio, as: :range, input_html: { min: 0, max: 100,
+               step: 25, list: :free_space }, wrapper: :horizontal_range
   = f.input :issued_on
   = f.input :picture, as: :hidden, input_html: { value: @box.cached_picture_data, id: :box_picture_hidden }
   = f.input :picture, as: :file
   = f.button :submit, class: 'btn-outline-dark'
+  datalist*{id: :free_space}
+    option*{value: 0, label: '0%'}
+    option*{value: 25}
+    option*{value: 50, label: '50%'}
+    option*{value: 75}
+    option*{value: 100, label: '100%'}
 javascript:
   $('.form-control-chosen').chosen();
 
+
+
+  var $fieldQuantity = $('#field_quantity');
+  var $fieldFreeRatio = $('#field_free_ratio');
+  var fieldFreeRatioSlider = $('#box_free_ratio').bootstrapSlider();
+
   if ($('#box_typology_cl').is(":checked")) {
-    $('#box_quantity').hide();
+    $fieldQuantity.hide();
+  }
+  if ($('#box_typology_st').is(":checked")) {
+    $fieldFreeRatio.hide();
   }
   $('#box_typology_cl').on('click', function() {
-    $('#box_quantity').hide();
+    $fieldQuantity.hide();
+    $fieldFreeRatio.show();
   });
   $('#box_typology_st').on('click', function() {
-    $('#box_quantity').show();
+    $fieldQuantity.show();
+    $fieldFreeRatio.hide();
   });
