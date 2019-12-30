@@ -9,7 +9,8 @@
 = detail_row @box, :summary
 = detail_row @box, :code
 = detail_row @box, :quantity
-= detail_row @box, :free_ratio
+= detail_row @box, :free_ratio do
+  = @box.free_ratio_human
 = detail_row @box, :spot_name do
   = @box.badge_spot_name
 = detail_row @box, :typology do
