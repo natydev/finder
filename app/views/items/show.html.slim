@@ -8,6 +8,8 @@
 = detail_row @item, :box_code do
   = @item.badge_box_code
 = detail_row @item, :summary
+= detail_row @item, :using do
+  = bool_to_icon(@item.using, icon: 'fas fa-external-link-alt')
 = detail_row @item, :quantity
 = detail_row @item, :tags do
   = raw @item.badge_tags

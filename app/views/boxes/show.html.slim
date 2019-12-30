@@ -8,13 +8,18 @@
 
 = detail_row @box, :summary
 = detail_row @box, :code
+= detail_row @box, :using do
+  = bool_to_icon(@box.using, icon: 'fas fa-external-link-alt')
 = detail_row @box, :quantity
-= detail_row @box, :free_ratio do
-  = @box.free_ratio_human
 = detail_row @box, :spot_name do
   = @box.badge_spot_name
 = detail_row @box, :typology do
   i.fa*{ class: @box.typology_object.icon }
+= detail_row @box, :volume do
+  = number_to_human(@box.volume, units: :volume)
+- if @box.cluster?
+  = detail_row @box, :free_ratio do
+    = @box.free_ratio_human
 - if @box.cluster?
   = detail_row @box, :items_quantity
 = detail_row @box, :issued_on do
@@ -37,9 +42,10 @@ hr
       - collection.each do |item|
         tr
           td= item.image_tag_small
-          td= item.summary
+          td*{class: item.using_strike, title: Item.human_attribute_name(:using)}
+            = item.summary
           td= item.quantity
-          td= l(item.updated_at, format: :short)
+          td= l(item.updated_at, format: :list)
           td.action-link= link_to_show(@box, item)
           td.action-link= link_to_edit(@box, item)
           td.action-link= link_to_destroy(@box, item)

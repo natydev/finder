@@ -84,4 +84,36 @@ RSpec.describe SearchDecorator, type: :decorator do
       end
     end
   end
+  context 'using_strike' do
+    context "when is_item? true" do
+      let!(:object) { { 'box_id' => 1 } }
+      context 'when is using' do
+        let!(:set_using) { object['item_using'] = true }
+        it "returns using style" do
+          expect(subject.using_strike).to eq('using')
+        end
+      end
+      context 'when is not using' do
+        let!(:set_using) { object['item_using'] = false }
+        it "returns nil" do
+          expect(subject.using_strike).to be_nil
+        end
+      end
+    end
+    context "when is_item? false" do
+      let!(:object) { create(:box) }
+      context 'when is using' do
+        let!(:set_using) { object.using = true }
+        it "returns using style" do
+          expect(subject.using_strike).to eq('using')
+        end
+      end
+      context 'when is not using' do
+        let!(:set_using) { object.using = false }
+        it "returns nil" do
+          expect(subject.using_strike).to be_nil
+        end
+      end
+    end
+  end
 end

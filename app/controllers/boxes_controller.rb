@@ -83,8 +83,8 @@ class BoxesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def box_params
-      params.require(:box).permit(:spot_id, :owner_id, :summary,
-       :code, :issued_on, :typology, :picture, :quantity, :free_ratio)
+      params.require(:box).permit(:spot_id, :owner_id, :summary, :volume,
+       :code, :issued_on, :typology, :picture, :quantity, :free_ratio, :using)
     end
 
     def context_icon

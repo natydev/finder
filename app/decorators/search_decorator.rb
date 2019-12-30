@@ -46,4 +46,14 @@ class SearchDecorator < Draper::Decorator
     object.updated_at
   end
 
+  def using_strike
+    'using' if using.present?
+  end
+
+  private
+
+  def using
+    is_item? ? object['item_using'] : object.using
+  end
+
 end

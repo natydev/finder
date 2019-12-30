@@ -26,6 +26,9 @@ en:
         picture: Picture
         quantity: Quantity
         free_ratio: Free space
+        volume: Volume
+        liters: Liters
+        using: Using
       item:
         summary: Summary
         box: Box
@@ -35,6 +38,7 @@ en:
         tag_ids: Tags
         picture: Picture
         quantity: Quantity
+        using: Using
       tag:
         name: Name
     errors:
@@ -88,8 +92,15 @@ en:
   time:
     formats:
       list: "%Y-%m-%d %H:%M"
-      long: "%Y-%m-%d %H:%M:%S"
+      long: "%H:%M:%S %Z %d/%m/%Y"
   date:
     formats:
       list: "%Y-%m-%d"
       long: "%Y-%m-%d"
+  volume:
+    unit:
+      one: "liter"
+      other: "liters"
+    thousand:
+      one: "m3"
+      other: "m3"

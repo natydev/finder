@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_29_105101) do
+ActiveRecord::Schema.define(version: 2019_12_30_082815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2019_12_29_105101) do
     t.integer "quantity", default: 1
     t.integer "items_quantity"
     t.integer "free_ratio"
+    t.integer "volume"
+    t.boolean "using"
     t.index ["owner_id"], name: "index_boxes_on_owner_id"
     t.index ["spot_id"], name: "index_boxes_on_spot_id"
     t.index ["typology"], name: "index_boxes_on_typology"
@@ -68,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_12_29_105101) do
     t.jsonb "picture_data"
     t.uuid "owner_id", null: false
     t.integer "quantity", default: 1
+    t.boolean "using"
     t.index ["box_id"], name: "index_items_on_box_id"
     t.index ["owner_id"], name: "index_items_on_owner_id"
   end

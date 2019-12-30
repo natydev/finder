@@ -12,6 +12,8 @@ FactoryBot.define do
     typology { BoxTypology.list.sample }
     quantity { (typology == BoxTypology::STANDALONE) ? 1 : nil }
     free_ratio { (typology == BoxTypology::CLUSTER) ? rand(0..100) : nil }
+    volume { [rand(0..300), nil].sample }
+    using { Faker::Boolean.boolean(true_ratio: 0.2) }
     picture_data { TestPicture.file_data if has_picture }
 
     trait :standalone do

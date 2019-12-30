@@ -8,7 +8,8 @@
         td
           = box.typology_icon
           = box.picture_icon
-        td= box.summary
+        td*{class: box.using_strike, title: Item.human_attribute_name(:using)}
+          = box.summary
         td= box.code
         td= box.spot
         td.text-secondary= I18n.l(box.updated_at, format: :list)
