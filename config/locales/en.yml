@@ -29,6 +29,8 @@ en:
         volume: Volume
         liters: Liters
         using: Using
+        tags: Tags
+        tag_ids: Tags
       item:
         summary: Summary
         box: Box

@@ -21,6 +21,52 @@ RSpec.describe Box, type: :model do
       expect(subject.spot_name).to eq(subject.spot.name)
     end
   end
+  context 'callbacks' do
+    context 'after_initialize' do
+      let(:subject){ build(:box, :cluster) }
+      it "set quantity = nil if is a cluster" do
+        expect(subject.quantity).to be_nil
+      end
+    end
+    context 'before_create' do
+      it "set items_quantity = 0 if is a cluster" do
+        subject = build(:box, :cluster, items_quantity: 3)
+        subject.save
+        expect(subject.items_quantity).to eq(0)
+      end
+    end
+    context 'before_save' do
+      context 'items_quantity' do
+        it "set nil if is a standalone" do
+          expect(subject_standalone.items_quantity).to be_nil
+        end
+        it "set not nil if is a cluster" do
+          expect(subject_cluster.items_quantity).to_not be_nil
+        end
+      end
+      context 'free_ratio' do
+        it "set nil if is a standalone" do
+          expect(subject_standalone.free_ratio).to be_nil
+        end
+        it "set not nil if is a cluster" do
+          expect(subject_cluster.free_ratio).to_not be_nil
+        end
+      end
+      context 'tags' do
+        it "set not empty if is a standalone" do
+          subject_standalone.tags << create(:tag)
+          subject_standalone.save
+          expect(subject_standalone.tags).to_not be_empty
+        end
+        it "set empty if is a cluster" do
+          subject_cluster.tags << create(:tag)
+          subject_cluster.save
+          expect(subject_cluster.tags).to be_empty
+        end
+      end
+    end
+
+  end
   context 'enumerations' do
     it "has typology standalone" do
       expect(subject_standalone).to be_standalone

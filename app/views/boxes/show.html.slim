@@ -24,12 +24,15 @@
   = detail_row @box, :items_quantity
 = detail_row @box, :issued_on do
   = l(@box.issued_on, format: :long)
+= detail_row @box, :tags do
+  = raw @box.badge_tags
+= detail_row @box, :picture do
+  = @box.image_tag_medium
 = detail_row @box, :created_at do
   = @box.created_at_long
 = detail_row @box, :updated_at do
   = @box.updated_at_long
-= detail_row @box, :picture do
-  = @box.image_tag_medium
+
 hr
 - if @box.cluster?
   - @context_icon = 'fa fa-shapes'

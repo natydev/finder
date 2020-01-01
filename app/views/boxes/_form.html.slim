@@ -1,7 +1,8 @@
 = simple_form_for([@box], wrapper: :horizontal_form) do |f|
   = f.association :spot, collection: Spot.for_select,
    input_html: { class: 'form-control form-control-chosen' }
-  = f.input :typology, as: :radio_buttons, collection: BoxTypology.to_a, wrapper: :horizontal_collection_inline  
+  = f.input :typology, as: :radio_buttons, collection: BoxTypology.to_a,
+             wrapper: :horizontal_collection_inline  
   = f.input :summary
   = f.input :code
   = f.input :using, as: :boolean, wrapper: :horizontal_boolean_single
@@ -10,9 +11,14 @@
   = f.input :volume, as: :integer, hint: Box.human_attribute_name(:liters)
   div#field_free_ratio
     = f.input :free_ratio, as: :range, input_html: { min: 0, max: 100,
-               step: 25, list: :free_space, style: '--min: 0; --max: 100;' }, wrapper: :horizontal_range
+               step: 25, list: :free_space, style: '--min: 0; --max: 100;' },
+               wrapper: :horizontal_range
   = f.input :issued_on
-  = f.input :picture, as: :hidden, input_html: { value: @box.cached_picture_data, id: :box_picture_hidden }
+  div#field_tags
+    = f.input :tag_ids, as: :select, collection: Tag.for_select,
+              input_html: { multiple: true, class: 'form-control form-control-chosen' }
+  = f.input :picture, as: :hidden, input_html: { value: @box.cached_picture_data,
+            id: :box_picture_hidden }
   = f.input :picture, as: :file, wrapper: :custom_file
   = f.button :submit, class: 'btn-outline-dark'
   datalist*{id: :free_space}
@@ -26,6 +32,7 @@ javascript:
 
   var $fieldQuantity = $('#field_quantity');
   var $fieldFreeRatio = $('#field_free_ratio');
+  var $fieldTags = $('#field_tags');
 
   var $freeRatio = $('#box_free_ratio');
   $freeRatio.css('--val', $freeRatio.val());
@@ -35,15 +42,18 @@ javascript:
 
   if ($('#box_typology_cl').is(":checked")) {
     $fieldQuantity.hide();
+    $fieldTags.hide();
   }
   if ($('#box_typology_st').is(":checked")) {
     $fieldFreeRatio.hide();
   }
   $('#box_typology_cl').on('click', function() {
     $fieldQuantity.hide();
+    $fieldTags.hide();
     $fieldFreeRatio.show();
   });
   $('#box_typology_st').on('click', function() {
     $fieldQuantity.show();
+    $fieldTags.show();
     $fieldFreeRatio.hide();
   });

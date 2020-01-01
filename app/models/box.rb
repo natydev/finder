@@ -6,6 +6,8 @@ class Box < ApplicationRecord
   belongs_to :spot
   belongs_to :owner, class_name: 'User'
   has_many :items
+  has_many :box_tags, dependent: :destroy
+  has_many :tags, through: :box_tags
 
   delegate :name, to: :spot, prefix: true, allow_nil: true
 
@@ -35,6 +37,7 @@ class Box < ApplicationRecord
   before_save do |record|
     record.items_quantity = nil if record.standalone?
     record.free_ratio = nil if record.standalone?
+    record.tags = [] if record.cluster?
   end
 
   has_paper_trail :on => [:update, :destroy]

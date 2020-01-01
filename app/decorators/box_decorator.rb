@@ -2,6 +2,7 @@ class BoxDecorator < Draper::Decorator
   include TimestampsDeco
   include PictureDeco
   include UsingDeco
+  include BadgeTagDeco
 
   def self.collection_decorator_class
     PaginatingDecorator

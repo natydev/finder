@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_082815) do
+ActiveRecord::Schema.define(version: 2020_01_01_174603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2019_12_30_082815) do
     t.index ["allowanceable_type", "allowanceable_id"], name: "index_allowances_on_allowanceable_type_and_allowanceable_id"
     t.index ["owner_id"], name: "index_allowances_on_owner_id"
     t.index ["user_id"], name: "index_allowances_on_user_id"
+  end
+
+  create_table "box_tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "box_id", null: false
+    t.uuid "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["box_id"], name: "index_box_tags_on_box_id"
+    t.index ["tag_id"], name: "index_box_tags_on_tag_id"
   end
 
   create_table "boxes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -136,6 +145,8 @@ ActiveRecord::Schema.define(version: 2019_12_30_082815) do
 
   add_foreign_key "allowances", "users"
   add_foreign_key "allowances", "users", column: "owner_id"
+  add_foreign_key "box_tags", "boxes"
+  add_foreign_key "box_tags", "tags"
   add_foreign_key "boxes", "spots"
   add_foreign_key "boxes", "users", column: "owner_id"
   add_foreign_key "item_tags", "items"

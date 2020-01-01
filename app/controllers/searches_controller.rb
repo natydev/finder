@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
     @boxes = if @q.conditions.present?
       @display = true
       @q.result(distinct: true)
-      .includes(:spot, items: :tags)
+      .includes(:tags, :spot, items: :tags)
       .left_joins(:items)
       .where(owner_id: current_user.id)
       .select(
