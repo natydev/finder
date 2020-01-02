@@ -44,6 +44,8 @@ en:
         using: Using
       tag:
         name: Name
+        color: Text color
+        background: Background color
     errors:
       models:
         user:

@@ -7,6 +7,12 @@
   = link_to_list(tags_path, entities: entities)
 
 = detail_row @tag, :name
+= detail_row @tag, :color do
+  span*{style: "color: #{@tag.color}"}
+    = @tag.color
+= detail_row @tag, :background do
+  span*{style: "color: #{@tag.background}"}
+    = @tag.background
 = detail_row @tag, :created_at do
   = l(@tag.created_at, format: :long)
 = detail_row @tag, :updated_at do
