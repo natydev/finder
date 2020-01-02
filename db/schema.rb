@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_01_174603) do
+ActiveRecord::Schema.define(version: 2020_01_02_122920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_01_01_174603) do
     t.integer "free_ratio"
     t.integer "volume"
     t.boolean "using"
+    t.string "notes"
     t.index ["owner_id"], name: "index_boxes_on_owner_id"
     t.index ["spot_id"], name: "index_boxes_on_spot_id"
     t.index ["typology"], name: "index_boxes_on_typology"

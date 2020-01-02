@@ -31,6 +31,7 @@ en:
         using: Using
         tags: Tags
         tag_ids: Tags
+        notes: Notes
       item:
         summary: Summary
         box: Box

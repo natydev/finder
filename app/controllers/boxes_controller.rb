@@ -85,7 +85,7 @@ class BoxesController < ApplicationController
     def box_params
       params.require(:box).permit(:spot_id, :owner_id, :summary, :volume,
        :code, :issued_on, :typology, :picture, :quantity, :free_ratio,
-       :using, tag_ids: [])
+       :using, :notes, tag_ids: [])
     end
 
     def context_icon

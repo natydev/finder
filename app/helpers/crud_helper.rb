@@ -104,7 +104,7 @@ module CRUDHelper
 
   def tabular_list(collection = nil)
     content_tag(:div, class: "row") do
-      content_tag(:div, class: "col-12") do
+      content_tag(:div, class: "col-12 table-responsive") do
         if collection.any?
           content_tag(:table, class: "table table-hover table-sm") do
             yield collection
@@ -146,19 +146,22 @@ module CRUDHelper
   #   detail_row(@record, :attr_name, custom_label: 'Foo label') do
   #     = l(@record.attr_name, format: :long)
   def detail_row(record = nil, label = nil, custom_label: nil)
-    content_tag(:div, class: "row detail-row mx-2 pt-3 pb-2") do
-      content_tag(:div, class: "col-3") do
-        if custom_label.blank?
-          content_tag(:b, record.class.human_attribute_name(label))
-        else
-          content_tag(:b, custom_label)
-        end
-      end +
-      content_tag(:div, class: "col-9") do
-        if block_given?
-          yield
-        else
-          record.public_send(label).to_s
+    value = record.public_send(label)
+    if value.present?
+      content_tag(:div, class: "row detail-row mx-2 pt-3 pb-2") do
+        content_tag(:div, class: "col-sm-3") do
+          if custom_label.blank?
+            content_tag(:b, record.class.human_attribute_name(label))
+          else
+            content_tag(:b, custom_label)
+          end
+        end +
+        content_tag(:div, class: "col-sm-9") do
+          if block_given?
+            yield
+          else
+            value.to_s
+          end
         end
       end
     end
