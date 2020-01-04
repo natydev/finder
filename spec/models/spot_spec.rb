@@ -2,8 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Spot, type: :model do
   let(:subject){ create(:spot) }
+  let(:box){ create(:box, spot: subject) }
   it "belongs to place" do
     expect(subject.place).to be_kind_of(Place)
+  end
+  it "has many boxes" do
+    box
+    expect(subject.boxes).to eq([box])
   end
   context 'delegates' do
     it "#place_name to place" do

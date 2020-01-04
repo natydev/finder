@@ -4,6 +4,7 @@ class Spot < ApplicationRecord
 
   belongs_to :owner, class_name: 'User'
   belongs_to :place
+  has_many :boxes
 
   delegate :name, to: :place, prefix: true, allow_nil: true
 
