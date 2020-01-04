@@ -1,5 +1,5 @@
 = simple_form_for([@box, @item], wrapper: :horizontal_form) do |f|
-  = f.input :box_id, collection: Box.for_select, input_html: { class: 'form-control form-control-chosen' }
+  = f.input :box_id, collection: @box.spot.boxes.for_select, input_html: { class: 'form-control form-control-chosen' }
   = f.input :summary
   = f.input :using, as: :boolean, wrapper: :horizontal_boolean_single
   = f.input :quantity
