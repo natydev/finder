@@ -15,7 +15,9 @@ module BadgeTagDeco
 
   def cssify(hash={})
     hash.inject([]) do |memo, object|
-      memo << object.join(": ")
+      memo << object.join(": ") if object.last.present?
     end.join("; ")
+  rescue NoMethodError
+    nil
   end
 end

@@ -82,7 +82,7 @@ class SpotsController < ApplicationController
     end
 
     def set_spot
-      @spot = Spot.find(params[:id])
+      @spot = Spot.find(params[:id]).decorate
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

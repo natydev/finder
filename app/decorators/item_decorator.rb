@@ -3,11 +3,12 @@ class ItemDecorator < Draper::Decorator
   include PictureDeco
   include UsingDeco
   include BadgeTagDeco
+  include ParentIconDeco
 
   delegate_all
 
   def badge_box_code
-    h.raw h.content_tag(:i, '', class: 'fa fa-box mr-1') + object.box_code
+    parent_icon(:box_code, 'box')
   end
 
 end

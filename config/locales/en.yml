@@ -18,7 +18,9 @@ en:
         summary: Summary
         code: Code
         spot: Spot
-        place_id: Spot
+        spot_id: Spot
+        spot_name: Spot name
+        place_name: Place name
         owner: Owner
         owner_id: Owner
         issued_on: Issued on
@@ -101,7 +103,7 @@ en:
   date:
     formats:
       list: "%Y-%m-%d"
-      long: "%Y-%m-%d"
+      long: "%d/%m/%Y"
   volume:
     unit:
       one: "liter"

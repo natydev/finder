@@ -12,6 +12,8 @@
 = detail_row @box, :using do
   = bool_to_icon(@box.using, icon: 'fas fa-external-link-alt')
 = detail_row @box, :quantity
+= detail_row @box, :place_name do
+  = @box.badge_place_name
 = detail_row @box, :spot_name do
   = @box.badge_spot_name
 = detail_row @box, :typology do
@@ -24,7 +26,7 @@
 - if @box.cluster?
   = detail_row @box, :items_quantity
 = detail_row @box, :issued_on do
-  = l(@box.issued_on, format: :long)
+  = @box.badge_issued_on
 = detail_row @box, :tags do
   = raw @box.badge_tags
 = detail_row @box, :picture do

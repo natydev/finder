@@ -6,10 +6,11 @@
   = link_to_edit(@place, @spot)
   = link_to_list(polymorphic_path([@place]), entities: entities)
 
-= detail_row @spot, :place_name
+= detail_row @spot, :place_name do
+  = @spot.badge_place_name
 = detail_row @spot, :name
 = detail_row @spot, :code
 = detail_row @spot, :created_at do
-  = l(@spot.created_at, format: :long)
+  = @spot.created_at_long
 = detail_row @spot, :updated_at do
-  = l(@spot.updated_at, format: :long)
+  = @spot.updated_at_long
