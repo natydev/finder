@@ -21,7 +21,7 @@ RSpec.describe Spot, type: :model do
   it ".for_select returns subarray of names and ids " do
     first_item = subject
     expect(described_class.for_select)
-      .to include([first_item.name, first_item.id])
+      .to include(["#{first_item.name} - #{first_item.place_name}", first_item.id])
   end
   context 'Paper Trail (versioning)', versioning: true do
     it 'a spot is versioned' do
