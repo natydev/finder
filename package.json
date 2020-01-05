@@ -15,7 +15,8 @@
     "popper.js": "^1.16.0",
     "turbolinks": "^5.2.0",
     "cocoon-js": "0.0.5",
-    "bootstrap4c-chosen": "1.1.1"
+    "bootstrap4c-chosen": "1.1.1",
+    "serialize-javascript": "2.1.1"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.9.0"
