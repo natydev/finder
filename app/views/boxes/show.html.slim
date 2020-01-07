@@ -36,7 +36,7 @@
 = detail_row @box, :updated_at do
   = @box.updated_at_long
 
-hr
+hr#related-list
 - if @box.cluster?
   - @context_icon = 'fa fa-shapes'
   - child_table_fields = [:picture, :summary, :quantity, :updated_at]

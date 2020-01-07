@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item_op.success?
         @item = @item_op.value!
-        format.html { redirect_to [@box, @item], notice: t("common.flash.created") }
+        format.html { redirect_to box_path(@box, anchor: 'related-list'), notice: t("common.flash.created") }
         format.json { render :show, status: :created, location: @item }
       else
         @item = @item_op.failure
