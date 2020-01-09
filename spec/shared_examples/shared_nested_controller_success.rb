@@ -47,11 +47,18 @@ module SharedExamples
                    subject_key => valid_attributes}, session: {}
             }.to change(klass, :count).by(1)
           end
-
           it "redirects to the created record" do
-            post :create, params: {parent_key => @parent_record.id, 
-                 subject_key => valid_attributes}, session: {}
-            expect(response).to redirect_to([@parent_record, klass.order(:created_at).last])
+            if @parent_record.class == Box
+              post :create, params: {parent_key => @parent_record.id, 
+                   subject_key => valid_attributes}, session: {}
+              expect(response).to redirect_to(box_path(@parent_record,
+                                  anchor: 'related-list'))
+            else
+              post :create, params: {parent_key => @parent_record.id, 
+                   subject_key => valid_attributes}, session: {}
+              expect(response).to redirect_to([@parent_record,
+                                  klass.order(:created_at).last])
+            end
           end
         end
 
