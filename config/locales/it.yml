@@ -1,0 +1,112 @@
+it:
+  enumerations:
+    box_typology:
+      standalone: 'Univoco'
+      cluster: 'Gruppo'
+  activerecord:
+    attributes:
+      place:
+        name: Nome
+      spot:
+        name: Nome
+        code: Codice
+        place: Luogo
+        place_name: Nome luogo
+        place_id: Luogo
+      box:
+        summary: Titolo
+        code: Codice
+        spot: Area
+        spot_id: Area
+        spot_name: Nome area
+        place_name: Nome luogo
+        owner: Proprietario
+        owner_id: Proprietario
+        issued_on: Registrato il
+        items_quantity: quantità oggetti
+        picture: Foto
+        quantity: Quantità
+        free_ratio: Spazio libero
+        volume: Volume
+        liters: Litri
+        using: In uso
+        tags: Etichette
+        tag_ids: Etichette
+        notes: Note
+      item:
+        summary: Titolo
+        box: Elemento
+        box_code: Codice elemento
+        box_id: Elemento
+        tags: Etichette
+        tag_ids: Etichette
+        picture: Foto
+        quantity: Quantità
+        using: In uso
+      tag:
+        name: Nome
+        color: Colore testo
+        background: Colore sfondo
+    errors:
+      models:
+        user:
+          attributes:
+            base:
+              custom_error: ''
+    models:
+      place:
+        one: Luogo
+        other: Luoghi
+      spot:
+        one: Area
+        other: Aree
+      box:
+        one: Elemento
+        other: Elementi
+      item:
+        one: Oggetto
+        other: Oggetti
+      tag:
+        one: Tag
+        other: Tags   
+  attributes:
+    created_at: Creato il
+    updated_at: Aggiornato il
+  common:
+    actions:
+      confirm_destroy: Conferma eliminazione?
+      delete: Elimina %{entity}
+      edit: Modifica %{entity}
+      home: Home
+      index: Lista %{entity}
+      new: Crea %{entity}
+      show: Dettagli %{entity}
+      title: Azioni
+      update: Modifica %{entity}
+      search: Cerca
+      sign_out: 'esci'
+    flash:
+      cannot_destroy: Errore durante l'eliminazione
+      created: Creato correttamente
+      destroyed: Eliminato correttamente
+      updated: Aggiornato correttamente
+    no_item_present: Nessun elemento presente
+  search:
+    in_summary: 'Cerca nel titolo'
+    filer_spot: 'Filtra per area'
+    filer_tag: 'Filtra per etichetta'
+  time:
+    formats:
+      list: "%Y-%m-%d %H:%M"
+      long: "%H:%M:%S %Z %d/%m/%Y"
+  date:
+    formats:
+      list: "%Y-%m-%d"
+      long: "%d/%m/%Y"
+  volume:
+    unit:
+      one: "litro"
+      other: "litri"
+    thousand:
+      one: "m3"
+      other: "m3"
