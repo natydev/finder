@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 crumb :root do
-  link 'Home', root_path
+  link I18n.t("common.actions.home"), root_path
 end
 
 crumb :searches do
-  link 'searches', searches_path
+  link I18n.t("common.actions.search"), searches_path
 end
 
 crumb :places do

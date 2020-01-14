@@ -18,6 +18,7 @@ it:
         code: Codice
         spot: Area
         spot_id: Area
+        typology: Tipologia
         spot_name: Nome area
         place_name: Nome luogo
         owner: Proprietario

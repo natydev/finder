@@ -4,20 +4,20 @@
 = search_form_for @q, url: searches_path, wrapper: :search_horizontal_form,
  class: 'search' do |f|
   .row
-    .col-md
+    .col-md-6.col-lg-3
       i.fa.fa-search.mr-1.text-muted
       = f.input :summary_or_items_summary_cont, placeholder: t('search.in_summary')
-    .col-md
+    .col-md-6.col-lg-3
       i.fa.fa-door-open.mr-1.text-muted
       = f.input :spot_id_eq, as: :select, collection: Spot.for_select,
-       prompt: t('search.filer_spot'),
-        input_html: { class: 'form-control form-control-chosen' }
-    .col-md
+        input_html: { class: 'form-control form-control-chosen',
+        data: {placeholder: t('search.filer_spot')} }
+    .col-md-6.col-lg-3
       i.fa.fa-tag.mr-1.text-muted
       = f.input :tags_id_or_items_tags_id_in, as: :select, collection: Tag.for_select,
-       prompt: t('search.filer_tag'),
-        input_html: { multiple: true, class: 'form-control form-control-chosen' }
-    .col-md.text-right
+        input_html: { multiple: true, class: 'form-control form-control-chosen',
+        data: {placeholder: t('search.filer_tag')} }
+    .col-md-6.col-lg-3.text-right
       - if params[:q].present?
         = link_to t('common.reset'), searches_path,
          class: 'btn btn-secondary btn-sm mr-2'

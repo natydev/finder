@@ -18,6 +18,7 @@ en:
         code: Code
         spot: Spot
         spot_id: Spot
+        typology: Tipology
         spot_name: Spot name
         place_name: Place name
         owner: Owner
