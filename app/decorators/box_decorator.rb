@@ -4,6 +4,7 @@ class BoxDecorator < Draper::Decorator
   include UsingDeco
   include BadgeTagDeco
   include ParentIconDeco
+  include BaseErrorDeco
 
   def self.collection_decorator_class
     PaginatingDecorator
