@@ -87,7 +87,7 @@ en:
       search: Search
       sign_out: 'log-out'
     flash:
-      cannot_destroy: Error during delete operation
+      cannot_destroy: Error during delete operation - %{reason}
       created: Created with successful
       destroyed: Deleted with successful
       updated: Updated with successful

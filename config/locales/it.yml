@@ -87,7 +87,7 @@ it:
       search: Cerca
       sign_out: 'esci'
     flash:
-      cannot_destroy: Errore durante l'eliminazione
+      cannot_destroy: Errore durante l'eliminazione - %{reason}
       created: Creato correttamente
       destroyed: Eliminato correttamente
       updated: Aggiornato correttamente

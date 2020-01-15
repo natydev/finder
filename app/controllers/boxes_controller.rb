@@ -68,8 +68,8 @@ class BoxesController < ApplicationController
         format.json { head :no_content }
       else
         @box = @box_op.failure
-        format.html { redirect_to @box, notice: t("common.flash.cannot_destroy"),
-                      status: :unprocessable_entity }
+        format.html { redirect_to box_url(@box), notice: 
+                    t("common.flash.cannot_destroy", reason: @box.base_errors) }
         format.json { render json: @box.errors, status: :unprocessable_entity }
       end
     end

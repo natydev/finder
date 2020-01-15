@@ -5,7 +5,7 @@ class Box < ApplicationRecord
 
   belongs_to :spot
   belongs_to :owner, class_name: 'User'
-  has_many :items
+  has_many :items, dependent: :restrict_with_error
   has_many :box_tags, dependent: :destroy
   has_many :tags, through: :box_tags
 
