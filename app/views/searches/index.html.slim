@@ -17,11 +17,15 @@
       = f.input :tags_id_or_items_tags_id_in, as: :select, collection: Tag.for_select,
         input_html: { multiple: true, class: 'form-control form-control-chosen',
         data: {placeholder: t('search.filer_tag')} }
-    .col-md-6.col-lg-3.text-right
+    .col-md-6.col-lg-1
+      i.fa.fas.fa-external-link-alt.mr-1.text-muted
+      = f.input :using_or_items_using_true, as: :boolean, 
+                label: false
+    .col-md-6.col-lg-2.text-right
       - if params[:q].present?
         = link_to t('common.reset'), searches_path,
          class: 'btn btn-secondary btn-sm mr-2'
-      = f.button :submit, class: 'btn btn-primary btn-sm'
+      = f.button :submit, class: 'btn btn-primary btn-sm mt-1'
 - if @display
   = render partial: "searches/list", locals: { list: @boxes, table_fields: table_fields }
 - else
