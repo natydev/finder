@@ -9,7 +9,8 @@
   tbody
     - collection.each do |tag|
       tr
-        td= tag.name
+        td
+          b= tag.badge
         td= I18n.l(tag.created_at, format: :list)
         td= I18n.l(tag.updated_at, format: :list)
         td.action-link= link_to_show(tag)

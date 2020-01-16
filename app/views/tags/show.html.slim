@@ -6,7 +6,8 @@
   = link_to_edit(@tag)
   = link_to_list(tags_path, entities: entities)
 
-= detail_row @tag, :name
+= detail_row @tag, :name do
+  h3= @tag.badge
 = detail_row @tag, :color do
   span*{style: "color: #{@tag.color}"}
     = @tag.color
