@@ -49,7 +49,9 @@ hr#related-list
         tr
           td= item.image_tag_small
           td*{class: item.using_strike, title: Item.human_attribute_name(:using)}
-            = item.summary
+            b= item.summary
+            br
+            small= raw item.badge_tags
           td= item.quantity
           td= l(item.updated_at, format: :list)
           td.action-link= link_to_show(@box, item)

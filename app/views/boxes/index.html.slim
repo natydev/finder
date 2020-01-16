@@ -13,7 +13,9 @@
         td
           i*{class: box.typology_object.icon}
         td*{class: box.using_strike, title: Box.human_attribute_name(:using)}
-          = box.summary
+          b= box.summary
+          br
+          small= raw box.badge_tags
         td= box.quantity
         td= box.code
         td= box.spot
