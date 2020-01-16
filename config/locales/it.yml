@@ -7,6 +7,7 @@ it:
     attributes:
       place:
         name: Nome
+        spots: Aree
       spot:
         name: Nome
         code: Codice
@@ -34,6 +35,7 @@ it:
         tags: Etichette
         tag_ids: Etichette
         notes: Note
+        items: Oggetti
       item:
         summary: Titolo
         box: Elemento

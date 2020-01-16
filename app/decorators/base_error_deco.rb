@@ -2,7 +2,7 @@ module BaseErrorDeco
   extend ActiveSupport::Concern
 
   def base_errors
-    object.errors.messages[:base].to_sentence
+    object.errors.full_messages.to_sentence
   end
 
 end
