@@ -55,4 +55,8 @@ class Box < ApplicationRecord
   def to_s
     code
   end
+
+  def issued_on_human
+    I18n.l(issued_on, format: :long)
+  end
 end

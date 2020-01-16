@@ -21,8 +21,12 @@ class BoxDecorator < Draper::Decorator
     parent_icon(:place_name, 'building')
   end
 
+  def badge_typology
+    parent_icon(:typology_humanize, object.typology_object.icon)
+  end
+
   def badge_issued_on
-    parent_icon(:issued_on, 'calendar-check')
+    parent_icon(:issued_on_human, 'calendar-check')
   end
 
   def free_ratio_human

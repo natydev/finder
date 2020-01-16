@@ -17,7 +17,7 @@
 = detail_row @box, :spot_name do
   = @box.badge_spot_name
 = detail_row @box, :typology do
-  i.fa*{ class: @box.typology_object.icon }
+  = @box.badge_typology
 = detail_row @box, :volume do
   = number_to_human(@box.volume, units: :volume)
 - if @box.cluster?

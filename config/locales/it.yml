@@ -68,8 +68,8 @@ it:
         one: Oggetto
         other: Oggetti
       tag:
-        one: Tag
-        other: Tags   
+        one: Etichetta
+        other: Etichette   
   attributes:
     created_at: Creato il
     updated_at: Aggiornato il

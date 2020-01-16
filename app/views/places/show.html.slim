@@ -8,9 +8,9 @@
 
 = detail_row @place, :name
 = detail_row @place, :created_at do
-  = l(@place.created_at, format: :long)
+  = @place.created_at_long
 = detail_row @place, :updated_at do
-  = l(@place.updated_at, format: :long)
+  = @place.updated_at_long
 hr
 
 - @context_icon = 'fa fa-door-open'
@@ -24,7 +24,7 @@ hr
       tr
         td= spot.name
         td= spot.place
-        td= l(spot.updated_at, format: :short)
+        td= l(spot.updated_at, format: :list)
         td.action-link= link_to_show(@place, spot)
         td.action-link= link_to_edit(@place, spot)
         td.action-link= link_to_destroy(@place, spot)
