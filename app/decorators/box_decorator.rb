@@ -2,7 +2,7 @@ class BoxDecorator < Draper::Decorator
   include TimestampsDeco
   include PictureDeco
   include UsingDeco
-  include BadgeTagDeco
+  include BadgeTagsDeco
   include ParentIconDeco
   include BaseErrorDeco
 

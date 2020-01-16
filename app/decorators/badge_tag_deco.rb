@@ -1,14 +1,12 @@
 module BadgeTagDeco
   extend ActiveSupport::Concern
 
-  def badge_tags
-    object.tags.map do |t|
-      h.content_tag :span, class: 'badge badge-secondary mr-3',
-                           style: cssify(color: t.color,
-                           background: t.background) do
-        h.raw h.content_tag(:i, '', class: 'fa fa-tag mr-1') + t.name
-      end
-    end.join('')
+  def badge_tag(tag)
+    h.content_tag :span, class: 'badge badge-secondary mr-3',
+                         style: cssify(color: tag.color,
+                         background: tag.background) do
+      h.raw h.content_tag(:i, '', class: 'fa fa-tag mr-1') + tag.name
+    end
   end
 
   private

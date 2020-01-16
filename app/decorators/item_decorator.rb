@@ -2,7 +2,7 @@ class ItemDecorator < Draper::Decorator
   include TimestampsDeco
   include PictureDeco
   include UsingDeco
-  include BadgeTagDeco
+  include BadgeTagsDeco
   include ParentIconDeco
 
   delegate_all
