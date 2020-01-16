@@ -57,6 +57,6 @@ class Box < ApplicationRecord
   end
 
   def issued_on_human
-    I18n.l(issued_on, format: :long)
+    issued_on.present? ? I18n.l(issued_on, format: :long) : '-'
   end
 end
