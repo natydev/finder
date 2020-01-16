@@ -2,7 +2,7 @@ class Place < ApplicationRecord
   include SelectModelConcern
 
   belongs_to :owner, class_name: 'User'
-  has_many :spots
+  has_many :spots, dependent: :restrict_with_error
 
   validates :name, presence: true
 

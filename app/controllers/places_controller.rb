@@ -67,8 +67,8 @@ class PlacesController < ApplicationController
         format.json { head :no_content }
       else
         @place = @place_op.failure
-        format.html { redirect_to @place, notice: t("common.flash.cannot_destroy"),
-                      status: :unprocessable_entity }
+        format.html { redirect_to @place, notice: 
+                    t("common.flash.cannot_destroy", reason: @place.base_errors) }
         format.json { render json: @place.errors, status: :unprocessable_entity }
       end
     end
@@ -77,7 +77,7 @@ class PlacesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_place
-      @place = Place.find(params[:id])
+      @place = Place.find(params[:id]).decorate
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
