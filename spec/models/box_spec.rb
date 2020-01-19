@@ -20,6 +20,12 @@ RSpec.describe Box, type: :model do
     it "#spot_name to spot" do
       expect(subject.spot_name).to eq(subject.spot.name)
     end
+    it "#spot_code to spot" do
+      expect(subject.spot_code).to eq(subject.spot.code)
+    end
+    it "#place_name to spot" do
+      expect(subject.place_name).to eq(subject.spot.place_name)
+    end
   end
   context 'callbacks' do
     context 'after_initialize' do
