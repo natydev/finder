@@ -28,6 +28,7 @@ module Icon
   EMAIL = 'envelope'
   PASSWORD = 'key'
   ARROW_RIGHT = 'arrow-right'
+  TIME = 'clock'
 
   def self.css_for(icon, style: 'fas')
     "#{style} fa-#{Icon.const_get(icon.to_s.upcase)}"
