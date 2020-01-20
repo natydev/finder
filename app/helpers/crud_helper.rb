@@ -127,6 +127,28 @@ module CRUDHelper
     end
   end
 
+  def tabular_icon_head(model, tag:, labels:)
+    content_tag(tag, class: "thead-light") do
+      content_tag(:tr) do
+        labels.map do |label|
+          concat content_tag(:th, content_tag(:i, '',
+            class: icon_or_text(label), title: model.human_attribute_name(label),
+            data: { toggle: 'tooltip'}),
+          )
+        end
+        concat content_tag(:th, t("common.actions.title"), class: "text-center", colspan: 3)
+      end
+    end
+  end
+
+  def icon_or_text(label)
+    begin
+      Icon.css_for(label)
+    rescue StandardError => e
+      nil
+    end
+  end
+
   def paginator(items)
     content_tag(:div, class: "row") do
       content_tag(:div, class: "col-12") do
