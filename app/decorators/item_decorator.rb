@@ -4,6 +4,7 @@ class ItemDecorator < Draper::Decorator
   include UsingDeco
   include BadgeTagsDeco
   include ParentIconDeco
+  include IconDeco
 
   delegate_all
 
