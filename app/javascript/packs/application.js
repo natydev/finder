@@ -27,12 +27,16 @@ import '@fortawesome/fontawesome-free/js/all';
 // import '@fortawesome/fontawesome-free/js/all'
 // 
 // import $ from 'jquery'
-// 
+
+//
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
 $(document).on("turbolinks:load", function () {
 
-
   $('.form-control-chosen').chosen();
-  $('[data-toggle="tooltip"]').tooltip();
+  
 
   var $fieldQuantity = $('#field_quantity');
   var $fieldFreeRatio = $('#field_free_ratio');
@@ -62,4 +66,4 @@ $(document).on("turbolinks:load", function () {
     $fieldTags.show();
     $fieldFreeRatio.hide();
   });
-})
+});
