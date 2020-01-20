@@ -1,26 +1,36 @@
 = simple_form_for([@box], wrapper: :horizontal_form) do |f|
   = f.association :spot, collection: Spot.for_select,
-   input_html: { class: 'form-control form-control-chosen' }
-  = f.input :typology, as: :radio_buttons, collection: BoxTypology.to_a,
-             wrapper: :horizontal_collection_inline  
+   input_html: { class: 'form-control form-control-chosen',
+   data: { placeholder: t('simple_form.prompts.option') } },
+   label: f.object.label_icon(:spot_id, :spot)
+  = f.input :typology, as: :radio_buttons,
+     collection: BoxTypology.to_h.map{|t| [f.object.value_icon(t.first, t.first), t.last]},
+     wrapper: :horizontal_collection_inline
+  = f.input :code, label: f.object.label_icon(:code, :code)
   = f.input :summary
-  = f.input :code
   = f.input :notes
-  = f.input :using, as: :boolean, wrapper: :horizontal_boolean_single
+  = f.input :using, as: :boolean, wrapper: :horizontal_boolean_single,
+            label: f.object.label_icon(:using, :using)
   div#field_quantity
-    = f.input :quantity, as: :integer
-  = f.input :volume, as: :integer, hint: Box.human_attribute_name(:liters)
+    = f.input :quantity, as: :integer, 
+              label: f.object.label_icon(:quantity, :quantity)
+  = f.input :volume, as: :integer, hint: Box.human_attribute_name(:liters),
+            label: f.object.label_icon(:volume, :volume)
   div#field_free_ratio
     = f.input :free_ratio, as: :range, input_html: { min: 0, max: 100,
                step: 25, list: :free_space, style: '--min: 0; --max: 100;' },
-               wrapper: :horizontal_range
-  = f.input :issued_on
+               wrapper: :horizontal_range,
+               label: f.object.label_icon(:free_ratio, :free_ratio_50)
+  = f.input :issued_on, label: f.object.label_icon(:issued_on, :issued_on)
   div#field_tags
     = f.input :tag_ids, as: :select, collection: Tag.for_select,
-              input_html: { multiple: true, class: 'form-control form-control-chosen' }
+              input_html: { multiple: true, class: 'form-control form-control-chosen',
+              data: { placeholder: t('simple_form.prompts.options') } },
+              label: f.object.label_icon(:tag_ids, :tag)
   = f.input :picture, as: :hidden, input_html: { value: @box.cached_picture_data,
             id: :box_picture_hidden }
-  = f.input :picture, as: :file, wrapper: :custom_file
+  = f.input :picture, as: :file, wrapper: :custom_file,
+            label: f.object.label_icon(:picture, :picture)
   = f.button :submit, class: 'btn-outline-dark'
   datalist*{id: :free_space}
     option*{value: 0, label: '0%'}
@@ -28,33 +38,3 @@
     option*{value: 50, label: '50%'}
     option*{value: 75}
     option*{value: 100, label: '100%'}
-javascript:
-  $('.form-control-chosen').chosen();
-
-  var $fieldQuantity = $('#field_quantity');
-  var $fieldFreeRatio = $('#field_free_ratio');
-  var $fieldTags = $('#field_tags');
-
-  var $freeRatio = $('#box_free_ratio');
-  $freeRatio.css('--val', $freeRatio.val());
-  $freeRatio.on('change', function() {
-    $(this).css('--val', $(this).val());
-  });
-
-  if ($('#box_typology_cl').is(":checked")) {
-    $fieldQuantity.hide();
-    $fieldTags.hide();
-  }
-  if ($('#box_typology_st').is(":checked")) {
-    $fieldFreeRatio.hide();
-  }
-  $('#box_typology_cl').on('click', function() {
-    $fieldQuantity.hide();
-    $fieldTags.hide();
-    $fieldFreeRatio.show();
-  });
-  $('#box_typology_st').on('click', function() {
-    $fieldQuantity.show();
-    $fieldTags.show();
-    $fieldFreeRatio.hide();
-  });

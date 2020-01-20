@@ -1,11 +1,16 @@
 = simple_form_for([@box, @item], wrapper: :horizontal_form) do |f|
-  = f.input :box_id, collection: @box.spot.boxes.for_select, input_html: { class: 'form-control form-control-chosen' }
+  = f.input :box_id, collection: @box.spot.boxes.for_select, 
+            input_html: { class: 'form-control form-control-chosen' },
+            label: f.object.label_icon(:box_id, :box)
   = f.input :summary
-  = f.input :using, as: :boolean, wrapper: :horizontal_boolean_single
-  = f.input :quantity
-  = f.input :tag_ids, as: :select, collection: Tag.for_select, input_html: { multiple: true, class: 'form-control form-control-chosen' }
+  = f.input :using, as: :boolean, wrapper: :horizontal_boolean_single,
+            label: f.object.label_icon(:using, :using)
+  = f.input :quantity, label: f.object.label_icon(:quantity, :quantity)
+  = f.input :tag_ids, as: :select, collection: Tag.for_select,
+    input_html: { multiple: true, class: 'form-control form-control-chosen',
+    data: { placeholder: t('simple_form.prompts.options') } },
+    label: f.object.label_icon(:tag_ids, :tag)
   = f.input :picture, as: :hidden, input_html: { value: @item.cached_picture_data }
-  = f.input :picture, as: :file, wrapper: :custom_file
+  = f.input :picture, as: :file, wrapper: :custom_file,
+            label: f.object.label_icon(:picture, :picture)
   = f.button :submit, class: 'btn-outline-dark'
-javascript:
-  $('.form-control-chosen').chosen();

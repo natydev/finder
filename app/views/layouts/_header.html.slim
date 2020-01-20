@@ -7,28 +7,28 @@ nav.navbar.navbar-expand.navbar-dark.bg-dark
     ul.navbar-nav
       li.nav-item.ml-3
         = link_to searches_path, class: 'nav-link' do
-          i.fa.fa-search.mr-1
+          i.mr-1*{ class: Icon.css_for(:search) }
           = t("common.actions.search")
       li.nav-item.ml-3
         = link_to boxes_path, class: 'nav-link' do
-          i.fa.fa-box.mr-1
+          i.mr-1*{ class: Icon.css_for(:box) }
           = Box.model_name.human(count: 2)
       li.nav-item.ml-3
         = link_to tags_path, class: 'nav-link' do
-          i.fa.fa-tag.mr-1
+          i.mr-1*{ class: Icon.css_for(:tag) }
           = Tag.model_name.human(count: 2)
       li.nav-item.ml-3
         = link_to places_path, class: 'nav-link' do
-          i.fa.fa-building.mr-1
+          i.mr-1*{ class: Icon.css_for(:place) }
           = Place.model_name.human(count: 2)
     ul.navbar-nav.ml-auto
       li.nav-item.dropdown
         = link_to '#', class: 'nav-link dropdown-toggle mr-2',
                   id: 'navbarDropdownMenuLink', 'data-toggle' => 'dropdown',
                   'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
-                    i.fa.fa-user.mr-2
+                    i.mr-2*{ class: Icon.css_for(:user) }
                     = current_user.full_name
         div.dropdown-menu[aria-labelledby='navbarDropdownMenuLink']
           = link_to destroy_user_session_path, class: 'dropdown-item', method: :delete
-            i.fa.fa-power-off.mr-2
+            i.mr-2*{ class: Icon.css_for(:log_out) }
             = t('common.actions.sign_out')
