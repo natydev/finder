@@ -5,26 +5,26 @@
 = intro_actions(summary: Box.model_name.human(count: 1) + ": #{@box}") do
   = link_to_edit(@box)
   = link_to_list(boxes_path, entities: entities)
-
+= detail_row @box, :code do
+  = @box.badge_fullcode
 = detail_row @box, :summary
-= detail_row @box, :code
 = detail_row @box, :notes
 = detail_row @box, :using do
   = bool_to_icon(@box.using, icon: 'fas fa-external-link-alt')
-= detail_row @box, :quantity
-= detail_row @box, :place_name do
-  = @box.badge_place_name
-= detail_row @box, :spot_name do
-  = @box.badge_spot_name
+= detail_row @box, :quantity do
+  = @box.badge_quantity
+= detail_row @box, :badge_place_and_spot do
+  = @box.badge_place_and_spot
 = detail_row @box, :typology do
   = @box.badge_typology
 = detail_row @box, :volume do
-  = number_to_human(@box.volume, units: :volume)
+  = @box.badge_volume
 - if @box.cluster?
   = detail_row @box, :free_ratio do
-    = @box.free_ratio_human
+    = @box.free_ratio_icon
 - if @box.cluster?
-  = detail_row @box, :items_quantity
+  = detail_row @box, :items_quantity do
+    = @box.badge_items_quantity
 = detail_row @box, :issued_on do
   = @box.badge_issued_on
 = detail_row @box, :tags do
@@ -43,7 +43,7 @@ hr#related-list
   = intro_actions(summary: Item.model_name.human(count: :many), style: :included) do
     = link_to_new(@box, Item)
   = tabular_list(@box.items.order_historical.decorate) do |collection|
-    = tabular_head(Item, tag: :thead, labels: child_table_fields)
+    = tabular_icon_head(Item, tag: :thead, labels: child_table_fields)
     tbody
       - collection.each do |item|
         tr
@@ -57,4 +57,4 @@ hr#related-list
           td.action-link= link_to_show(@box, item)
           td.action-link= link_to_edit(@box, item)
           td.action-link= link_to_destroy(@box, item)
-    = tabular_head(Item, tag: :tfoot, labels: child_table_fields)
+    = tabular_icon_head(Item, tag: :tfoot, labels: child_table_fields)

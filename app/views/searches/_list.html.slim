@@ -1,5 +1,5 @@
 = tabular_list(list) do |collection|
-  = tabular_head(Item, tag: :thead, labels: table_fields)
+  = tabular_icon_head(Item, tag: :thead, labels: table_fields)
   tbody
     - collection.each do |b|
       - box = SearchDecorator.new(b)
@@ -14,5 +14,5 @@
         td= box.spot
         td.text-secondary= I18n.l(box.updated_at, format: :list)
         td.action-link= link_to_show(box.object)
-  = tabular_head(Item, tag: :tfoot, labels: table_fields)
+  = tabular_icon_head(Item, tag: :tfoot, labels: table_fields)
 = paginator(list)

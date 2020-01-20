@@ -1,5 +1,5 @@
 - breadcrumb :searches
-- table_fields = [:type, :summay, :box_code, :spot, :updated_at]
+- table_fields = [:typology, :summary, :code, :spot, :updated_at]
 
 = search_form_for @q, url: searches_path, wrapper: :search_horizontal_form,
  class: 'search' do |f|
@@ -31,8 +31,5 @@
 - else
   = render partial: "searches/dashboard", locals: { }
 javascript:
-  $(document).on("turbolinks:load", function () {
-    $('.form-control-chosen').chosen();
 
-  })
   

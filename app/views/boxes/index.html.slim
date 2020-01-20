@@ -5,7 +5,7 @@
   = link_to_new(Box)
 
 = tabular_list(@boxes) do |collection|
-  = tabular_head(Box, tag: :thead, labels: table_fields)
+  = tabular_icon_head(Box, tag: :thead, labels: table_fields)
   tbody
     - collection.each do |box|
       tr
@@ -25,5 +25,7 @@
         td.action-link= link_to_show(box)
         td.action-link= link_to_edit(box)
         td.action-link= link_to_destroy(box)
-  = tabular_head(Box, tag: :tfoot, labels: table_fields)
+  = tabular_icon_head(Box, tag: :tfoot, labels: table_fields)
 = paginator(@boxes)
+javascript:
+  
