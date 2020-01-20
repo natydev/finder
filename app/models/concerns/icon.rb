@@ -7,12 +7,14 @@ module Icon
   PLACE = 'building'
   SPOT = 'door-open'
   BOX = 'box'
+  TYPOLOGY = BOX
   STANDALONE = 'square'
   CLUSTER = 'layer-group'
   ITEM = 'shapes'
   TAG = 'tag'
   USING = 'external-link-alt'
   QUANTITY = 'calculator'
+  ITEMS_QUANTITY = ITEM
   PICTURE = 'camera'
   VOLUME = 'ruler-combined'
   FREE_RATIO_100 = 'battery-full'
@@ -29,6 +31,7 @@ module Icon
   PASSWORD = 'key'
   ARROW_RIGHT = 'arrow-right'
   TIME = 'clock'
+  UPDATED_AT = TIME
 
   def self.css_for(icon, style: 'fas')
     "#{style} fa-#{Icon.const_get(icon.to_s.upcase)}"
