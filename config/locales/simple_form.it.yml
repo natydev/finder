@@ -10,6 +10,9 @@ it:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Ricontrolla i campi sottostanti:"
+    prompts:
+      option: 'Scegli un opzione'
+      options: 'Scegli alcune opzioni'
     # Examples
     # labels:
     #   defaults:

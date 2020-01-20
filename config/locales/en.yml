@@ -22,6 +22,7 @@ en:
         typology: Tipology
         spot_name: Spot name
         place_name: Place name
+        badge_place_and_spot: Place and Spot
         owner: Owner
         owner_id: Owner
         issued_on: Issued on
@@ -77,7 +78,7 @@ en:
     updated_at: Updated at
   common:
     actions:
-      confirm_destroy: Confirm Delete?
+      confirm_destroy: '⚠️  Confirm Delete?'
       delete: Delete %{entity}
       edit: Edit %{entity}
       home: Home
@@ -89,7 +90,7 @@ en:
       search: Search
       sign_out: 'log-out'
     flash:
-      cannot_destroy: Error during delete operation - %{reason}
+      cannot_destroy: "🚫 Error during delete operation - %{reason}"
       created: Created with successful
       destroyed: Deleted with successful
       updated: Updated with successful

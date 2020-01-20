@@ -22,6 +22,7 @@ it:
         typology: Tipologia
         spot_name: Nome area
         place_name: Nome luogo
+        badge_place_and_spot: Luogo ed Area
         owner: Proprietario
         owner_id: Proprietario
         issued_on: Registrato il
@@ -77,7 +78,7 @@ it:
     updated_at: Aggiornato il
   common:
     actions:
-      confirm_destroy: Conferma eliminazione?
+      confirm_destroy: '⚠️ Conferma eliminazione?'
       delete: Elimina %{entity}
       edit: Modifica %{entity}
       home: Home
@@ -89,7 +90,7 @@ it:
       search: Cerca
       sign_out: 'esci'
     flash:
-      cannot_destroy: Errore durante l'eliminazione - %{reason}
+      cannot_destroy: "🚫 Errore durante l'eliminazione - %{reason}"
       created: Creato correttamente
       destroyed: Eliminato correttamente
       updated: Aggiornato correttamente
