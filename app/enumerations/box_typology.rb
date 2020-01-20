@@ -6,13 +6,13 @@ class BoxTypology < EnumerateIt::Base
 
   class Standalone
     def icon
-      'fa fa-bullseye'
+      Icon.css_for(:standalone)
     end
   end
 
   class Cluster
     def icon
-      'fa fa-box-open'
+      Icon.css_for(:cluster)
     end
   end
 end

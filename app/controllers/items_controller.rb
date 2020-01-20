@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
-    @item = @box.items.new
+    @item = @box.items.new.decorate
   end
 
   # GET /items/1/edit
@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
 
   private
     def set_box
-      @box = Box.find(params[:box_id])
+      @box = Box.find(params[:box_id]).decorate
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -87,6 +87,6 @@ class ItemsController < ApplicationController
     end
 
     def context_icon
-      @context_icon = "fa fa-shapes"
+      @context_icon = Icon.css_for(:item)
     end
 end

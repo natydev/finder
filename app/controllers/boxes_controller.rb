@@ -16,7 +16,7 @@ class BoxesController < ApplicationController
 
   # GET /boxes/new
   def new
-    @box = Box.new
+    @box = Box.new.decorate
   end
 
   # GET /boxes/1/edit
@@ -89,7 +89,7 @@ class BoxesController < ApplicationController
     end
 
     def context_icon
-      @context_icon = "fa fa-box"
+      @context_icon = Icon.css_for(:box)
     end
 
     def picture_and_save

@@ -86,6 +86,6 @@ class PlacesController < ApplicationController
     end
 
     def context_icon
-      @context_icon = "fa fa-building"
+      @context_icon = Icon.css_for(:place)
     end
 end

@@ -86,6 +86,6 @@ class TagsController < ApplicationController
     end
 
     def context_icon
-      @context_icon = "fa fa-tag"
+      @context_icon = Icon.css_for(:tag)
     end
 end
