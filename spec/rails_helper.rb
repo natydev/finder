@@ -14,6 +14,7 @@ end
 require 'rspec/rails'
 require 'simplecov'
 require 'paper_trail/frameworks/rspec'
+require 'chewy/rspec'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -76,6 +77,10 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       example.run
     end
+  end
+
+  config.before(:suite) do
+    Chewy.strategy(:bypass)
   end
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
