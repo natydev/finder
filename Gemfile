@@ -61,6 +61,7 @@ gem 'devise-bootstrap-views', '1.0'
 # sdk
 gem 'aws-sdk-s3', '1.60.1'
 gem 'chewy', '5.1.0'
+gem 'elasticsearch-dsl', '0.1.9'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
