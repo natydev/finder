@@ -80,7 +80,7 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
-    Chewy.strategy(:bypass)
+    Chewy.strategy(:urgent)
   end
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

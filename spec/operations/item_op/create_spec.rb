@@ -5,10 +5,15 @@ RSpec.describe ItemOp::Create do
   let(:box) { create(:box) }
   let(:item_attributes) { attributes_for(:item, box_id: box.id) }
   let(:subject) { described_class.(model_params: item_attributes, owner: current_user) }
+  after(:all){ ItemsIndex.purge }
   context 'call' do
     context 'when params are valid' do
       it "retruns a item object" do
         expect(subject.value!).to be_kind_of(Item)
+      end
+      it "update index on ES" do
+        expect{ subject.value! }.
+        to change{ ItemsIndex::Item.count }.by(1)
       end
     end
     context 'when item params are invalid' do
