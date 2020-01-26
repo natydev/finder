@@ -1,19 +1,18 @@
 - breadcrumb :places
-- table_fields = [:name, :created_at, :updated_at]
+- table_fields = [:name, :updated_at]
 
 = intro_actions(summary: Place.model_name.human(count: :many)) do
   = link_to_new(Place)
 
 = tabular_list(@places) do |collection|
-  = tabular_head(Place, tag: :thead, labels: table_fields)
+  = tabular_icon_head(Place, tag: :thead, labels: table_fields)
   tbody
     - collection.each do |place|
       tr
         td= place.name
-        td= I18n.l(place.created_at, format: :list)
         td= I18n.l(place.updated_at, format: :list)
         td.action-link= link_to_show(place)
         td.action-link= link_to_edit(place)
         td.action-link= link_to_destroy(place)
-  = tabular_head(Place, tag: :tfoot, labels: table_fields)
+  = tabular_icon_head(Place, tag: :tfoot, labels: table_fields)
 = paginator(@places)

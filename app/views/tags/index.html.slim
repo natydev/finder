@@ -1,21 +1,20 @@
 - breadcrumb :tags
-- table_fields = [:name, :created_at, :updated_at]
+- table_fields = [:name, :updated_at]
 
 = intro_actions(summary: Tag.model_name.human(count: :many)) do
   = link_to_new(Tag)
 
 = tabular_list(@tags) do |collection|
-  = tabular_head(Tag, tag: :thead, labels: table_fields)
+  = tabular_icon_head(Tag, tag: :thead, labels: table_fields)
   tbody
     - collection.each do |tag|
       tr
         td
           b= tag.badge
-        td= I18n.l(tag.created_at, format: :list)
         td= I18n.l(tag.updated_at, format: :list)
         td.action-link= link_to_show(tag)
         td.action-link= link_to_edit(tag)
         td.action-link= link_to_destroy(tag)
-  = tabular_head(Tag, tag: :tfoot, labels: table_fields)
+  = tabular_icon_head(Tag, tag: :tfoot, labels: table_fields)
 = paginator(@tags)
 

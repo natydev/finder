@@ -131,22 +131,20 @@ module CRUDHelper
     content_tag(tag, class: "thead-light") do
       content_tag(:tr) do
         labels.map do |label|
-          concat content_tag(:th, content_tag(:i, '',
-            class: icon_or_text(label), title: model.human_attribute_name(label),
-            data: { toggle: 'tooltip'}),
-          )
+          concat content_tag(:th, icon_or_text(label, model))
         end
         concat content_tag(:th, t("common.actions.title"), class: "text-center", colspan: 3)
       end
     end
   end
 
-  def icon_or_text(label)
-    begin
-      Icon.css_for(label)
-    rescue StandardError => e
-      nil
-    end
+  def icon_or_text(label, model)
+    content_tag(:i, '',
+      class: Icon.css_for(label), title: model.human_attribute_name(label),
+      data: { toggle: 'tooltip'}
+    )
+  rescue StandardError => e
+    model.human_attribute_name(label)
   end
 
   def paginator(items)

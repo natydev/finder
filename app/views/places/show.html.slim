@@ -18,7 +18,7 @@ hr
 = intro_actions(summary: Spot.model_name.human(count: :many), style: :included) do
   = link_to_new(@place, Spot)
 = tabular_list(@place.spots) do |collection|
-  = tabular_head(Spot, tag: :thead, labels: child_table_fields)
+  = tabular_icon_head(Spot, tag: :thead, labels: child_table_fields)
   tbody
     - collection.each do |spot|
       tr
@@ -28,4 +28,4 @@ hr
         td.action-link= link_to_show(@place, spot)
         td.action-link= link_to_edit(@place, spot)
         td.action-link= link_to_destroy(@place, spot)
-  = tabular_head(Spot, tag: :tfoot, labels: child_table_fields)
+  = tabular_icon_head(Spot, tag: :tfoot, labels: child_table_fields)
