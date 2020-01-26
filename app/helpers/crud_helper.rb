@@ -70,14 +70,14 @@ module CRUDHelper
   end
 
   def intro_actions(summary:, style: nil)
-    content_tag(:div, class: ["row intro-actions", style]) do
-      content_tag(:div, class: "col-9 summary") do
+    content_tag(:div, class: ["row intro-actions p-1 mb-lg-3 no-gutters", style]) do
+      content_tag(:div, class: "col-md-9 summary") do
         content_tag(:h2) do
           concat content_tag(:i, "", class: [@context_icon, "mr-2"]) if @context_icon.present?
           concat summary
         end
       end +
-      content_tag(:div, class: "col-3 context-actions") do
+      content_tag(:div, class: "col-md-3 context-actions pb-2") do
         yield
       end
     end
@@ -103,7 +103,7 @@ module CRUDHelper
   end
 
   def tabular_list(collection = nil)
-    content_tag(:div, class: "row") do
+    content_tag(:div, class: "row no-gutters") do
       content_tag(:div, class: "col-12 table-responsive") do
         if collection.any?
           content_tag(:table, class: "table table-hover table-sm") do

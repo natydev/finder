@@ -11,13 +11,13 @@ html lang="#{I18n.locale}" data-default-locale="#{I18n.default_locale}"
     = csrf_meta_tags
     = csp_meta_tag
 
-  body.container-fluid
+  body
     - if current_user.present?
       header= render "layouts/header"
-    main.container
+    main.container-fluid.px-0.px-md-2.px-lg-3
       = render "layouts/flashes", dismissible: true
-      = h breadcrumbs separator: " &rsaquo; ", style: :bootstrap, class: 'breadcrumb mt-3'
-      .shadow.p-3.mb-5.bg-white.rounded
+      = h breadcrumbs separator: " &rsaquo; ", style: :bootstrap, class: 'breadcrumb mt-md-3'
+      .shadow.p-lg-3.mb-lg-5.bg-white.rounded
         = yield
 
     footer.footer= render "layouts/footer"
