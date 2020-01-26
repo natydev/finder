@@ -79,9 +79,16 @@ RSpec.configure do |config|
     end
   end
 
+  # setup for Elastic Search:
   config.before(:suite) do
     Chewy.strategy(:urgent)
   end
+
+  config.after(:all) do
+    BoxesIndex.delete
+    ItemsIndex.delete
+  end
+
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.

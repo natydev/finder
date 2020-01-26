@@ -3,6 +3,8 @@ module ItemOp
     include ElaboratePicture
     include PersistRecord
     include ItemOp::BoxItemsQuantity
+    include ItemOp::IndexKlass
+    include SyncIndex
 
     option :model_klass, default: proc { Item }
 
@@ -12,6 +14,7 @@ module ItemOp
       .bind(method(:elaborate_picture))
       .bind(method(:box_items_quantity))
       .bind(method(:persist_record))
+      .bind(method(:sync_index))
     end
   end
 end

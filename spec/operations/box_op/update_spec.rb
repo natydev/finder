@@ -21,6 +21,16 @@ RSpec.describe BoxOp::Update do
       it "its picture is empty" do
         expect(subject.value!.picture).to be_nil
       end
+      context 'ES' do
+        let!(:persist_box) { box }
+        let!(:inc_index) { BoxesIndex.import }
+        it "update index on ES" do
+          expect{ subject.value! }.
+          to change{ 
+            BoxesIndex.query(match: {summary: 'modified'}).count
+          }
+        end
+      end
     end
     context 'when box params are invalid' do
       let!(:box_attributes) { attributes_for(:box, summary: '') }

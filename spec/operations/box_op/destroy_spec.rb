@@ -16,6 +16,14 @@ RSpec.describe BoxOp::Destroy do
       it "retruns a box object" do
         expect(subject.value!).to be_kind_of(Box)
       end
+      context 'ES' do
+        let!(:persist_box) { box }
+        let!(:inc_index) { BoxesIndex.import }
+        it "remove index on ES" do
+          expect{ subject.value! }.
+          to change{ BoxesIndex::Box.count }.by(-1)
+        end
+      end
     end
     context 'when box params are invalid' do
       it "retruns a an error object" do

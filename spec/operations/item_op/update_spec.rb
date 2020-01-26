@@ -21,6 +21,16 @@ RSpec.describe ItemOp::Update do
       it "its picture is empty" do
         expect(subject.value!.picture).to be_nil
       end
+      context 'ES' do
+        let!(:persist_item) { item }
+        let!(:inc_index) { ItemsIndex.import }
+        it "update index on ES" do
+          expect{ subject.value! }.
+          to change{ 
+            ItemsIndex.query(match: {summary: 'modified'}).count
+          }
+        end
+      end
     end
     context 'when item params are invalid' do
       let!(:item_attributes) { attributes_for(:item, summary: '') }

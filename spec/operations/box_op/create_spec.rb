@@ -10,6 +10,10 @@ RSpec.describe BoxOp::Create do
       it "retruns a box object" do
         expect(subject.value!).to be_kind_of(Box)
       end
+      it "add index on ES" do
+        expect{ subject.value! }.
+        to change{ BoxesIndex::Box.count }.by(1)
+      end
     end
     context 'when box params are invalid' do
       let!(:box_attributes) { attributes_for(:box, summary: '') }
