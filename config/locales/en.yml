@@ -102,7 +102,7 @@ en:
   time:
     formats:
       list: "%Y-%m-%d %H:%M"
-      long: "%H:%M:%S %Z %d/%m/%Y"
+      long: "%H:%M:%S %Z - %A %d %B %Y"
   date:
     formats:
       list: "%Y-%m-%d"
