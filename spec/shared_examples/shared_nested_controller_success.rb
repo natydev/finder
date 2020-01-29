@@ -9,13 +9,6 @@ module SharedExamples
         sign_in_user(owner)
       end
 
-      describe "GET #index" do
-        it "returns a success response" do
-          get :index, params: {parent_key => @parent_record.id}, session: {}
-          expect(response).to be_successful
-        end
-      end
-
       describe "GET #show" do
         it "returns a success response" do
           get :show, params: {parent_key => @parent_record.id,
