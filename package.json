@@ -9,7 +9,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "^4.0.0-rc.8",
+    "@rails/webpacker": "^4.2.0",
     "bootstrap": "^4.3.1",
     "bootstrap4c-chosen": "1.1.1",
     "cocoon-js": "0.0.5",
@@ -19,6 +19,6 @@
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.10.1"
+    "webpack-dev-server": "^3.9.0"
   }
 }
