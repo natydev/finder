@@ -7,12 +7,14 @@ class BoxTypology < EnumerateIt::Base
     cluster: 'cl'
   )
 
+  # Specific subclass to define standalone icon
   class Standalone
     def icon
       Icon.css_for(:standalone)
     end
   end
 
+  # Specific subclass to define cluster icon
   class Cluster
     def icon
       Icon.css_for(:cluster)

@@ -5,17 +5,17 @@ require 'rails_helper'
 RSpec.describe SearchDecorator, type: :decorator do
   let(:subject) { described_class.new(object) }
 
-  context '#is_item?' do
+  context '#item?' do
     context "when ['box_id'] is present" do
       let!(:object) { { 'box_id' => 2 } }
       it 'returns true' do
-        expect(subject).to be_is_item
+        expect(subject).to be_item
       end
     end
     context "when ['box_id'] is NOT present" do
       let!(:object) { {} }
       it 'returns false' do
-        expect(subject).to_not be_is_item
+        expect(subject).to_not be_item
       end
     end
   end
@@ -78,7 +78,7 @@ RSpec.describe SearchDecorator, type: :decorator do
     end
   end
   context 'summary' do
-    context 'when is_item? true' do
+    context 'when item? true' do
       let!(:object) { { 'box_id' => 1, 'item_summary' => 'hello' } }
       it 'returns item summary' do
         expect(subject.summary).to eq('hello')
@@ -86,7 +86,7 @@ RSpec.describe SearchDecorator, type: :decorator do
     end
   end
   context 'using_strike' do
-    context 'when is_item? true' do
+    context 'when item? true' do
       let!(:object) { { 'box_id' => 1 } }
       context 'when is using' do
         let!(:set_using) { object['item_using'] = true }
@@ -101,7 +101,7 @@ RSpec.describe SearchDecorator, type: :decorator do
         end
       end
     end
-    context 'when is_item? false' do
+    context 'when item? false' do
       let!(:object) { create(:box) }
       context 'when is using' do
         let!(:set_using) { object.using = true }

@@ -5,7 +5,7 @@ class SearchDecorator < Draper::Decorator
     PaginatingDecorator
   end
 
-  def is_item?
+  def item?
     object['box_id'].present?
   end
 
@@ -22,7 +22,7 @@ class SearchDecorator < Draper::Decorator
   end
 
   def picture_data
-    is_item? ? object['item_picture_data'] : object.picture_data
+    item? ? object['item_picture_data'] : object.picture_data
   end
 
   def typology_icon
@@ -30,7 +30,7 @@ class SearchDecorator < Draper::Decorator
   end
 
   def summary
-    is_item? ? object['item_summary'] : object.summary
+    item? ? object['item_summary'] : object.summary
   end
 
   def code
@@ -52,6 +52,6 @@ class SearchDecorator < Draper::Decorator
 private
 
   def using
-    is_item? ? object['item_using'] : object.using
+    item? ? object['item_using'] : object.using
   end
 end

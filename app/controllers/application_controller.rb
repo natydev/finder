@@ -24,8 +24,6 @@ private
       end
   end
 
-private
-
   def locale_valid?(locale)
     I18n.available_locales.map(&:to_s).include?(locale)
   end

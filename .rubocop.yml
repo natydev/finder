@@ -53,6 +53,7 @@ Style/Documentation:
     - 'config/application.rb'
     - 'app/models/*'
     - 'app/decorators/*'
+    - 'app/controllers/*'
 
 Style/MultilineBlockChain:
   Exclude:
@@ -79,7 +80,16 @@ Metrics/BlockLength:
 Metrics/AbcSize:
   Exclude:
     - 'app/operations/item_op/set_box_items_quantity.rb'
+    - 'app/controllers/spots_controller.rb'
+    - 'app/controllers/places_controller.rb'
+    - 'app/controllers/items_controller.rb'
+    - 'app/controllers/boxes_controller.rb'
 
 Lint/AmbiguousBlockAssociation:
   Exclude:
     - ''
+
+Layout/EndAlignment:
+  Exclude:
+    - 'app/controllers/searches_controller.rb'
+
