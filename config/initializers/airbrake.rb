@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if Rails.env.production?
   # Airbrake is an online tool that provides robust exception tracking in your Rails
   # applications. In doing so, it allows you to easily review errors, tie an error
@@ -60,9 +62,7 @@ if Rails.env.production?
   Airbrake.add_filter do |notice|
     # The library supports nested exceptions, so one notice can carry several
     # exceptions.
-    if notice[:errors].any? { |error| error[:type] == 'SignalException' }
-      notice.ignore!
-    end
+    notice.ignore! if notice[:errors].any? { |error| error[:type] == 'SignalException' }
   end
   # Attaches thread & fiber local variables along with general thread information.
   # Airbrake.add_filter(Airbrake::Filters::ThreadFilter.new)

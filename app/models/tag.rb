@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tag < ApplicationRecord
   include SelectModelConcern
 
@@ -7,7 +9,7 @@ class Tag < ApplicationRecord
 
   validates :name, presence: true
 
-  has_paper_trail :on => [:update, :destroy]
+  has_paper_trail on: %i[update destroy]
 
   def self.for_select
     as_select_options(order(:name))

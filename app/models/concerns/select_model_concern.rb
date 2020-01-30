@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# build 2 dimensional array for select html tag
 module SelectModelConcern
   extend ActiveSupport::Concern
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PictureDeco
   extend ActiveSupport::Concern
 
@@ -9,7 +11,7 @@ module PictureDeco
     image_tag_picture(:small)
   end
 
-  private
+private
 
   def image_tag_picture(size)
     h.image_tag(object.picture(size).url, class: 'img-fluid') if object.picture.present?

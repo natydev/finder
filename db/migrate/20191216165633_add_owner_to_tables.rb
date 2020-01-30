@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddOwnerToTables < ActiveRecord::Migration[6.0]
   def change
     add_reference :places, :owner, type: :uuid, null: false

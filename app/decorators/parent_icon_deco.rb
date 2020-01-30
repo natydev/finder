@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ParentIconDeco
   extend ActiveSupport::Concern
 
@@ -5,6 +7,5 @@ module ParentIconDeco
     h.raw h.content_tag(:i, '', class: "fa fa-#{icon} mr-1") + object.public_send(attrib)
   end
 
-  private
-
+private
 end

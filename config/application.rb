@@ -37,7 +37,6 @@ module Finder
     config.generators.system_tests = nil
 
     config.i18n.default_locale = :en
-    config.i18n.available_locales = [:en, :it]
-
+    config.i18n.available_locales = %i[en it]
   end
 end

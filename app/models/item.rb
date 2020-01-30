@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Item < ApplicationRecord
   include PictureUploader::Attachment(:picture)
 
@@ -13,7 +15,7 @@ class Item < ApplicationRecord
 
   validates :summary, presence: true
 
-  has_paper_trail :on => [:update, :destroy]
+  has_paper_trail on: %i[update destroy]
 
   scope :order_historical, -> { order(updated_at: :desc) }
 

@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'dry/monads'
 
+# Common base class for operations of kind create
 class BaseCreator < OperationBase
   include PersistRecord
 
@@ -11,7 +14,7 @@ class BaseCreator < OperationBase
 
   def call
     prepare_record
-    .bind(method(:persist_record))
+      .bind(method(:persist_record))
   end
 
   def prepare_record
@@ -26,5 +29,4 @@ class BaseCreator < OperationBase
       end
     end
   end
-
 end

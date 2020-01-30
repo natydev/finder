@@ -6,8 +6,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.0.1'
 gem 'rack', '2.0.8'
+gem 'rails', '6.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '1.1.4'
 # Use Puma as the app server
@@ -32,23 +32,23 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # tools
 gem 'configatron', '4.5.1'
 gem 'enumerate_it', '3.0.0'
-gem 'shrine', '3.1.0'
-gem "image_processing", "1.9.3"
+gem 'image_processing', '1.9.3'
 gem 'paper_trail', '10.3.1'
+gem 'shrine', '3.1.0'
 
 # dry
 gem 'dry-initializer', '3.0.2'
 gem 'dry-monads', '1.3.3'
 
 # Views
+gem 'bootstrap4-kaminari-views', '1.0.1'
+gem 'cocoon', '1.2.14'
+gem 'draper', '3.1.0'
 gem 'gretel', '3.0.9'
 gem 'kaminari', '1.1.1'
-gem "bootstrap4-kaminari-views", "1.0.1"
+gem 'ransack', '2.3.0'
 gem 'simple_form', '5.0.1'
 gem 'slim-rails', '3.2.0'
-gem 'cocoon', '1.2.14'
-gem 'ransack', '2.3.0'
-gem 'draper', '3.1.0'
 
 # Localization
 gem 'i18n-tasks', '0.9.29'
@@ -65,11 +65,11 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'annotate', '3.0.3'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails', '2.7.5'
   gem 'factory_bot_rails', '5.1.1'
   gem 'faker', '2.7.0'
   gem 'rspec-rails', '4.0.0.beta3'
   gem 'rubocop-rails_config', '0.3.1'
-  gem 'dotenv-rails', '2.7.5'
 end
 
 group :test do
@@ -91,8 +91,8 @@ group :development do
 end
 
 group :production do
-  gem 'scout_apm', '2.6.6'
   gem 'airbrake', '9.5.5'
+  gem 'scout_apm', '2.6.6'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

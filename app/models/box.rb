@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Box < ApplicationRecord
   include SelectModelConcern
   include UpcaseCodeCallback
@@ -19,12 +21,12 @@ class Box < ApplicationRecord
   validates :volume, numericality: { only_integer: true, allow_nil: true }
   with_options if: :standalone? do |box|
     box.validates :quantity, presence: true, numericality: { only_integer: true,
-      greater_than_or_equal_to: 1, less_than: 1000 }
+                                                             greater_than_or_equal_to: 1, less_than: 1000 }
   end
 
   with_options if: :cluster? do |box|
     box.validates :free_ratio, presence: true, numericality: { only_integer: true,
-      greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
+                                                               greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   end
 
   after_initialize do |record|
@@ -41,10 +43,10 @@ class Box < ApplicationRecord
     record.tags = [] if record.cluster?
   end
 
-  has_paper_trail :on => [:update, :destroy]
+  has_paper_trail on: %i[update destroy]
 
   has_enumeration_for :typology,
-    with: BoxTypology, create_helpers: { polymorphic: true }
+                      with: BoxTypology, create_helpers: { polymorphic: true }
 
   scope :order_historical, -> { order(updated_at: :desc) }
 

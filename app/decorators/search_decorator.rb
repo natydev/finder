@@ -1,5 +1,6 @@
-class SearchDecorator < Draper::Decorator
+# frozen_string_literal: true
 
+class SearchDecorator < Draper::Decorator
   def self.collection_decorator_class
     PaginatingDecorator
   end
@@ -13,9 +14,7 @@ class SearchDecorator < Draper::Decorator
   end
 
   def picture_icon
-    if picture?
-      h.raw h.content_tag(:i, '', class: 'far fa-image ml-1')
-    end
+    h.raw h.content_tag(:i, '', class: 'far fa-image ml-1') if picture?
   end
 
   def picture?
@@ -50,10 +49,9 @@ class SearchDecorator < Draper::Decorator
     'using' if using.present?
   end
 
-  private
+private
 
   def using
     is_item? ? object['item_using'] : object.using
   end
-
 end

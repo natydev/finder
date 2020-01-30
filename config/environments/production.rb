@@ -3,8 +3,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_controller.default_url_options = {:host => ENV['DOMAIN'], protocol: 'http'}
-  config.action_mailer.default_url_options = { :host => ENV['DOMAIN'], protocol: 'http' }
+  config.action_controller.default_url_options = { host: ENV['DOMAIN'], protocol: 'http' }
+  config.action_mailer.default_url_options = { host: ENV['DOMAIN'], protocol: 'http' }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -27,7 +27,7 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
@@ -118,12 +118,11 @@ Rails.application.configure do
 end
 
 ActionMailer::Base.smtp_settings = {
-  :port           => ENV['MAILGUN_SMTP_PORT'],
-  :address        => ENV['MAILGUN_SMTP_SERVER'],
-  :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-  :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-  :domain         => ENV['DOMAIN'],
-  :authentication => :plain,
+  port: ENV['MAILGUN_SMTP_PORT'],
+  address: ENV['MAILGUN_SMTP_SERVER'],
+  user_name: ENV['MAILGUN_SMTP_LOGIN'],
+  password: ENV['MAILGUN_SMTP_PASSWORD'],
+  domain: ENV['DOMAIN'],
+  authentication: :plain
 }
 ActionMailer::Base.delivery_method = :smtp
-

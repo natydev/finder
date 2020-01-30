@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PlaceDecorator < Draper::Decorator
   include TimestampsDeco
   include BaseErrorDeco
@@ -7,5 +9,4 @@ class PlaceDecorator < Draper::Decorator
   end
 
   delegate_all
-
 end

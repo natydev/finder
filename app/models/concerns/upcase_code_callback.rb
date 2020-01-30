@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# upper case #code attribute in ActiveRecord
 module UpcaseCodeCallback
   extend ActiveSupport::Concern
 

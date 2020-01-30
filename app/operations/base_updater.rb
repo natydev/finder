@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'dry/monads'
 
+# Common base class for operations of kind update
 class BaseUpdater < OperationBase
   include LogError
   include CheckOwnership
@@ -11,7 +14,7 @@ class BaseUpdater < OperationBase
 
   def call
     check_ownership
-    .bind{ update_record }
+      .bind { update_record }
   end
 
   def update_record
@@ -26,5 +29,4 @@ class BaseUpdater < OperationBase
       end
     end
   end
-
 end

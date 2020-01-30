@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TagDecorator < Draper::Decorator
   include TimestampsDeco
   include BadgeTagDeco
@@ -11,5 +13,4 @@ class TagDecorator < Draper::Decorator
   def badge
     badge_tag(object)
   end
-
 end

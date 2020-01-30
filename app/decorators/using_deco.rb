@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Shred using string for Box and Item
 module UsingDeco
   extend ActiveSupport::Concern
 

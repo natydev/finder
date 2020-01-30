@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
+# Raise an error and log it when owner mismatching
 module LogError
-
-
   def owner_log_error
     log_error(ActiveRecord::AttributeAssignmentError,
               'Record is not belongs to current owner')

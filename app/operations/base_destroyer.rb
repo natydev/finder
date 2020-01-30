@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'dry/monads'
 
+# Common base class for operations of kind destroy
 class BaseDestroyer < OperationBase
   include LogError
   include CheckOwnership
@@ -10,7 +13,7 @@ class BaseDestroyer < OperationBase
 
   def call
     check_ownership
-    .bind{ destroy_record }
+      .bind { destroy_record }
   end
 
   def destroy_record
@@ -24,5 +27,4 @@ class BaseDestroyer < OperationBase
       end
     end
   end
-
 end

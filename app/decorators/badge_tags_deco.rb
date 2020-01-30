@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BadgeTagsDeco
   extend ActiveSupport::Concern
   include BadgeTagDeco

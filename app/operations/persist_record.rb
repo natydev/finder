@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Common persister to db
 module PersistRecord
   def persist_record(record)
     Try do

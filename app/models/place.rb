@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Place < ApplicationRecord
   include SelectModelConcern
 
@@ -6,7 +8,7 @@ class Place < ApplicationRecord
 
   validates :name, presence: true
 
-  has_paper_trail :on => [:update, :destroy]
+  has_paper_trail on: %i[update destroy]
 
   def self.for_select
     as_select_options(order(:name))

@@ -1,1 +1,85 @@
 inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.6.5
+  DisplayCopNames: true
+
+  Exclude:
+    - db/**/*
+    - node_modules/**/*
+    - 'lib/tasks/auto_annotate_models.rake'
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+    - 'bin/bundle'
+    - 'app/helpers/crud_helper.rb'
+
+Layout/AccessModifierIndentation:
+  Exclude:
+    - 'bin/bundle'
+
+Metrics/ClassLength:
+  Description: 'Avoid classes longer than x lines of code.'
+  Enabled: true
+  CountComments: false  # count full line comments?
+  Max: 100
+  Exclude:
+    - ''
+
+Metrics/ModuleLength:
+  Description: 'Avoid modules longer than x lines of code.'
+  Enabled: true
+  CountComments: false  # count full line comments?
+  Max: 100
+  Exclude:
+    - 'spec/shared_examples/shared_nested_controller_success.rb'
+    - 'app/helpers/crud_helper.rb'
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/Documentation:
+  Exclude:
+    - 'db/**/*'
+    - 'spec/**/*'
+    - 'config/application.rb'
+    - 'app/models/*'
+    - 'app/decorators/*'
+
+Style/MultilineBlockChain:
+  Exclude:
+    - 'app/operations/**/*'
+
+AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Style/NumericPredicate:
+  EnforcedStyle: predicate
+
+Style/WordArray:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - db/**/*
+    - 'config/initializers/simple_form_bootstrap.rb'
+  ExcludedMethods:
+    - describe
+    - context
+    - task
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/operations/item_op/set_box_items_quantity.rb'
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - ''

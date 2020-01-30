@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 crumb :root do
-  link I18n.t("common.actions.home"), root_path
+  link I18n.t('common.actions.home'), root_path
 end
 
 crumb :searches do
-  link I18n.t("common.actions.search"), searches_path
+  link I18n.t('common.actions.search'), searches_path
 end
 
 crumb :places do
@@ -18,7 +18,7 @@ crumb :place do |place|
 end
 
 crumb :new_place do
-  link I18n.t("common.actions.new", entity: Place.model_name.human(count: 1)), ""
+  link I18n.t('common.actions.new', entity: Place.model_name.human(count: 1)), ''
   parent :places
 end
 
@@ -31,7 +31,7 @@ crumb :spot do |place, spot|
 end
 
 crumb :new_spot do |place|
-  link I18n.t("common.actions.new", entity: Spot.model_name.human(count: 1)), ""
+  link I18n.t('common.actions.new', entity: Spot.model_name.human(count: 1)), ''
   parent place
 end
 
@@ -45,7 +45,7 @@ crumb :box do |box|
 end
 
 crumb :new_box do
-  link I18n.t("common.actions.new", entity: Box.model_name.human(count: 1)), ""
+  link I18n.t('common.actions.new', entity: Box.model_name.human(count: 1)), ''
   parent :boxes
 end
 
@@ -58,7 +58,7 @@ crumb :item do |box, item|
 end
 
 crumb :new_item do |box|
-  link I18n.t("common.actions.new", entity: Box.model_name.human(count: 1)), ""
+  link I18n.t('common.actions.new', entity: Box.model_name.human(count: 1)), ''
   parent box
 end
 
@@ -72,6 +72,6 @@ crumb :tag do |tag|
 end
 
 crumb :new_tag do
-  link I18n.t("common.actions.new", entity: Tag.model_name.human(count: 1)), ""
+  link I18n.t('common.actions.new', entity: Tag.model_name.human(count: 1)), ''
   parent :tags
 end

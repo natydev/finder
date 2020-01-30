@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # If a particular configuration value is required but not set,
 # it's appropriate to raise an error.
 # If any of the configuration keys above are not set, your application will

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BoxDecorator < Draper::Decorator
   include TimestampsDeco
   include PictureDeco
@@ -18,14 +20,14 @@ class BoxDecorator < Draper::Decorator
     value_icon(
       if object.spot_code.present?
         h.content_tag(
-          :small, "#{object.spot_code}-", 
-          class: "code-secondary mr-1"
+          :small, "#{object.spot_code}-",
+          class: 'code-secondary mr-1'
         )
       end.to_s +
       h.content_tag(
-        :big, object.code, 
-        class: "code-master"
-      ), 
+        :big, object.code,
+        class: 'code-master'
+      ),
       :code
     )
   end
@@ -73,5 +75,4 @@ class BoxDecorator < Draper::Decorator
   def badge_items_quantity
     value_icon('', :item) + value_icon(object.items_quantity, :quantity)
   end
-
 end

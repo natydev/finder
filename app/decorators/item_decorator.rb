@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ItemDecorator < Draper::Decorator
   include TimestampsDeco
   include PictureDeco
@@ -11,5 +13,4 @@ class ItemDecorator < Draper::Decorator
   def badge_box_code
     parent_icon(:box_code, 'box')
   end
-
 end

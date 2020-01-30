@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBoxTags < ActiveRecord::Migration[6.0]
   def change
     create_table :box_tags, id: :uuid do |t|

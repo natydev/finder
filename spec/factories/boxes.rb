@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :box do
-
     transient do
       has_picture { false }
     end
@@ -11,8 +12,8 @@ FactoryBot.define do
     code { Faker::Lorem.unique.characters(number: 3).upcase }
     issued_on { Faker::Date.between(from: 3.years.ago, to: Date.today) }
     typology { BoxTypology.list.sample }
-    quantity { (typology == BoxTypology::STANDALONE) ? 1 : nil }
-    free_ratio { (typology == BoxTypology::CLUSTER) ? [0,25,50,75,100].sample : nil }
+    quantity { typology == BoxTypology::STANDALONE ? 1 : nil }
+    free_ratio { typology == BoxTypology::CLUSTER ? [0, 25, 50, 75, 100].sample : nil }
     volume { [rand(0..300), nil].sample }
     using { Faker::Boolean.boolean(true_ratio: 0.2) }
     picture_data { TestPicture.file_data if has_picture }
