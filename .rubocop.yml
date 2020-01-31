@@ -68,6 +68,11 @@ Style/NumericPredicate:
 Style/WordArray:
   Enabled: false
 
+Style/RegexpLiteral:
+  EnforcedStyle: mixed
+  Exclude:
+    - 'Guardfile'
+
 Metrics/BlockLength:
   Exclude:
     - db/**/*
@@ -87,7 +92,7 @@ Metrics/AbcSize:
 
 Lint/AmbiguousBlockAssociation:
   Exclude:
-    - ''
+    - 'spec/**/*'
 
 Layout/EndAlignment:
   Exclude:

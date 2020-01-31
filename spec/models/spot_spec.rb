@@ -16,6 +16,9 @@ RSpec.describe Spot, type: :model do
     it '#place_name to place' do
       expect(subject.place_name).to eq(subject.place.name)
     end
+    it '#place_code to place' do
+      expect(subject.place_code).to eq(subject.place.code)
+    end
   end
   it '#to_s returns the name' do
     expect(subject.to_s).to eq(subject.name)
@@ -32,7 +35,7 @@ RSpec.describe Spot, type: :model do
     it 'does not increment version on create' do
       subject = build(:spot)
       expect { subject.save }
-        .to_not change(subject.versions.count)
+        .to_not change { subject.versions.count }
     end
     it 'increment version on update' do
       subject

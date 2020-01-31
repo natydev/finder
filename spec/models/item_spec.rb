@@ -37,7 +37,7 @@ RSpec.describe Item, type: :model do
     it 'does not increment version on create' do
       subject = build(:item)
       expect { subject.save }
-        .to_not change(subject.versions.count)
+        .to_not change { subject.versions.count }
     end
     it 'increment version on update' do
       subject

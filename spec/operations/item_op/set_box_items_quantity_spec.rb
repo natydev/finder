@@ -46,7 +46,7 @@ RSpec.describe ItemOp::SetBoxItemsQuantity do
       context 'when quantity is not changed' do
         let!(:change_item_summary) { item.update(summary: 'modified') }
         it 'does not change box.items_quantity' do
-          expect { subject }.to_not change(box.items_quantity)
+          expect { subject }.to_not change { box.items_quantity }
         end
       end
     end

@@ -24,7 +24,7 @@ RSpec.describe Tag, type: :model do
     it 'does not increment version on create' do
       subject = build(:tag)
       expect { subject.save }
-        .to_not change(subject.versions.count)
+        .to_not change { subject.versions.count }
     end
     it 'increment version on update' do
       subject
