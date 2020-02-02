@@ -1,5 +1,5 @@
 - breadcrumb :places
-- table_fields = [:name, :updated_at]
+- table_fields = [:name, :code, :updated_at]
 
 = intro_actions(summary: Place.model_name.human(count: :many)) do
   = link_to_new(Place)
@@ -10,6 +10,7 @@
     - collection.each do |place|
       tr
         td= place.name
+        td= place.code
         td= I18n.l(place.updated_at, format: :list)
         td.action-link= link_to_show(place)
         td.action-link= link_to_edit(place)

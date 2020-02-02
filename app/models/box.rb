@@ -12,7 +12,7 @@ class Box < ApplicationRecord
   has_many :tags, through: :box_tags
 
   delegate :name, :code, to: :spot, prefix: true, allow_nil: true
-  delegate :place_name, to: :spot, prefix: false, allow_nil: true
+  delegate :place_name, :place_code, to: :spot, prefix: false, allow_nil: true
 
   validates :summary, presence: true
   validates :code, presence: true, uniqueness: { scope: :owner_id },

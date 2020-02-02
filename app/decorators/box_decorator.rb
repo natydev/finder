@@ -8,6 +8,8 @@ class BoxDecorator < Draper::Decorator
   include ParentIconDeco
   include BaseErrorDeco
   include IconDeco
+  include BadgePlaceCodeDeco
+  include PrimaryBadgeCodeDeco
 
   def self.collection_decorator_class
     PaginatingDecorator
@@ -18,16 +20,12 @@ class BoxDecorator < Draper::Decorator
 
   def badge_fullcode
     value_icon(
-      if object.spot_code.present?
-        h.content_tag(
-          :small, "#{object.spot_code}-",
-          class: 'code-secondary mr-1'
-        )
-      end.to_s +
+      badge_place_code.to_s +
       h.content_tag(
-        :big, object.code,
-        class: 'code-master'
-      ),
+        :small, "#{object.spot_code}-",
+        class: 'code-secondary'
+      ).to_s +
+      primary_badge_code,
       :code
     )
   end

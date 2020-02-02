@@ -85,7 +85,7 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def place_params
-    params.require(:place).permit(:name)
+    params.require(:place).permit(:name, :code)
   end
 
   def context_icon

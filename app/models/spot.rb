@@ -7,7 +7,7 @@ class Spot < ApplicationRecord
   belongs_to :place
   has_many :boxes
 
-  delegate :name, to: :place, prefix: true, allow_nil: true
+  delegate :name, :code, to: :place, prefix: true, allow_nil: true
 
   validates :name, presence: true
   validates :code, presence: true, uniqueness: { scope: :place_id }

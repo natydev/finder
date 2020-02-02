@@ -7,6 +7,7 @@ class Place < ApplicationRecord
   has_many :spots, dependent: :restrict_with_error
 
   validates :name, presence: true
+  validates :code, presence: true, uniqueness: { scope: :owner_id }
 
   has_paper_trail on: %i[update destroy]
 

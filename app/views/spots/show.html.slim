@@ -9,7 +9,8 @@
 = detail_row @spot, :place_name do
   = @spot.badge_place_name
 = detail_row @spot, :name
-= detail_row @spot, :code
+= detail_row @spot, :code do
+  = @spot.badge_fullcode
 = detail_row @spot, :created_at do
   = @spot.created_at_long
 = detail_row @spot, :updated_at do

@@ -7,6 +7,7 @@
   = link_to_list(places_path, entities: entities)
 
 = detail_row @place, :name
+= detail_row @place, :code
 = detail_row @place, :created_at do
   = @place.created_at_long
 = detail_row @place, :updated_at do
