@@ -89,6 +89,7 @@ Metrics/AbcSize:
     - 'app/controllers/places_controller.rb'
     - 'app/controllers/items_controller.rb'
     - 'app/controllers/boxes_controller.rb'
+    - 'app/controllers/tags_controller.rb'
 
 Lint/AmbiguousBlockAssociation:
   Exclude:

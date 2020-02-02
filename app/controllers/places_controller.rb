@@ -16,7 +16,7 @@ class PlacesController < ApplicationController
 
   # GET /places/new
   def new
-    @place = Place.new
+    @place = Place.new.decorate
   end
 
   # GET /places/1/edit
@@ -32,7 +32,7 @@ class PlacesController < ApplicationController
         format.html { redirect_to @place, notice: t('common.flash.created') }
         format.json { render :show, status: :created, location: @place }
       else
-        @place = @place_op.failure
+        @place = @place_op.failure.decorate
         format.html { render :new }
         format.json { render json: @place, status: :unprocessable_entity }
       end
@@ -50,7 +50,7 @@ class PlacesController < ApplicationController
         format.html { redirect_to @place, notice: t('common.flash.updated') }
         format.json { render :show, status: :ok, location: @place }
       else
-        @place = @place_op.failure
+        @place = @place_op.failure.decorate
         format.html { render :edit }
         format.json { render json: @place.errors, status: :unprocessable_entity }
       end

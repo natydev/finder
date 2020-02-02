@@ -34,7 +34,7 @@ class BoxesController < ApplicationController
         format.html { redirect_to @box, notice: t('common.flash.created') }
         format.json { render :show, status: :created, location: @box }
       else
-        @box = @box_op.failure
+        @box = @box_op.failure.decorate
         format.html { render :new }
         format.json { render json: @box.errors, status: :unprocessable_entity }
       end
@@ -52,7 +52,7 @@ class BoxesController < ApplicationController
         format.html { redirect_to @box, notice: t('common.flash.updated') }
         format.json { render :show, status: :ok, location: @box }
       else
-        @box = @box_op.failure
+        @box = @box_op.failure.decorate
         format.html { render :edit }
         format.json { render json: @box.errors, status: :unprocessable_entity }
       end

@@ -16,7 +16,7 @@ class TagsController < ApplicationController
 
   # GET /tags/new
   def new
-    @tag = Tag.new
+    @tag = Tag.new.decorate
   end
 
   # GET /tags/1/edit
@@ -32,7 +32,7 @@ class TagsController < ApplicationController
         format.html { redirect_to @tag, notice: t('common.flash.created') }
         format.json { render :show, status: :created, location: @tag }
       else
-        @tag = @tag_op.failure
+        @tag = @tag_op.failure.decorate
         format.html { render :new }
         format.json { render json: @tag, status: :unprocessable_entity }
       end
@@ -50,7 +50,7 @@ class TagsController < ApplicationController
         format.html { redirect_to @tag, notice: t('common.flash.updated') }
         format.json { render :show, status: :ok, location: @tag }
       else
-        @tag = @tag_op.failure
+        @tag = @tag_op.failure.decorate
         format.html { render :edit }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
       end

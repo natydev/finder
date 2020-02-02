@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to box_path(@box, anchor: 'related-list'), notice: t('common.flash.created') }
         format.json { render :show, status: :created, location: @item }
       else
-        @item = @item_op.failure
+        @item = @item_op.failure.decorate
         format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to [@box, @item], notice: t('common.flash.updated') }
         format.json { render :show, status: :ok, location: @item }
       else
-        @item = @item_op.failure
+        @item = @item_op.failure.decorate
         format.html { render :edit }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
