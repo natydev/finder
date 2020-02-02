@@ -22,6 +22,6 @@ class SpotDecorator < Draper::Decorator
   end
 
   def badge_place_name
-    parent_icon(:place_name, 'building')
+    parent_icon(:place_name, Icon::PLACE)
   end
 end

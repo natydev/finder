@@ -6,7 +6,7 @@
   = link_to_edit(@box, @item)
   = link_to_list(polymorphic_path([@box]), entities: entities)
 = detail_row @item, :box_code do
-  = @item.badge_box_code
+  = @item.badge_fullcode
 = detail_row @item, :summary
 = detail_row @item, :using do
   = bool_to_icon(@item.using, icon: 'fas fa-external-link-alt')

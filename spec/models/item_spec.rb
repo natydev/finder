@@ -14,8 +14,8 @@ RSpec.describe Item, type: :model do
     expect(subject.tags).to eq([tag])
   end
   context 'delegates' do
-    it '#box_code to box' do
-      expect(subject.box_code).to eq(subject.box.code)
+    it '#code to box' do
+      expect(subject.code).to eq(subject.box.code)
     end
     it '#box_summary to box' do
       expect(subject.box_summary).to eq(subject.box.summary)

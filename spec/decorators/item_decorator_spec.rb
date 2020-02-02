@@ -6,10 +6,14 @@ RSpec.describe ItemDecorator, type: :decorator do
   let(:object) { create(:item) }
   let(:subject) { described_class.new(object) }
 
-  context '#badge_box_code' do
-    it 'return box code prefixed with specific icon' do
-      expect(subject.badge_box_code)
-        .to eq("<i class=\"fa fa-box mr-1\"></i>#{object.box_code}")
+  context 'badge_fullcode' do
+    it 'returns place, spot and box code with icon' do
+      o = '<i class="fas fa-barcode"></i> ' \
+          "<small class=\"code-secondary\">#{object.place_code}-</small>" \
+          "<small class=\"code-secondary\">#{object.spot_code}-</small>" \
+          "<big class=\"code-master ml-1\">#{object.code}</big>"
+      expect(subject.badge_fullcode)
+        .to eq(o)
     end
   end
   context '#badge_tags' do

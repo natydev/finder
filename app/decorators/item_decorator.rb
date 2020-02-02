@@ -7,10 +7,9 @@ class ItemDecorator < Draper::Decorator
   include BadgeTagsDeco
   include ParentIconDeco
   include IconDeco
+  include BadgePlaceCodeDeco
+  include PrimaryBadgeCodeDeco
+  include BadgeFullcodeDeco
 
   delegate_all
-
-  def badge_box_code
-    parent_icon(:box_code, 'box')
-  end
 end

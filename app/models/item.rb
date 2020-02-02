@@ -8,8 +8,8 @@ class Item < ApplicationRecord
   has_many :item_tags, dependent: :destroy
   has_many :tags, through: :item_tags
 
-  delegate :code, to: :box, prefix: true, allow_nil: true
-  delegate :summary, to: :box, prefix: true, allow_nil: true
+  delegate :code, :spot_code, :place_code, to: :box, prefix: false, allow_nil: true
+  delegate :summary, :code, to: :box, prefix: true, allow_nil: true
   delegate :spot, to: :box, prefix: false, allow_nil: true
   delegate :spot_id, to: :box, prefix: false, allow_nil: true
 
