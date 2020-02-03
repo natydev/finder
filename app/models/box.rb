@@ -52,6 +52,8 @@ class Box < ApplicationRecord
 
   has_enumeration_for :typology,
                       with: BoxTypology, create_helpers: { polymorphic: true }
+  has_enumeration_for :side,
+                      with: SpotSide, create_helpers: true
 
   scope :order_historical, -> { order(updated_at: :desc) }
 

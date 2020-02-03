@@ -89,7 +89,7 @@ private
   def box_params
     params.require(:box).permit(:spot_id, :owner_id, :summary, :volume,
                                 :code_prefix, :issued_on, :typology, :picture, :quantity, :free_ratio,
-                                :using, :notes, tag_ids: [])
+                                :using, :notes, :side, tag_ids: [])
   end
 
   def context_icon

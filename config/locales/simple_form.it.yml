@@ -11,6 +11,7 @@ it:
     error_notification:
       default_message: "Ricontrolla i campi sottostanti:"
     prompts:
+      option_or_empty: 'Scegli o lascia vuoto'
       option: 'Scegli un opzione'
       options: 'Scegli alcune opzioni'
     # Examples

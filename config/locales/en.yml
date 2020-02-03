@@ -3,6 +3,16 @@ en:
     box_typology:
       standalone: 'Standalone'
       cluster: 'Cluster'
+    spot_side:
+      north: North
+      north_east: North East
+      east: East
+      south_east: South East
+      south: South
+      south_west: South West
+      west: West
+      north_west: North West
+      central: Central
   activerecord:
     attributes:
       place:
@@ -21,6 +31,7 @@ en:
         code_prefix_hint: 'min 1 to max 3 a-z chars'
         spot: Spot
         spot_id: Spot
+        side: Side
         typology: Tipology
         spot_name: Spot name
         place_name: Place name

@@ -3,6 +3,16 @@ it:
     box_typology:
       standalone: 'Univoco'
       cluster: 'Gruppo'
+    spot_side:
+      north: Nord
+      north_east: Nord Est
+      east: Est
+      south_east: Sud Est
+      south: Sud
+      south_west: Sud Ovest
+      west: Ovest
+      north_west: Nord Ovest
+      central: Centrale
   activerecord:
     attributes:
       place:
@@ -21,6 +31,7 @@ it:
         code_prefix_hint: 'da min. 1 a max. 3 caratteri alfabetici (a-z)'
         spot: Area
         spot_id: Area
+        side: Lato
         typology: Tipologia
         spot_name: Nome area
         place_name: Nome luogo

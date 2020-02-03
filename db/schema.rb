@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_02_141432) do
+ActiveRecord::Schema.define(version: 2020_02_03_152112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_141432) do
     t.string "notes"
     t.string "code_prefix", limit: 5
     t.integer "code_number"
+    t.string "side", limit: 4
     t.index ["code_number"], name: "index_boxes_on_code_number"
     t.index ["code_prefix"], name: "index_boxes_on_code_prefix"
     t.index ["owner_id"], name: "index_boxes_on_owner_id"

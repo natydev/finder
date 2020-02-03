@@ -11,6 +11,7 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     prompts:
+      option_or_empty: 'Select or left empty'
       option: 'Select an option'
       options: 'Select some options'
     # Examples

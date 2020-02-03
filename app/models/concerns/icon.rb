@@ -6,6 +6,7 @@ module Icon
 
   PLACE = 'building'
   SPOT = 'door-open'
+  SIDE = 'compass'
   BOX = 'box'
   TYPOLOGY = BOX
   STANDALONE = 'square'

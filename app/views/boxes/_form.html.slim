@@ -3,6 +3,10 @@
    input_html: { class: 'form-control form-control-chosen',
    data: { placeholder: t('simple_form.prompts.option') } },
    label: f.object.label_icon(:spot_id, :spot)
+  = f.input :side, as: :select, collection: SpotSide.to_a,
+    input_html: { class: 'form-control form-control-chosen',
+    data: { placeholder: t('simple_form.prompts.option_or_empty') } },
+    label: f.object.label_icon(:side, :side)
   = f.input :typology, as: :radio_buttons,
      collection: BoxTypology.to_h.map{|t| [f.object.value_icon(t.first, t.first), t.last]},
      wrapper: :horizontal_collection_inline

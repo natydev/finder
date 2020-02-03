@@ -23,6 +23,10 @@ class BoxDecorator < Draper::Decorator
     value_icon(object.code, :code)
   end
 
+  def badge_side
+    value_icon(object.side_humanize, :side)
+  end
+
   def badge_spot_name
     parent_icon(:spot_name, Icon::SPOT)
   end
@@ -32,7 +36,13 @@ class BoxDecorator < Draper::Decorator
   end
 
   def badge_place_and_spot
-    badge_place_name + value_icon('', :arrow_right, style: 'fas mr-3 ml-3') + badge_spot_name
+    badge_place_name + badge_arrow +
+      badge_spot_name +
+      (object.side.present? ? badge_arrow + badge_side : nil)
+  end
+
+  def badge_arrow
+    value_icon('', :arrow_right, style: 'fas mr-3 ml-3')
   end
 
   def badge_typology

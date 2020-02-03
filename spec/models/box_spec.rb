@@ -107,11 +107,42 @@ RSpec.describe Box, type: :model do
     end
   end
   context 'enumerations' do
-    it 'has typology standalone' do
-      expect(subject_standalone).to be_standalone
+    context 'typology' do
+      it 'has typology standalone' do
+        expect(subject_standalone).to be_standalone
+      end
+      it 'has typology cluster' do
+        expect(subject_cluster).to be_cluster
+      end
     end
-    it 'has typology cluster' do
-      expect(subject_cluster).to be_cluster
+    context 'side' do
+      it 'has side north' do
+        expect(create(:box, side: SpotSide::NORTH)).to be_north
+      end
+      it 'has side north east' do
+        expect(create(:box, side: SpotSide::NORTH_EAST)).to be_north_east
+      end
+      it 'has side east' do
+        expect(create(:box, side: SpotSide::EAST)).to be_east
+      end
+      it 'has side south east' do
+        expect(create(:box, side: SpotSide::SOUTH_EAST)).to be_south_east
+      end
+      it 'has side south' do
+        expect(create(:box, side: SpotSide::SOUTH)).to be_south
+      end
+      it 'has side south west' do
+        expect(create(:box, side: SpotSide::SOUTH_WEST)).to be_south_west
+      end
+      it 'has side west' do
+        expect(create(:box, side: SpotSide::WEST)).to be_west
+      end
+      it 'has side north west' do
+        expect(create(:box, side: SpotSide::NORTH_WEST)).to be_north_west
+      end
+      it 'has side central' do
+        expect(create(:box, side: SpotSide::CENTRAL)).to be_central
+      end
     end
   end
   it '#to_s returns the code' do

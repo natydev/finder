@@ -35,12 +35,26 @@ RSpec.describe BoxDecorator, type: :decorator do
     end
   end
   context 'badge_place_and_spot' do
-    it 'returns spot and box code with icon' do
-      o = "<i class=\"fa fa-building mr-1\"></i>#{object.place_name}" \
-          '<i class="fas mr-3 ml-3 fa-arrow-right"></i> ' \
-          "<i class=\"fa fa-door-open mr-1\"></i>#{object.spot_name}"
-      expect(subject.badge_place_and_spot)
-        .to eq(o)
+    context 'when box hasnt specified side' do
+      let(:object) { create(:box, side: nil) }
+      it 'returns place and spot name with icon' do
+        o = "<i class=\"fa fa-building mr-1\"></i>#{object.place_name}" \
+            '<i class="fas mr-3 ml-3 fa-arrow-right"></i> ' \
+            "<i class=\"fa fa-door-open mr-1\"></i>#{object.spot_name}"
+        expect(subject.badge_place_and_spot)
+          .to eq(o)
+      end
+    end
+    context 'when box has specified side' do
+      it 'returns place, spot and side name with icon' do
+        o = "<i class=\"fa fa-building mr-1\"></i>#{object.place_name}" \
+            '<i class="fas mr-3 ml-3 fa-arrow-right"></i> ' \
+            "<i class=\"fa fa-door-open mr-1\"></i>#{object.spot_name}" \
+            '<i class="fas mr-3 ml-3 fa-arrow-right"></i> ' \
+            "<i class=\"fas fa-compass\"></i> #{object.side_humanize}"
+        expect(subject.badge_place_and_spot)
+          .to eq(o)
+      end
     end
   end
   context '#badge_typology' do

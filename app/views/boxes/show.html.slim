@@ -7,14 +7,14 @@
   = link_to_list(boxes_path, entities: entities)
 = detail_row @box, :code do
   = @box.badge_fullcode
+= detail_row @box, :badge_place_and_spot do
+  = @box.badge_place_and_spot
 = detail_row @box, :summary
 = detail_row @box, :notes
 = detail_row @box, :using do
   = bool_to_icon(@box.using, icon: 'fas fa-external-link-alt')
 = detail_row @box, :quantity do
   = @box.badge_quantity
-= detail_row @box, :badge_place_and_spot do
-  = @box.badge_place_and_spot
 = detail_row @box, :typology do
   = @box.badge_typology
 = detail_row @box, :volume do
