@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Box, type: :model do
+  let(:owner) { create(:user) }
   let(:subject) { create(:box, has_picture: true) }
   let(:subject_standalone) { create(:box, :standalone) }
   let(:subject_cluster) { create(:box, :cluster) }
@@ -44,6 +45,27 @@ RSpec.describe Box, type: :model do
         subject = build(:box, :cluster, items_quantity: 3)
         subject.save
         expect(subject.items_quantity).to eq(0)
+      end
+      context 'code_number' do
+        context 'scoped on same code_prefix' do
+          it 'is set to 1 when first record created' do
+            subject.code_prefix = 'a'
+            subject.save
+            expect(subject.code_number).to eq(1)
+          end
+          it 'is set to 2 when 2nd record is created' do
+            create(:box, owner: owner, code_prefix: 'a')
+            second = create(:box, owner: owner, code_prefix: 'a')
+            expect(second.code_number).to eq(2)
+          end
+        end
+        context 'with different code_prefixes' do
+          it 'is set to 1 when 2nd record is not on same code_prefix' do
+            create(:box, owner: owner, code_prefix: 'a')
+            second = create(:box, owner: owner, code_prefix: 'b')
+            expect(second.code_number).to eq(1)
+          end
+        end
       end
     end
     context 'before_save' do

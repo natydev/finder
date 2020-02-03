@@ -12,7 +12,8 @@ class SearchesController < ApplicationController
                  .left_joins(:items)
                  .where(owner_id: current_user.id)
                  .select(
-                   'boxes.id, boxes.summary, boxes.spot_id, boxes.code, boxes.typology,
+                    'boxes.id, boxes.summary, boxes.spot_id, boxes.code_prefix,
+          boxes.code_number, boxes.typology,
           boxes.using, boxes.updated_at, boxes.picture_data, items.box_id,
           items.id AS item_id, items.summary AS item_summary,
           items.using AS item_using, items.updated_at AS item_updated_at,

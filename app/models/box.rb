@@ -5,6 +5,9 @@ class Box < ApplicationRecord
   include UpcaseCodeCallback
   include PictureUploader::Attachment(:picture)
 
+  CODE_PREFIX_REGEXP = /(\A[a-zA-Z]{1,3})\z/.freeze
+  # CODE_REGEXP = /(^[a-zA-Z]{1,3})([0-9]+$)/
+
   belongs_to :spot
   belongs_to :owner, class_name: 'User'
   has_many :items, dependent: :restrict_with_error
@@ -15,8 +18,8 @@ class Box < ApplicationRecord
   delegate :place_name, :place_code, to: :spot, prefix: false, allow_nil: true
 
   validates :summary, presence: true
-  validates :code, presence: true, uniqueness: { scope: :owner_id },
-                   length: { maximum: 10 }
+  validates :code_prefix, presence: true, format: { with: CODE_PREFIX_REGEXP },
+                          on: :create
   validates :typology, presence: true
   validates :volume, numericality: { only_integer: true, allow_nil: true }
   with_options if: :standalone? do |box|
@@ -35,6 +38,7 @@ class Box < ApplicationRecord
 
   before_create do |record|
     record.items_quantity = 0 if record.cluster?
+    record.code_number = last_incremented_code_number
   end
 
   before_save do |record|
@@ -58,7 +62,18 @@ class Box < ApplicationRecord
     code
   end
 
+  def code
+    "#{code_prefix}#{code_number}"
+  end
+
   def issued_on_human
     issued_on.present? ? I18n.l(issued_on, format: :long) : '-'
+  end
+
+private
+
+  def last_incremented_code_number
+    Box.where(owner_id: owner_id, code_prefix: code_prefix)
+       .maximum(:code_number).to_i + 1
   end
 end

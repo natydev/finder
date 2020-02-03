@@ -2,17 +2,17 @@
   = tabular_icon_head(Item, tag: :thead, labels: table_fields)
   tbody
     - collection.each do |b|
-      - box = SearchDecorator.new(b)
-      - is_item = box.is_item?
+      - line = SearchDecorator.new(b)
+      - is_item = line.item?
       tr
         td
-          = box.typology_icon
-          = box.picture_icon
-        td*{class: box.using_strike, title: Item.human_attribute_name(:using)}
-          = box.summary
-        td= box.code
-        td= box.spot
-        td.text-secondary= I18n.l(box.updated_at, format: :list)
-        td.action-link= link_to_show(box.object)
+          = line.typology_icon
+          = line.picture_icon
+        td*{class: line.using_strike, title: Item.human_attribute_name(:using)}
+          = line.summary
+        td= line.code
+        td= line.spot
+        td.text-secondary= I18n.l(line.updated_at, format: :list)
+        td.action-link= link_to_show(line.object)
   = tabular_icon_head(Item, tag: :tfoot, labels: table_fields)
 = paginator(list)

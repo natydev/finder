@@ -17,6 +17,8 @@ en:
       box:
         summary: Summary
         code: Code
+        code_prefix: Code Prefix
+        code_prefix_hint: 'min 1 to max 3 a-z chars'
         spot: Spot
         spot_id: Spot
         typology: Tipology

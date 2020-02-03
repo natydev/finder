@@ -9,7 +9,7 @@ FactoryBot.define do
     association :spot
     association :owner, factory: :user
     summary { Faker::Lorem.unique.sentence }
-    code { Faker::Lorem.unique.characters(number: 3).upcase }
+    code_prefix { ['a', 'b', 'x', 'm', 'r'].sample }
     issued_on { Faker::Date.between(from: 3.years.ago, to: Date.today) }
     typology { BoxTypology.list.sample }
     quantity { typology == BoxTypology::STANDALONE ? 1 : nil }

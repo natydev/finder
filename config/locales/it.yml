@@ -17,6 +17,8 @@ it:
       box:
         summary: Titolo
         code: Codice
+        code_prefix: Prefisso del codice
+        code_prefix_hint: 'da min. 1 a max. 3 caratteri alfabetici (a-z)'
         spot: Area
         spot_id: Area
         typology: Tipologia

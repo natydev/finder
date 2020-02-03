@@ -6,17 +6,17 @@
 user = User.create(full_name: 'John Smith', email: 'admin@example.com',
                    password: 'password', password_confirmation: 'password')
 
-place = Place.create(name: 'Family house', owner: user)
+place = Place.create(name: 'Family house', owner: user, code: 'fam')
 
 tags = []
 tags_counted = 10
 tags_counted.times do |_t|
-  tags << Tag.create(name: Faker::FunnyName.unique.name, owner: user)
+  tags << FactoryBot.create(:tag, owner: user, name: Faker::FunnyName.unique.name)
 end
 
 spots = []
-['Soffitta bassa', 'Soffitta alta', 'Garage', 'Cantina'].each do |name|
-  spots << Spot.create(name: name, place: place, owner: user)
+['Bedroom', 'Warehouse', 'Attic', 'Garage', 'Cellar'].each do |name|
+  spots << Spot.create(name: name, place: place, owner: user, code: name[0..2])
 end
 
 spots_counted = spots.size
@@ -24,14 +24,7 @@ boxes_counted = spots_counted * 5
 
 cluster_boxes = []
 boxes_counted.times do |_t|
-  box = Box.create(
-    owner: user,
-    spot: spots[rand(0..spots_counted - 1)],
-    summary: Faker::Lorem.unique.sentence,
-    typology: BoxTypology.list.sample,
-    code: Faker::Lorem.unique.characters(number: 3).upcase,
-    issued_on: Faker::Date.between(from: 5.years.ago, to: Date.today)
-  )
+  box = FactoryBot.create(:box, owner: user, spot: spots[rand(0..spots_counted - 1)])
   cluster_boxes << box if box.cluster?
 end
 cluster_boxes_counted = cluster_boxes.size
