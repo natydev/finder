@@ -17,6 +17,15 @@ RSpec.describe Place, type: :model do
     expect(described_class.for_select)
       .to include([first_item.name, first_item.id])
   end
+  context 'callbacks' do
+    context 'before_save' do
+      let(:subject) { build(:place, code: 'cd3') }
+      it 'set code as uppercased' do
+        subject.save
+        expect(subject.code).to eq('CD3')
+      end
+    end
+  end
   context 'Paper Trail (versioning)', versioning: true do
     it 'a place is versioned' do
       expect(subject).to be_versioned

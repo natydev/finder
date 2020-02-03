@@ -38,6 +38,7 @@ class Box < ApplicationRecord
 
   before_create do |record|
     record.items_quantity = 0 if record.cluster?
+    record.code_prefix = record.code_prefix.strip.upcase
     record.code_number = last_incremented_code_number
   end
 

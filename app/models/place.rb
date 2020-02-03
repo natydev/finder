@@ -2,6 +2,7 @@
 
 class Place < ApplicationRecord
   include SelectModelConcern
+  include UpcaseCodeCallback
 
   belongs_to :owner, class_name: 'User'
   has_many :spots, dependent: :restrict_with_error

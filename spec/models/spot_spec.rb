@@ -20,6 +20,15 @@ RSpec.describe Spot, type: :model do
       expect(subject.place_code).to eq(subject.place.code)
     end
   end
+  context 'callbacks' do
+    context 'before_save' do
+      let(:subject) { build(:spot, code: 'ad3') }
+      it 'set code as uppercased' do
+        subject.save
+        expect(subject.code).to eq('AD3')
+      end
+    end
+  end
   it '#to_s returns the name' do
     expect(subject.to_s).to eq(subject.name)
   end

@@ -67,6 +67,13 @@ RSpec.describe Box, type: :model do
           end
         end
       end
+      context 'code_prefix' do
+        it 'is set to uppercased' do
+          subject = build(:box, code_prefix: 'fm')
+          subject.save
+          expect(subject.code_prefix).to eq('FM')
+        end
+      end
     end
     context 'before_save' do
       context 'items_quantity' do
