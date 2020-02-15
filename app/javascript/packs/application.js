@@ -33,9 +33,13 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
 
-$(document).on("turbolinks:load", function () {
+$(document).on("ready turbolinks:load", function () {
 
-  $('.form-control-chosen').chosen();
+  if ($(".chosen-container").length == 0) {
+    $('.form-control-chosen').chosen();
+  } else {
+    $('.form-control-chosen').chosen("destroy");
+  }
   
 
   var $fieldQuantity = $('#field_quantity');
