@@ -4,11 +4,11 @@ h2
   = t('.latest_versions.summary')
 div.row
   div.col-md-6
-    ul.d-table
+    ul.list-group
       - @latest_updates.each do |last_update|
-        li.d-table-row
-          span.d-table-cell= link_to last_update.path do
-            = last_update.item
-          span.d-table-cell
-            small.ml-2= l(last_update.created_at, format: :list)
+        li.list-group-item
+          = last_update.typology_icon
+          span.ml-3= link_to last_update.path do
+            = last_update.preview
+          small.ml-2= l(last_update.created_at, format: :list)
   div.col-md-6
