@@ -112,6 +112,10 @@ it:
     in_summary: 'Cerca nel titolo'
     filer_spot: 'Filtra per area'
     filer_tag: 'Filtra per etichetta'
+  stats:
+    index:
+      latest_versions:
+        summary: 'Ultimi aggiornamenti'
   time:
     formats:
       list: "%Y-%m-%d %H:%M"

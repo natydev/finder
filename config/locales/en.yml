@@ -112,6 +112,10 @@ en:
     in_summary: 'Search in summary'
     filer_spot: 'Filter by Spot'
     filer_tag: 'Filter by tag'
+  stats:
+    index:
+      latest_versions:
+        summary: 'Latest updates'
   time:
     formats:
       list: "%Y-%m-%d %H:%M"

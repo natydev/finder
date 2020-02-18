@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   resources :tags
-  root to: 'items#search'
+  root to: 'stats#index'
 
   resources :items, only: %i[index show]
   resources :boxes do
