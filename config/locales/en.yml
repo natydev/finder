@@ -64,6 +64,7 @@ en:
         name: Name
         color: Text color
         background: Background color
+        example: example tag
     errors:
       models:
         user:

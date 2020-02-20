@@ -1,5 +1,8 @@
 = simple_form_for([@tag], wrapper: :horizontal_form) do |f|
   = f.input :name
-  = f.input :color
-  = f.input :background
+  = f.input :color, input_html: { 'data-fallback-color' => "#000000"}
+  = f.input :background, input_html: { 'data-fallback-color' => "#CCCCCC"}
+  span.example-background.badge.badge-secondary.m-3
+    span.example-color= Tag.human_attribute_name(:example)
+  br
   = f.button :submit, class: 'btn-outline-dark'

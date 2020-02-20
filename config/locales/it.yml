@@ -64,6 +64,7 @@ it:
         name: Nome
         color: Colore testo
         background: Colore sfondo
+        example: etichetta di esempio
     errors:
       models:
         user:

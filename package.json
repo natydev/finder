@@ -12,7 +12,7 @@
     "@rails/webpacker": "^4.2.0",
     "bootstrap": "^4.3.1",
     "bootstrap4c-chosen": "1.1.1",
-    "cocoon-js": "0.0.5",
+    "bootstrap-colorpicker": "3.2.0",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
     "serialize-javascript": "2.1.1",

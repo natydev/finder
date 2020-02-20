@@ -2,12 +2,12 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import 'bootstrap/dist/js/bootstrap';
 import 'chosen-js';
-import 'bootstrap4c-chosen/dist/css/component-chosen';
-import 'cocoon-js';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import 'jquery/dist/jquery.slim'
 import 'popper.js/dist/esm/popper'
+import 'bootstrap4c-chosen/dist/css/component-chosen';
+import 'bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min';
 
 require("@rails/ujs").start();
 require("turbolinks").start();
@@ -34,6 +34,15 @@ $(function () {
 });
 
 $(document).on("ready turbolinks:load", function () {
+  $('#tag_color, #tag_background').colorpicker({
+    format: 'hex'
+  });
+  $('#tag_color').on('colorpickerCreate colorpickerChange', function(event) {
+    $('.example-color').css('color', event.color.toString());
+  });
+  $('#tag_background').on('colorpickerCreate colorpickerChange', function(event) {
+    $('.example-background').css('background-color', event.color.toString());
+  });
 
   if ($(".chosen-container").length == 0) {
     $('.form-control-chosen').chosen();
