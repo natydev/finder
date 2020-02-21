@@ -11,7 +11,8 @@
      collection: BoxTypology.to_h.map{|t| [f.object.value_icon(t.first, t.first), t.last]},
      wrapper: :horizontal_collection_inline
   = f.input :code_prefix, label: f.object.label_icon(:code_prefix, :code),
-            hint: Box.human_attribute_name(:code_prefix_hint), disabled: !f.object.new_record?
+            hint: f.object.new_record? ? Box.human_attribute_name(:code_prefix_hint) : nil,
+            as: f.object.new_record? ? 'string' : 'hidden'
   = f.input :summary
   = f.input :notes
   = f.input :using, as: :boolean, wrapper: :horizontal_boolean_single,
