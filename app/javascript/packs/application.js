@@ -8,7 +8,7 @@ import 'jquery/dist/jquery.slim'
 import 'popper.js/dist/esm/popper'
 import 'bootstrap4c-chosen/dist/css/component-chosen';
 import 'bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min';
-
+import 'bootstrap-datepicker/dist/js/bootstrap-datepicker.min';
 require("@rails/ujs").start();
 require("turbolinks").start();
 require("@rails/activestorage").start();
@@ -49,6 +49,12 @@ $(document).on("ready turbolinks:load", function () {
   } else {
     $('.form-control-chosen').chosen("destroy");
   }
+
+  $('#box_issued_on_metric').datepicker({
+    format: "dd/mm/yyyy",
+    autoclose: true,
+    language: $('html').lang
+  });
   
 
   var $fieldQuantity = $('#field_quantity');

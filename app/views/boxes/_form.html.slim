@@ -27,7 +27,7 @@
                step: 25, list: :free_space, style: '--min: 0; --max: 100;' },
                wrapper: :horizontal_range,
                label: f.object.label_icon(:free_ratio, :free_ratio_50)
-  = f.input :issued_on, label: f.object.label_icon(:issued_on, :issued_on)
+  = f.input :issued_on_metric, as: 'string', label: f.object.label_icon(:issued_on, :issued_on)
   div#field_tags
     = f.input :tag_ids, as: :select, collection: Tag.for_select,
               input_html: { multiple: true, class: 'form-control form-control-chosen',

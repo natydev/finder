@@ -73,6 +73,25 @@ class Box < ApplicationRecord
     issued_on.present? ? I18n.l(issued_on, format: :long) : '-'
   end
 
+  def issued_on_metric
+    if new_record? && read_attribute(:issued_on).blank?
+      Date.today
+    else
+      read_attribute(:issued_on)
+    end.strftime('%d/%m/%Y')
+  rescue NoMethodError
+    nil
+  end
+
+  def issued_on_metric=(issued_on)
+    write_attribute(:issued_on,
+                    begin
+                      Date.parse(issued_on)
+                    rescue ArgumentError
+                      nil
+                    end)
+  end
+
 private
 
   def last_incremented_code_number

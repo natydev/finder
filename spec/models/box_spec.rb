@@ -145,6 +145,36 @@ RSpec.describe Box, type: :model do
       end
     end
   end
+  context 'issued_on_metric' do
+    context 'reader' do
+      it 'returns today formatted dd/mm/yyyy from new record without issued_on' do
+        subject = build(:box, issued_on: nil)
+        expect(subject.issued_on_metric)
+          .to eq(Date.today.strftime('%d/%m/%Y'))
+      end
+      it 'returns formatted dd/mm/yyyy from issued_on date' do
+        expect(subject.issued_on_metric)
+          .to eq(subject.issued_on.strftime('%d/%m/%Y'))
+      end
+      it 'returns nil from an empty issued_on date' do
+        subject.issued_on = nil
+        expect(subject.issued_on_metric)
+          .to be_nil
+      end
+    end
+    context 'writer' do
+      it 'save issued_on date from formatted dd/mm/yyyy string ' do
+        subject.issued_on_metric = '10/08/2017'
+        expect(subject.issued_on.to_s)
+          .to eq('2017-08-10')
+      end
+      it 'save nil from an empty or invalid date from string' do
+        subject.issued_on_metric = ''
+        expect(subject.issued_on)
+          .to be_nil
+      end
+    end
+  end
   it '#to_s returns the code' do
     expect(subject.to_s).to eq(subject.code)
   end
