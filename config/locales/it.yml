@@ -111,6 +111,7 @@ it:
     no_item_present: Nessun elemento presente
   search:
     in_summary: 'Cerca nel titolo'
+    in_code: 'Cerca nel codice'
     filer_spot: 'Filtra per area'
     filer_tag: 'Filtra per etichetta'
   stats:

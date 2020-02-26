@@ -111,6 +111,7 @@ en:
     no_item_present: No items present
   search:
     in_summary: 'Search in summary'
+    in_code: 'Search in code'
     filer_spot: 'Filter by Spot'
     filer_tag: 'Filter by tag'
   stats:

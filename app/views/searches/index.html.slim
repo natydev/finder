@@ -5,27 +5,34 @@
  class: 'search' do |f|
   .row
     .col-md-6.col-lg-3
-      i.fa.fa-search.mr-1.text-muted
+      i.mr-1.text-muted*{class: Icon.css_for(:search, style: :fa)}
       = f.input :summary_or_items_summary_cont, placeholder: t('search.in_summary')
     .col-md-6.col-lg-3
-      i.fa.fa-door-open.mr-1.text-muted
+      i.mr-1.text-muted*{class: Icon.css_for(:spot, style: :fa)}
       = f.input :spot_id_eq, as: :select, collection: Spot.for_select,
         input_html: { class: 'form-control form-control-chosen',
         data: {placeholder: t('search.filer_spot')} }
+
+    .col-md-6.col-lg-1
+      i.mr-1.text-muted*{class: Icon.css_for(:using)}
+      = f.input :using_or_items_using_true, as: :boolean, 
+                label: false
+
+  .row
     .col-md-6.col-lg-3
-      i.fa.fa-tag.mr-1.text-muted
+      i.mr-1.text-muted*{class: Icon.css_for(:code, style: :fa)}
+      = f.input :code_cont, placeholder: t('search.in_code')
+    .col-md-6.col-lg-3
+      i.mr-1.text-muted*{class: Icon.css_for(:tag, style: :fa)}
       = f.input :tags_id_or_items_tags_id_in, as: :select, collection: Tag.for_select,
         input_html: { multiple: true, class: 'form-control form-control-chosen',
         data: {placeholder: t('search.filer_tag')} }
-    .col-md-6.col-lg-1
-      i.fa.fas.fa-external-link-alt.mr-1.text-muted
-      = f.input :using_or_items_using_true, as: :boolean, 
-                label: false
     .col-md-6.col-lg-2.text-right
       - if params[:q].present?
         = link_to t('common.reset'), searches_path,
          class: 'btn btn-secondary btn-sm mr-2'
       = f.button :submit, class: 'btn btn-primary btn-sm mt-1'
+
 - if @display
   = render partial: "searches/list", locals: { list: @boxes, table_fields: table_fields }
 - else

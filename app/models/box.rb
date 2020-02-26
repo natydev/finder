@@ -40,6 +40,7 @@ class Box < ApplicationRecord
     record.items_quantity = 0 if record.cluster?
     record.code_prefix = record.code_prefix.strip.upcase
     record.code_number = last_incremented_code_number
+    record.code = record.code_prefix.to_s + record.code_number.to_s
   end
 
   before_save do |record|

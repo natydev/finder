@@ -74,6 +74,13 @@ RSpec.describe Box, type: :model do
           expect(subject.code_prefix).to eq('FM')
         end
       end
+      context 'code' do
+        it 'is set as code_prefix + code_number' do
+          subject = build(:box, code_prefix: 'a')
+          subject.save
+          expect(subject.code).to eq('A1')
+        end
+      end
     end
     context 'before_save' do
       context 'items_quantity' do
