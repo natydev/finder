@@ -88,6 +88,7 @@ Metrics/AbcSize:
     - 'app/controllers/spots_controller.rb'
     - 'app/controllers/places_controller.rb'
     - 'app/controllers/items_controller.rb'
+    - 'app/controllers/stats_controller.rb'
     - 'app/controllers/boxes_controller.rb'
     - 'app/controllers/tags_controller.rb'
     - 'app/decorators/version_decorator.rb'

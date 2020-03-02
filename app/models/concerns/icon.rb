@@ -33,6 +33,7 @@ module Icon
   ARROW_RIGHT = 'arrow-right'
   TIME = 'clock'
   UPDATED_AT = TIME
+  STATS = 'chart-bar'
 
   def self.css_for(icon, style: 'fas')
     "#{style} fa-#{Icon.const_get(icon.to_s.upcase)}"
