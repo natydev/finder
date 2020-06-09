@@ -12,8 +12,13 @@
 /db/*.sqlite3-journal
 /db/*.sqlite3-*
 
+# ignore system files in openSuse linux
+*.directory
+
 # Ignore postgres data dir (if using postgres with docker).
 /finder_data/**/*
+/finder_data/*
+/finder_data
 
 # Ignore all logfiles and tempfiles.
 /log/*
