@@ -117,4 +117,26 @@ RSpec.describe SearchDecorator, type: :decorator do
       end
     end
   end
+  context '#free_ratio_human' do
+    context 'when object is cluster' do
+      let(:object) { create(:box, :cluster) }
+      it 'return free_ratio value with percentage' do
+        expect(subject.free_ratio_human)
+          .to eq("#{object.free_ratio}%")
+      end
+    end
+    context 'when object is standalone' do
+      let(:object) { create(:box, :standalone) }
+      it 'return nil' do
+        expect(subject.free_ratio_human).to be_nil
+      end
+    end
+  end
+  context '#free_ratio_color' do
+    let(:object) { create(:box, :cluster) }
+    it 'returns free_ratio wrapped with specific class' do
+      expect(subject.free_ratio_color)
+        .to include('search-item free-ratio color-')
+    end
+  end
 end

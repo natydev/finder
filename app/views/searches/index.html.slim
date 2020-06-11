@@ -1,5 +1,5 @@
 - breadcrumb :searches
-- table_fields = [:typology, :summary, :code, :spot, :updated_at]
+- table_fields = [:typology, :summary, :code, :free_ratio, :spot, :updated_at]
 
 = search_form_for @q, url: searches_path, wrapper: :search_horizontal_form,
  class: 'search' do |f|
@@ -15,7 +15,7 @@
 
     .col-md-6.col-lg-1
       i.mr-1.text-muted*{class: Icon.css_for(:using)}
-      = f.input :using_or_items_using_true, as: :boolean, 
+      = f.input :using_or_items_using_true, as: :boolean,
                 label: false
 
   .row
@@ -38,5 +38,3 @@
 - else
   = render partial: "searches/dashboard", locals: { }
 javascript:
-
-  

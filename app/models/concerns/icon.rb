@@ -23,6 +23,7 @@ module Icon
   FREE_RATIO_50 = 'battery-half'
   FREE_RATIO_25 = 'battery-quarter'
   FREE_RATIO_0 = 'battery-empty'
+  FREE_RATIO = 'battery-half'
   ISSUED_ON = 'calendar-check'
   CODE = 'barcode'
   SEARCH = 'search'

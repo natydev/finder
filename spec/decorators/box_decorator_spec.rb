@@ -115,6 +115,12 @@ RSpec.describe BoxDecorator, type: :decorator do
       end
     end
   end
+  context '#free_ratio_color' do
+    it 'returns free_ratio wrapped with specific class' do
+      expect(subject.free_ratio_color)
+        .to include('search-item free-ratio color-')
+    end
+  end
   include_examples 'picture_deco', :box
   include_examples 'timestamp_deco'
 end

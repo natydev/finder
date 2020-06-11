@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
                  .select(
                    'boxes.id, boxes.summary, boxes.spot_id, boxes.code_prefix,
           boxes.code_number, boxes.typology,
-          boxes.using, boxes.updated_at, boxes.picture_data, items.box_id,
+          boxes.using, boxes.updated_at, boxes.free_ratio, boxes.picture_data, items.box_id,
           items.id AS item_id, items.summary AS item_summary,
           items.using AS item_using, items.updated_at AS item_updated_at,
           items.picture_data AS item_picture_data'

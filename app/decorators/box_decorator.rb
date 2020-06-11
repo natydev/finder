@@ -11,6 +11,7 @@ class BoxDecorator < Draper::Decorator
   include BadgePlaceCodeDeco
   include PrimaryBadgeCodeDeco
   include BadgeFullcodeDeco
+  include FreeRatioDeco
 
   def self.collection_decorator_class
     PaginatingDecorator
@@ -59,10 +60,6 @@ class BoxDecorator < Draper::Decorator
 
   def free_ratio_icon
     value_icon(free_ratio_human, "free_ratio_#{object.free_ratio}")
-  end
-
-  def free_ratio_human
-    h.number_to_percentage(object.free_ratio, strip_insignificant_zeros: true)
   end
 
   def badge_quantity

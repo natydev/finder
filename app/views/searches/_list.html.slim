@@ -11,6 +11,7 @@
         td*{class: line.using_strike, title: Item.human_attribute_name(:using)}
           = line.summary
         td= line.code
+        td= line.free_ratio_color
         td= line.spot
         td.text-secondary= I18n.l(line.updated_at, format: :list)
         td.action-link= link_to_show(line.object)

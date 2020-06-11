@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SearchDecorator < Draper::Decorator
+  include FreeRatioDeco
+
   def self.collection_decorator_class
     PaginatingDecorator
   end
