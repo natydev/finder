@@ -33,7 +33,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # tools
 gem 'configatron', '4.5.1'
 gem 'enumerate_it', '3.0.0'
-gem 'image_processing', '1.9.3'
+gem 'image_processing', '1.12.2'
 gem 'paper_trail', '10.3.1'
 gem 'shrine', '3.3.0'
 
