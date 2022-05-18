@@ -22,7 +22,7 @@ gem 'webpacker', '4.0'
 gem 'turbolinks', '5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '2.9.1'
-gem 'nokogiri', '1.10.8'
+gem 'nokogiri', '1.13.5'
 
 # Use Active Storage variant
 # gem 'image_processing', '1.2'
